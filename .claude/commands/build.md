@@ -55,7 +55,7 @@ You cannot avoid patterns you have not named. Without an explicit list of reject
 
 ### Gate 6: Mock-fidelity inventory
 
-Before code, list every section, motif, hero, nav item, CTA, and image need on the screen, with the implementation method per item. Semantic HTML/CSS/SVG, generated asset, sourced project asset, icon from Lucide, an explicitly accepted omission. This forces you to plan the build instead of improvising it section by section, which is the fastest path to a screen that loses its hero by the time you reach the footer. The inventory is short. It does not need to be elegant. It needs to exist.
+Before code, list every section, motif, hero, nav item, CTA, and image need on the screen, with the implementation method per item. Semantic HTML/CSS/SVG, generated asset, sourced project asset, icon from the chosen library, an explicitly accepted omission. This forces you to plan the build instead of improvising it section by section, which is the fastest path to a screen that loses its hero by the time you reach the footer. The inventory is short. It does not need to be elegant. It needs to exist.
 
 ### Gate 7: Propose
 
@@ -83,10 +83,9 @@ Present the work with a short rationale grounded in the gates that were passed �
 ## Hard rules — non-negotiable across the workflow
 
 - No emojis as UI under any circumstance.
-- Lucide icons only; no mixed icon families.
+- One icon library; no mixed icon families.
 - IBM Carbon defaults for any enterprise or dense-data product UI.
 - No pie charts, no donut charts.
-- Red Hat Display, Red Hat Text, and Red Hat Mono on Lastro and Lais brand surfaces unless the project explicitly overrides.
 - `prefers-reduced-motion` is mandatory.
 - 44 by 44 pixel minimum touch targets on any interactive element.
 - Native `<dialog>` plus `inert` for modals — never a div masquerading as a dialog.

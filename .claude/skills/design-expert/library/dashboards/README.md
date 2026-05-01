@@ -6,7 +6,7 @@ A dashboard is the hardest surface in product design because it has to be three 
 
 Restraint applied at scale. Surface elevation should be whisper-quiet — `craft.md`'s subtle layering rule says each level is only a few percentage points off the level beneath it, and a sidebar shares the canvas background with a low-opacity border rather than being painted a different color. Density is contextual: an inbox earns 32-to-40-pixel rows with 13-or-14-pixel type, while a settings page in the same product breathes at 24-to-32 padding. The component is the same; the application differs.
 
-Cells carry the system. `components.md` is unforgiving — one status pill per row, six color semantics held everywhere, no pie or donut charts ever, bar baselines at zero, tabular numerals on any column that aligns vertically. These are not preferences; they are the alphabet the surface uses to mean things. The same discipline runs through icons: pick one Lucide stroke weight and use it everywhere; drop the topic icon from card titles unless removing it loses meaning.
+Cells carry the system. `components.md` is unforgiving — one status pill per row, six color semantics held everywhere, no pie or donut charts ever, bar baselines at zero, tabular numerals on any column that aligns vertically. These are not preferences; they are the alphabet the surface uses to mean things. The same discipline runs through icons: pick one icon stroke weight and use it everywhere; drop the topic icon from card titles unless removing it loses meaning.
 
 Register is the deciding move. Dashboards are product surfaces, not brand surfaces. `anti-slop.md` makes the asymmetry explicit — a purple gradient is fine on a landing page; on a settings panel it's slop. Working memory holds about four items at once (`foundations.md`, Cowan's cap), so above-the-fold widgets earn their slot or get cut. One primary action, two or three secondary, the rest muted.
 
@@ -30,7 +30,7 @@ Fintech-grade typographic discipline. Numerals tabular, scales clear, accent com
 
 ### Figma
 URL: `https://figma.com`
-The file browser is a high-density product surface that holds together because every cell obeys its contract. Thumbnails align on a real grid, metadata uses tabular numerals, avatars share one diameter, chrome stays at one Lucide stroke weight. Runs at the high end of `anti-slop.md`'s VISUAL_DENSITY scale without becoming hostile, because rhythm is real and the cell contracts hold.
+The file browser is a high-density product surface that holds together because every cell obeys its contract. Thumbnails align on a real grid, metadata uses tabular numerals, avatars share one diameter, chrome stays at one icon stroke weight. Runs at the high end of `anti-slop.md`'s VISUAL_DENSITY scale without becoming hostile, because rhythm is real and the cell contracts hold.
 
 ## Anti-patterns (Don't)
 
@@ -48,4 +48,4 @@ Five categories as wedges, each a slightly different angle, asking the user to c
 
 ## How to use this category
 
-When designing or reviewing a dashboard, open the Do half first to calibrate your sense of what good looks like at this density — cells, elevation, Lucide stroke, chart shapes, sidebar treatment. Then open the Don't half to name the AI-default patterns your draft is reaching for, so you can refuse them by name. Return to the decision with both lenses active. The signature is in the discipline, not the flourish.
+When designing or reviewing a dashboard, open the Do half first to calibrate your sense of what good looks like at this density — cells, elevation, icon stroke, chart shapes, sidebar treatment. Then open the Don't half to name the AI-default patterns your draft is reaching for, so you can refuse them by name. Return to the decision with both lenses active. The signature is in the discipline, not the flourish.

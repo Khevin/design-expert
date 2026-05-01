@@ -36,7 +36,7 @@ Plus the skill itself, invoked freely as `design-expert`.
     craft.md           # composition, layering, density, color, the four craft tests
     anti-slop.md       # detecting and replacing AI-generated defaults; six tells; grep recipes
     typography.md      # type system, hierarchy, 38 pairings, brand-vs-product type rules
-    components.md      # cells, Lucide icons, charts (no pie / donut)
+    components.md      # cells, icons, charts (no pie / donut)
     interaction.md     # eight states, motion timing, responsive, onboarding, delight
     output-format.md   # review template, confidence framework, 5-dimension audit framework
     nng-articles-index.md   # 270+ NNg articles indexed by topic
@@ -60,10 +60,9 @@ The canonical voice reference is the interface-design plugin by Damola Akinleye,
 
 ## Hard rules (non-negotiable)
 
-- No emojis as UI — Lucide icons only
+- No emojis as UI — one consistent icon library
 - IBM Carbon defaults for enterprise / dense data UIs
 - No pie or donut charts (Cleveland & McGill 1984)
-- Red Hat Display + Red Hat Text + Red Hat Mono for Lais and Lastro brand surfaces
 - `prefers-reduced-motion: reduce` is mandatory
 - 44×44 px minimum touch targets (WCAG 2.5.5)
 - Native `<dialog>` + `inert` for modals
@@ -74,7 +73,7 @@ The canonical voice reference is the interface-design plugin by Damola Akinleye,
 
 design-expert is a standalone evolution of three predecessor skills:
 
-- **`nng-agent`** — Nielsen Norman Group heuristics, Universal Design 7, anti-defaultism, IBM Carbon, Lucide, font pairings, decision checklist, review template, confidence framework, data-viz tree
+- **`nng-agent`** — Nielsen Norman Group heuristics, Universal Design 7, anti-defaultism, IBM Carbon, font pairings, decision checklist, review template, confidence framework, data-viz tree
 - **`interface-design`** by [Damola Akinleye](https://github.com/Dammyjay93) — manifesto voice, Intent-First, swap/squint/signature/token tests, subtle layering
 - **`impeccable`** by [Patrick Bakaus](https://github.com/pbakaus) — brand vs product register, 0–4 heuristic scoring, shape/teach/document workflow, ux-writing patterns
 

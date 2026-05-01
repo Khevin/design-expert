@@ -1,6 +1,6 @@
 ---
 name: design-expert
-description: Build, review, plan, and write interfaces with craft and evidence. Use for design reviews, UX critiques, accessibility audits, dashboard or admin builds, brand surfaces, and any product surface where defaults are unacceptable. Catches AI-generated slop; cites NNg heuristics, Universal Design 7, and a curated pantheon of historical designers; teaches the WHY of design before the HOW. Forces Red Hat type for Lais and Lastro brand surfaces. Lucide icons only — never uses emojis as UI.
+description: Build, review, plan, and write interfaces with craft and evidence. Use for design reviews, UX critiques, accessibility audits, dashboard or admin builds, brand surfaces, and any product surface where defaults are unacceptable. Catches AI-generated slop; cites NNg heuristics, Universal Design 7, and a curated pantheon of historical designers; teaches the WHY of design before the HOW. Never uses emojis as UI.
 version: 0.1.0
 ---
 
@@ -38,7 +38,7 @@ Good design has signature. Bad design is interchangeable. A great interface has 
 | Empty states with WHAT / WHY / ACTION | "No data available." centered in a card |
 | Verb-plus-object button labels ("Approve invoice") | OK / Cancel / Submit |
 | Inline validation on blur, with WHAT / WHY / HOW errors | Validation on submit, "Invalid input." |
-| Lucide icons at one stroke weight | Emojis, mixed icon families, sparkle for AI |
+| Icons at one stroke weight | Emojis, mixed icon families, sparkle for AI |
 | Subtle layering — each level a few percent off the last | Glassmorphism on a static dashboard |
 | Off-black `#09090b` background | Pure `#000000` background |
 | Tinted neutrals leaning toward the brand hue | Pure gray with zero chroma |
@@ -65,8 +65,8 @@ The full set of files in this skill, with paths, one-line descriptions, and tags
 | `foundations.md` | The ten NNg heuristics, the Universal Design 7 principles, and the 10-Lens decision framework. | `#principles` `#heuristics` `#accessibility` |
 | `craft.md` | Composition, layering, density, color, the four craft tests, distillation, polish. | `#craft` `#visual` `#layering` |
 | `anti-slop.md` | Detecting and replacing AI-generated defaults; the six tells; named replacements; grep recipes. | `#anti-defaultism` `#patterns` |
-| `typography.md` | Type system, hierarchy levels, 38 pairings, brand-vs-product type rules, Red Hat lock for Lais. | `#typography` `#fonts` |
-| `components.md` | Atomic patterns: cells, status pills, Lucide icons, charts, forms, navigation. | `#components` `#patterns` |
+| `typography.md` | Type system, hierarchy levels, 38 pairings, brand-vs-product type rules. | `#typography` `#fonts` |
+| `components.md` | Atomic patterns: cells, status pills, icons, charts, forms, navigation. | `#components` `#patterns` |
 | `interaction.md` | The eight states, motion timing, responsive design, onboarding, delight, reduced motion. | `#interaction` `#motion` `#states` |
 | `output-format.md` | Review template, confidence framework, five-dimension audit format, citation format. | `#review` `#format` |
 | `nng-articles-index.md` | 270+ NNg articles indexed by topic for fast citation lookup. | `#lookup` `#nng` |
@@ -112,11 +112,10 @@ The full set of files in this skill, with paths, one-line descriptions, and tags
 
 These rules never bend. They exist because each one prevents a specific class of failure observed at scale across thousands of AI-generated interfaces. The reasons are mechanical, not aesthetic; the reasons are documented in the depth files cited beside each rule.
 
-- **No emojis as UI.** Emojis render differently across OS, browser, and font; they cannot be tinted to match the type color; their stroke weight is not yours to set; they announce inconsistently to screen readers. They are also the single loudest "AI made that" tell on a product surface. Use Lucide icons only. See `components.md`.
-- **Lucide icons only.** One stroke weight per product. The canonical concept-to-icon mapping lives in `components.md`. **1.75 stroke weight is the forced default for Lais and Lastro surfaces** to pair with Red Hat type.
+- **No emojis as UI.** Emojis render differently across OS, browser, and font; they cannot be tinted to match the type color; their stroke weight is not yours to set; they announce inconsistently to screen readers. They are also the single loudest "AI made that" tell on a product surface. Use a single, consistent icon library. See `components.md`.
+- **One icon library, one stroke weight.** Pick Lucide, Heroicons, Phosphor, Tabler, or Material Symbols at the system level and stick to it. Mixed icon families fragment the system. The canonical concept-to-icon mapping lives in `components.md`.
 - **IBM Carbon defaults for enterprise and dense-data UIs.** Adapt the patterns; never blind-copy the colors. The Carbon discipline is the floor, not the ceiling. See `references/ibm-carbon.md`.
 - **No pie or donut charts.** Cleveland and McGill (1984) — humans read length more accurately than angle. Bar charts win for category comparison every time. See `components.md`.
-- **Red Hat Display, Red Hat Text, and Red Hat Mono on Lastro and Lais brand surfaces** unless the project explicitly overrides. The brand-locked default sits where Geist or Satoshi would otherwise. See `typography.md`.
 - **`prefers-reduced-motion: reduce` is mandatory.** Roughly thirty-five percent of adults over forty prefer reduced motion. Animations that ignore the preference are an accessibility failure, not a stylistic choice. See `interaction.md`.
 - **44 by 44 pixel minimum touch targets** on any interactive mobile element (WCAG 2.5.5). Smaller targets fail Universal Design 7c.
 - **Native `<dialog>` plus `inert` for modals.** Do not ship custom focus-trap JavaScript when the platform already does it correctly. Custom controls that do not expose ARIA roles fail Universal Design 4e.

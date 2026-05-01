@@ -74,13 +74,13 @@ These are answers, not the answers. The point of the walkthrough is to show the 
 
 These pairings are tools, not endorsements. Each one carries a personality and a set of working assumptions. Picking one means inheriting those assumptions; picking it without thinking means inheriting them invisibly. The table below is the reference set — 38 pairings curated for product, brand, and editorial work, organized by temperature and vibe.
 
-The columns are: number, display/heading family, body family, monospace family (when relevant), the dominant vibe of the pairing, its temperature on the warm-cool axis, and the kind of product it best serves. Almost all are free — Google Fonts, Fontshare, or open-license — with paid alternatives noted where they would outperform but aren't required. All cover Latin Extended-A and Latin Extended-B, which means they handle Brazilian Portuguese diacritics correctly; verify before shipping by typing a sample like "São Paulo — não há nada melhor que um espresso." If diacritics fall back to a system font, the subset is incomplete and needs to be reloaded.
+The columns are: number, display/heading family, body family, monospace family (when relevant), the dominant vibe of the pairing, its temperature on the warm-cool axis, and the kind of product it best serves. Almost all are free — Google Fonts, Fontshare, or open-license — with paid alternatives noted where they would outperform but aren't required. All cover Latin Extended-A and Latin Extended-B, which means they handle diacritics correctly across Latin-script languages; verify before shipping by typing a sample like "São Paulo — não há nada melhor que um espresso." If diacritics fall back to a system font, the subset is incomplete and needs to be reloaded.
 
 | # | Display / Heading | Body | Mono | Vibe | Temperature | Best for |
 |---|---|---|---|---|---|---|
-| **1** | **Red Hat Display** | **Red Hat Text** | **Red Hat Mono** | **Modern, technical, confident** | **Cool-neutral** | **Lastro/Lais brand surfaces — forced default** |
-| 2 | Red Hat Display | Source Serif 4 | Red Hat Mono | Editorial-meets-technical | Cool-warm balance | Lais long-form content, blog, reports |
-| 3 | Red Hat Display | IBM Plex Serif | IBM Plex Mono | Premium, considered | Cool-neutral | Lastro investor reports, white papers |
+| **1** | **IBM Plex Sans** | **IBM Plex Sans** | **IBM Plex Mono** | **Modern, technical, considered** | **Cool-neutral** | **Technical and engineering products; data-heavy SaaS; documentation-driven brands** |
+| 2 | Source Sans 3 | Source Serif 4 | JetBrains Mono | Editorial-meets-technical | Cool-warm balance | Long-form content, blog, reports for technical brands |
+| 3 | IBM Plex Sans | IBM Plex Serif | IBM Plex Mono | Premium, considered | Cool-neutral | Investor reports, white papers, reference docs |
 | 4 | Playfair Display | Source Sans 3 | — | Classical, editorial, elegant | Warm | Magazine sites, real estate listings, premium e-commerce |
 | 5 | Cormorant Garamond | Lato | — | Refined, literary, calm | Warm | Bookstores, luxury hospitality, wine/coffee brands |
 | 6 | EB Garamond | Inter | JetBrains Mono | Academic, considered, dense | Neutral | Research tools, knowledge bases, academic SaaS |
@@ -119,9 +119,9 @@ The columns are: number, display/heading family, body family, monospace family (
 
 A few of these pairings deserve more than a row.
 
-**Pairing #1 — Red Hat Display + Red Hat Text + Red Hat Mono — is the forced default for every Lastro and Lais surface.** This is brand law, not preference, and it is non-negotiable without explicit user override. The reasoning is structural. Red Hat Display has a slightly assertive, modern-geometric character that carries headlines with authority; Red Hat Text smooths the same skeleton for readability at body sizes; Red Hat Mono completes the family for tabular data and code. All three were designed by Jeremy Mickel as a unified system rather than a happy accident, which means the triplet works together with no compromise — tabular data, long-form content, and display headlines all live under one design intent. The Latin Extended coverage is complete, so Brazilian Portuguese diacritics render correctly out of the box. If a brief lands and the surface is for Lastro or Lais, the type decision is already made. Do not relitigate it. Spend that energy on the rest of the system.
+**Pairing #1 — IBM Plex Sans + IBM Plex Mono — is the engineered default for technical and data-heavy products.** The reasoning is structural. IBM Plex Sans has a considered, modern-humanist character that carries body and headlines with authority; IBM Plex Mono completes the family for tabular data and code. The whole superfamily was designed as a unified system rather than a happy accident, which means tabular data, long-form content, and display headlines all live under one design intent. The Latin Extended coverage is complete, so diacritics render correctly out of the box across Latin-script languages. If your project has its own locked default — many do — substitute that here. The point is to lock something at the system level rather than relitigate it per surface.
 
-**Pairing #11 — Geist + Geist Mono — is the new SaaS default for everything that isn't Lastro/Lais.** Vercel's in-house family. Crisper than Inter, slightly geometric, hints of Helvetica without the dated feel. The mono was designed alongside the sans, so a table set in Geist Mono lives in the same family as the labels above it. Right when the product is technical and minimal; wrong when it needs warmth.
+**Pairing #11 — Geist + Geist Mono — is the new SaaS default.** Vercel's in-house family. Crisper than Inter, slightly geometric, hints of Helvetica without the dated feel. The mono was designed alongside the sans, so a table set in Geist Mono lives in the same family as the labels above it. Right when the product is technical and minimal; wrong when it needs warmth.
 
 **Pairing #20 — Space Grotesk + Space Mono — is the move when the product is allowed to have an opinion.** Slightly funky terminals on the lowercase `g` and `a` give personality without tipping into novelty. The right answer for crypto, web3, design tools, and any product whose users would reject a neutral system as evidence of a missing point of view.
 
@@ -133,7 +133,7 @@ A few of these pairings deserve more than a row.
 
 **Pairing #9 — Inter + Inter — is the defaultism baseline.** Name it as such. Inter is the single most-defaulted sans on the web. Use it only when neutrality is a stated, defended intent and you have explicitly rejected pairings #10, #11, #14, #20, #25, and #28 with reasons. If you reach for Inter without that argument, you have defaulted. The same critique applies to Roboto, system-ui-everywhere, and "we'll figure out fonts later." Those are not type choices. They are type avoidance.
 
-When pairing display fonts, remember that Lucide is the icon set and only the icon set. A display family choice and an icon family choice are siblings — both carry the personality of the surface. Mixing Lucide with a display family that fights it (a hyper-condensed Anton with a soft Lucide chevron, for example) is a mismatch worth catching.
+When pairing display fonts, remember that the icon set is part of the system. A display family choice and an icon family choice are siblings — both carry the personality of the surface. Mixing your icon library with a display family that fights it (a hyper-condensed Anton with a soft chevron from a rounded icon set, for example) is a mismatch worth catching.
 
 ## Light-on-dark requires three axes
 
@@ -191,11 +191,11 @@ The same logic applies down the stack: `--leading-body` and `--leading-display` 
 
 Brand and product systems should expose different surfaces. A brand system can expose a `data-p-scale` attribute on its variants, allowing the hierarchy ratio to be tuned live — `:scope { font-size: clamp(min, calc(var(--p-scale, 1) * Npx), max); }` — and a `data-p-pairing` attribute that swaps between, say, "serif display + sans body" and "all-sans" without rewriting the CSS. Product systems should not expose those knobs, because product UI depends on stable type for spatial predictability. The system architecture is itself an expression of the brand-versus-product split.
 
-## Brazilian Portuguese support
+## Latin script and diacritics support
 
-Lastro and Lais ship in Portuguese first. Every typeface that lands on a Lastro/Lais surface must cover Latin Extended-A — the diacritics for ã, õ, ç, é, í, ê, ó, á, ú — and ideally Latin Extended-B for the rarer glyphs. All 38 pairings in the table above clear this bar; verify when adding new ones. The verification is cheap: type "São Paulo — não há nada melhor que um espresso" in the chosen typeface and look at the diacritics. If they render in a system font instead — visibly different x-height, different stroke contrast, different terminals — the subset is incomplete and needs to be reloaded with the full Latin Extended glyph set, not the trimmed default.
+Any project that ships in a language with diacritics — Portuguese, Spanish, French, German, Polish, Czech, Vietnamese, and many others — needs typefaces that cover Latin Extended-A — for marks like ã, õ, ç, é, í, ê, ó, á, ú — and ideally Latin Extended-B for the rarer glyphs. All 38 pairings in the table above clear this bar; verify when adding new ones. The verification is cheap: type "São Paulo — não há nada melhor que um espresso" (or an equivalent diacritic-rich phrase in your target language) in the chosen typeface and look at the marks. If they render in a system font instead — visibly different x-height, different stroke contrast, different terminals — the subset is incomplete and needs to be reloaded with the full Latin Extended glyph set, not the trimmed default.
 
-This matters specifically because Brazilian users are sensitive to typography that wasn't built for them. A font that handles diacritics gracefully reads as considered; a font that fakes diacritics with system fallback reads as imported. The difference is visible to native readers in a way that English-first designers consistently underestimate.
+This matters specifically because native readers in any language with diacritics are sensitive to typography that wasn't built for them. A font that handles diacritics gracefully reads as considered; a font that fakes diacritics with system fallback reads as imported. The difference is visible to native readers in a way that English-first designers consistently underestimate.
 
 ## Accessibility
 

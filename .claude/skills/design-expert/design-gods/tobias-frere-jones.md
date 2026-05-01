@@ -32,7 +32,7 @@ The principles below are the working version of his "Politics of Letterforms" ta
 ## Categories of interest
 
 This designer's principles surface in:
-- `typography.md` — the 38-pairings framework asks "what does this pairing connote" at every row; that is "Politics of Letterforms" applied at the system scale. The forced default of Red Hat for Lais/Lastro is itself a connotation choice.
+- `typography.md` — the 38-pairings framework asks "what does this pairing connote" at every row; that is "Politics of Letterforms" applied at the system scale.
 - `anti-slop.md` — Inter is the AI-default typeface. Using it without thinking is selecting cultural connotations by accident, and the section's anti-defaultism rule is Frere-Jones operationalized.
 - `craft.md` — the swap test (replace this font with another and see what changes) directly tests whether the typeface is doing work or whether it was a default in disguise.
 - `foundations.md` — heuristic 2 (match between system and the real world) extends to type: a typeface that contradicts the user's domain is system-and-world friction the user feels without naming.

@@ -52,7 +52,7 @@ Every word earns its place. Halve the copy, then halve it again. Strip "please" 
 
 ### Step 8: Translation slack and bilingual considerations
 
-Copy ships in containers, and containers don't stretch. German runs roughly +30% longer than English (long compound words). Brazilian Portuguese runs +15–20% (longer adjectives, formal address). French runs +15–20%. Japanese runs ~–30%. A button that fits "Save" at sixty pixels needs ninety for German "Änderungen speichern." For bilingual products like Lais (English plus Brazilian Portuguese), brand voice must stay consistent across both languages. Never machine-translate UI copy — the rhythm dies, the bans get violated, and the result reads like two different products. Have a human, or a model with explicit Brazilian Portuguese expertise like the lais-copywriter skill, write each language separately against the same voice spec.
+Copy ships in containers, and containers don't stretch. German runs roughly +30% longer than English (long compound words). Brazilian Portuguese runs +15–20% (longer adjectives, formal address). French runs +15–20%. Japanese runs ~–30%. A button that fits "Save" at sixty pixels needs ninety for German "Änderungen speichern." For any bilingual product, brand voice must stay consistent across both languages. Never machine-translate UI copy — the rhythm dies, the bans get violated, and the result reads like two different products. Have a human, or a model with explicit expertise in the target language, write each language separately against the same voice spec.
 
 ### Step 9: Accessibility copy
 
