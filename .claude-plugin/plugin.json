@@ -1,0 +1,13 @@
+{
+  "name": "design-expert",
+  "description": "Design-expert: build, review, plan, and write interfaces with craft and evidence. Merges NNg heuristics, Universal Design, anti-AI-slop patterns, and a manifesto-voiced craft framework.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Khevin",
+    "url": "https://github.com/Khevin"
+  },
+  "homepage": "https://github.com/Khevin/design-expert",
+  "repository": "https://github.com/Khevin/design-expert",
+  "commands": "./.claude/commands",
+  "skills": "./.claude/skills"
+}

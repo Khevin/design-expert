@@ -1,0 +1,40 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "design-expert",
+  "metadata": {
+    "description": "design-expert: a paragraph-first, evidence-grounded skill for interface design. Build, review, plan, and write UI with the discipline of NNg heuristics, Universal Design, anti-AI-slop patterns, and a curated pantheon of historical designers."
+  },
+  "owner": {
+    "name": "Khevin",
+    "url": "https://github.com/Khevin"
+  },
+  "plugins": [
+    {
+      "name": "design-expert",
+      "description": "Design-expert: build, review, plan, and write interfaces with craft and evidence. Merges NNg heuristics, Universal Design, anti-AI-slop patterns, and a manifesto-voiced craft framework. Use for design reviews, UX critiques, accessibility audits, dashboard or admin builds, and any brand or product surface.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Khevin",
+        "url": "https://github.com/Khevin"
+      },
+      "source": "./",
+      "category": "design",
+      "homepage": "https://github.com/Khevin/design-expert",
+      "tags": [
+        "design",
+        "interface-design",
+        "ui",
+        "ux",
+        "accessibility",
+        "dashboards",
+        "review",
+        "audit",
+        "anti-defaultism",
+        "nng",
+        "universal-design",
+        "typography",
+        "craft"
+      ]
+    }
+  ]
+}
