@@ -12,32 +12,25 @@ A paragraph-first, evidence-grounded skill for interface design. Build, review, 
 
 ## Install
 
-design-expert ships as a Claude Code plugin under the **khev-tools** marketplace. Two slash commands — one to add the marketplace via its HTTPS GitHub URL, one to install the plugin — and the four `/design-expert` commands appear in your `/` menu. If you'd rather click than type, run `/plugin` by itself for an interactive Discover & Install panel. Requires a current Claude Code build (run `claude --version`; update via Homebrew, npm, or the native installer if `/plugin` isn't recognized).
+design-expert ships as a Claude Code plugin under the **khev-tools** marketplace. Two slash commands — one to add the marketplace via its HTTPS GitHub URL, one to install the plugin — run in sequence, and the four `/design-expert` commands appear in your `/` menu. If you'd rather click than type, run `/plugin` by itself for an interactive Discover & Install panel. Requires a current Claude Code build (run `claude --version`; update via Homebrew, npm, or the native installer if `/plugin` isn't recognized).
 
-### Step 01 — Add the khev-tools marketplace
+### Step 01 · Install
 
-Registers the GitHub repo as a Claude Code marketplace. Use the full HTTPS URL — the `owner/repo` shorthand resolves to SSH and fails for users without GitHub SSH keys configured.
+Two slash commands, run in sequence. The first registers the khev-tools marketplace via its HTTPS GitHub URL — the `owner/repo` shorthand resolves to SSH and fails without keys. The second installs design-expert from that marketplace. Restart the session afterwards so the four `/design-expert` commands register.
 
 ```bash
 $ /plugin marketplace add https://github.com/Khevin/khev-tools
 # clones over HTTPS · no SSH key required
-```
 
-> ✓ marketplace added · 1 plugin available
-
-### Step 02 — Install design-expert
-
-The `@khev-tools` suffix tells Claude which marketplace to install from. Restart the session so the four commands register.
-
-```bash
 $ /plugin install design-expert@khev-tools
 # SKILL.md loaded · 14 markdown files · 17 design-gods
 ```
 
+> ✓ marketplace added · 1 plugin available
 > ✓ design-expert installed
 > ✓ `/design-expert:plan` · `:build` · `:write` · `:review`
 
-### Step 03 · First run
+### Step 02 · First run
 
 A brief, then a build, then a review. Each command writes to disk — `PRODUCT.md` + `DESIGN.md` from `/plan`, source files from `/build`, scored notes from `/review` — so you can read what the skill thinks before it ships code.
 
