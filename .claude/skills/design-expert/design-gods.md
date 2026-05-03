@@ -140,14 +140,28 @@ File: design-gods/muriel-cooper.md
 Tags: `#typeface-design` `#typography` `#cognition`
 File: design-gods/tobias-frere-jones.md
 
+### 14. Josef Müller-Brockmann
+
+**muller-brockmann** — The Swiss grid system's foundational voice. Wrote *Grid Systems in Graphic Design* (1981), the canonical text that turned the grid from a printer's convention into a teachable design discipline. Every 12-column default in every starter template is paraphrasing him.
+
+Tags: `#grid` `#systems` `#typography` `#manifesto`
+File: design-gods/muller-brockmann.md
+
+### 15. Jan Tschichold
+
+**jan-tschichold** — Wrote *Die neue Typographie* (1928), inventing modernist asymmetric typography. Then recanted in the 1940s, working at Penguin Books on classical, symmetrical book design. The whole arc — radical reduction to humanist book craft — names both registers a designer chooses between.
+
+Tags: `#grid` `#typography` `#editorial` `#manifesto`
+File: design-gods/jan-tschichold.md
+
 ---
 
 ## Cross-references
 
-The pantheon is wired into the rest of the skill. The ten NNg heuristics that anchor `foundations.md` are Nielsen and his collaborators — when a review tags `[Heuristic 4]`, you are citing him. The "less but better" framing throughout `craft.md` is Rams; the four craft tests echo his principle that good design is unobtrusive. The typography manifesto in `typography.md` cites the Vignelli Canon directly, and any rule about restraint in font selection traces back to him through Frere-Jones. The data-viz rules in `components.md` — no pies, prefer small multiples, label the chart with the question it answers — are Tufte and Corum stacked. The "sameness is failure" mandate in `craft.md` and `anti-slop.md` is Rand's "design is thinking made visual" reapplied: if the thinking is generic, the visual will be too.
+The pantheon is wired into the rest of the skill. The ten NNg heuristics that anchor `foundations.md` are Nielsen and his collaborators — when a review tags `[Heuristic 4]`, you are citing him. The "less but better" framing throughout `craft.md` is Rams; the four craft tests echo his principle that good design is unobtrusive. The typography manifesto in `typography.md` cites the Vignelli Canon directly, and any rule about restraint in font selection traces back to him through Frere-Jones. The data-viz rules in `components.md` — no pies, prefer small multiples, label the chart with the question it answers — are Tufte and Corum stacked. The "sameness is failure" mandate in `craft.md` and `anti-slop.md` is Rand's "design is thinking made visual" reapplied: if the thinking is generic, the visual will be too. The grid argument throughout `grids.md` and `craft.md`'s "Grids — the deepest layer" section is Müller-Brockmann's, with Tschichold's asymmetric/symmetric duality naming the two registers a designer chooses between.
 
-When the design-expert skill is invoked for a typography decision, load Vignelli and Frere-Jones first; for a data-viz decision, Tufte and Corum; for a status-indicator or icon decision, Kare; for a question about whether a static interface should have been dynamic, Bret Victor and Muriel Cooper; for a question about how an identity system should be structured, Rand and Vignelli; for any audit of cognitive friction, Norman and Nielsen. The tags above are the index; the per-designer files are the depth.
+When the design-expert skill is invoked for a typography decision, load Vignelli and Frere-Jones first; for a data-viz decision, Tufte and Corum; for a status-indicator or icon decision, Kare; for a question about whether a static interface should have been dynamic, Bret Victor and Muriel Cooper; for a question about how an identity system should be structured, Rand and Vignelli; for any audit of cognitive friction, Norman and Nielsen; for a layout, grid, or spacing-system decision, Müller-Brockmann (symmetric, mathematical) and Tschichold (asymmetric, functional). The tags above are the index; the per-designer files are the depth.
 
 ## Closing
 
-The pantheon is small on purpose. Thirteen voices is enough to hold the field — more becomes a survey course, fewer becomes a cult. Each entry above earned its place by giving us a principle that survives the medium. Read the capsule when scanning, tap the path when a decision touches their territory, and treat their work as ammunition for "why" questions. The interface you are about to design has been designed before, in adjacent forms, by the people listed here. Borrowing is not theft when the lineage is honored.
+The pantheon is small on purpose. Fifteen voices is enough to hold the field — more becomes a survey course, fewer becomes a cult. Each entry above earned its place by giving us a principle that survives the medium. Read the capsule when scanning, tap the path when a decision touches their territory, and treat their work as ammunition for "why" questions. The interface you are about to design has been designed before, in adjacent forms, by the people listed here. Borrowing is not theft when the lineage is honored.

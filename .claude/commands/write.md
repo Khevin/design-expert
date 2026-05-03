@@ -1,20 +1,32 @@
 ---
-description: Write or refine UX copy for product surfaces — button labels, error messages, empty states, loading states, confirmations, form helper text. Applies brand voice from PRODUCT.md, follows the WHAT/WHY/HOW error formula, never uses humor for failures.
+description: Write or refine copy across three writing contexts — UX micro-copy, long-form editorial, marketing / ad-shaped work. Loads the matching voice file from voices/, applies brand voice from PRODUCT.md, follows the WHAT/WHY/HOW error formula for UX copy, never uses humor for failures.
 ---
 
 # /design-expert:write
 
-This command writes or refines UX copy for product surfaces — button labels, error messages, empty states, loading states, confirmations, form helper text, modals, tooltips. It loads `PRODUCT.md` for brand voice and the relevant design-expert reference files (`interaction.md` and `anti-slop.md`) for surface-specific patterns. The output is finished copy — the design-expert evolution of impeccable's `ux-writing` plus `clarify`, hardened against the AI defaults that turn product copy into wallpaper.
+This command writes or refines copy across three writing contexts. The first task is determining which context the brief belongs to; the second is loading the voice file that governs that context; the third is producing the copy.
+
+**Three writing contexts:**
+
+1. **UX copy** — buttons, labels, errors, empty states, loading states, confirmations, form helper text, modals, tooltips. Loads `voices/ux-copy.md` plus the Steps workflow below.
+2. **Long-form** — case studies, blog posts, magazine pieces, articles, journalism. Loads `voices/long-form.md` (Work&Co tone + canonical exemplars + pattern-formulae). The case-study writing section in this file remains as the canonical reference for case-study-specific voice patterns.
+3. **Marketing** — landing-page heroes, advertising, brand work, captions, puns, brand-launch lines, manifesto pages. Loads the appropriate file from `voices/marketing/` based on the brief: `george-lois.md` for bold spectacle, `bill-bernbach.md` for honest restraint, `howard-gossage.md` for intimate conversation, `david-ogilvy.md` for research-led long-copy.
+
+The output is finished copy — the design-expert evolution of impeccable's `ux-writing` plus `clarify`, hardened against the AI defaults that turn product copy into wallpaper. Strunk and White's *The Elements of Style* applies as the floor across all three contexts; each voice file calls out where the floor bends for that context.
 
 ## When to use this command
 
-Reach for this command when the visible work is the words. New flow with copy that doesn't exist yet, error messages that read like server logs, empty states that say "No data," form helper text the user is ignoring, modal confirmations users have learned to click through. Pair with `/design-expert:build` when shipping new UI — that command writes the structure, this one writes the words. Run standalone when only the copy is changing.
+Reach for this command when the visible work is the words. New flow with copy that doesn't exist yet, error messages that read like server logs, empty states that say *"No data,"* form helper text the user is ignoring, modal confirmations users have learned to click through. New case study that needs the Work&Co tone. New landing-page hero that needs to break through. Pair with `/design-expert:build` when shipping new UI — that command writes the structure, this one writes the words. Run standalone when only the copy is changing.
+
+**Determine the writing context first.** Before applying any pattern, identify which of the three contexts the brief belongs to. UX copy lives in interfaces; long-form lives in editorial pieces; marketing lives in heroes and ads. Mixed-context surfaces (a landing page with a hero + CTAs + a body section) compose three voices on one page rather than averaging them. The CTA stays in UX-copy voice. The hero stays in marketing voice. The body stays in long-form voice. Do not let one voice contaminate the others.
 
 ## The writing workflow
 
 ### Step 1: Load voice and tone
 
-Read `PRODUCT.md` if it exists. Extract the brand pillars (three adjectives — calm, direct, useful — never marketing abstractions like "innovative") and the bans (words and patterns the brand will not use). If `PRODUCT.md` doesn't exist, ask the user for both before generating, because every line after this one inherits that decision.
+Read `PRODUCT.md` if it exists. Extract the brand pillars (three adjectives — calm, direct, useful — never marketing abstractions like "innovative"), the bans (words and patterns the brand will not use), and the **register** (brand, product, or editorial). If `PRODUCT.md` doesn't exist, ask the user for all three before generating, because every line after this one inherits those decisions.
+
+**Register-conditional copy guidance.** Editorial copy carries voice and personality — pull quotes can be long, italic display ems can carry weight inside the prose, figure captions can be discursive italic serif rather than mono labels, chapter titles can be evocative ("Almost a blank slate" instead of "Background"). Product copy carries clarity and brevity — labels do one job per word, error messages follow WHAT/WHY/HOW strictly, button labels are verb-plus-object with no decoration. Brand copy carries memorability — taglines hit hard and short, hero subheads are specific to the campaign and the moment, microcopy can be playful where the surface invites it. The same WHAT/WHY/HOW formula applies to errors across all three registers; the elasticity is in everything that isn't an error. See `styles/editorial.md` for the editorial-specific voice rules (long-form pull quotes, oversized italicized ems, captioned figures as prose).
 
 Voice is constant — the product's personality across every surface. Tone shifts by user state: calm in errors, neutral in settings, warmer in empty states, quietly celebratory in successes. Never use humor for failures, errors, or destructive confirmations — humor compounds frustration. Save warmth for empty states (where the user is exploring) and successes (where small wit amplifies the moment). The voice in the error and the voice in the empty state are the same person; only the tone changes.
 
@@ -61,6 +73,37 @@ Alt text describes what the image shows AND why it's there — "Revenue increase
 ### Step 10: Final sweep against anti-slop
 
 Before shipping, scan for the content tells from `anti-slop.md`. **Placeholder names** (John Doe, Jane Smith, Sarah Chan, Jack Su) — replace with realistic, varied names from the actual domain. **Round numbers** ($1,000 / 100 users / 50% / 99.99% uptime) — use specific irregular numbers (R$ 14.382,90 beats R$ 15.000,00; 47.2% beats 50%). **AI clichés** ("seamlessly," "leverage," "elevate," "unlock," "harness," "tapestry of," "transformative," "next-gen," "game-changer") — rewrite with concrete verbs from the domain. **Em-dash overuse** as a rhythm crutch — replace with periods, semicolons, or rewrites; one per paragraph max. **Title Case On Every Header** — switch to sentence case unless the brand explicitly chose Title Case. Strip these before shipping.
+
+## Case-study writing — the Work&Co tone
+
+Long-form case studies on a portfolio site sit in the editorial register and demand a specific voice — peer-to-peer, evidence-led, plain. The exemplars are Work&Co's client work (`work.co/clients/lyft`, `pga-tour`, `ikea`, `gatorade`, `apple`), Pentagram's project pages, NYT Magazine long-form. Decidedly NOT marketing-page voice; it is journalist-meets-senior-designer voice. The discipline below carries learnings from the spaces.html v2 build into a reusable contract.
+
+**Plain words, no marketing fluff.** Strike from the vocabulary: "elevate," "streamline," "unleash," "next-gen," "transformative," "redefine," "bridging the gap," "cutting-edge," "innovative." Replace with the specific verb that names what was done: "rebuilt," "redesigned," "shipped," "documented," "tested." Marketing words signal that the writer didn't trust the work; plain words let the work carry the weight.
+
+**Active voice everywhere.** Every chapter h2, every body paragraph, every figure caption, every KPI label uses an active subject doing an active verb. Passive constructions ("the flows were deeply integrated," "process started with research") read as evasion of authorship — case studies are claims of authorship and the voice should match. Rewrite "X was Y'd by Z" as "Z Y'd X."
+
+**Short declarative sentences. Fragments where they punch.** *"The tech worked. The design didn't."* The Lyft-style rhythm trades complex sentence structures for short beats the reader can absorb at scanning speed. The 8-minute reader does not have time for nested clauses.
+
+**Decision-walks visible inline.** Don't just state outcomes; show the thinking. *"We considered jumping straight to redesigning screens. We picked the slower path because every fix would have been local without a library underneath."* Naming the trade-off makes the discipline visible to a peer-designer reader and a junior-designer reader simultaneously, without lecturing either.
+
+**Functional stakeholder mentions; never individual names.** Refer to "the call center," "operations," "the business-analysis team," "two designers reported to me," "the engineering team." Do not name individuals (Felipe, Iara, Bruno, Accalia) — names are noise to readers who don't know them, and naming risks attributing credit unevenly. Roles are clearer and durable.
+
+**Numbers inline, anchored to evidence.** *"The call center resolved 20% more support tickets per day after rollout."* Specific, measured, named. Avoid round numbers that smell fabricated (50%, 99.99%). Avoid metrics that aren't real outcomes ("0 → 1 documented design system" reads as filler).
+
+**Closing punch.** End with a short rhythmic line the reader carries away. *"Sit down. Do the work. The rest follows."* Cite the actual project quote if one exists; otherwise let three short clauses do it.
+
+**Title and subtitle patterns.**
+
+- *Title:* mention the client by name. Capture both the experience claim and the system claim if both are real. Lead with active voice. Example: "We redesigned three apps for Spaces and built one shared system underneath."
+- *Subtitle:* introduce the company in one sentence, name what we did in the second. "Spaces runs contactless parking from New York to Texas to the West Coast. We redesigned its three apps — admin, operator, parker — and the design system underneath them."
+
+**Caption discipline (three-beat rhythm).** Hero key-visual and chapter-pivot captions follow: name what the figure is, name the contrast it sits in, name the value/state the figure proves. *"Admin V2.0 in dark mode. The inherited screens had crammed five years of features into cluttered light-mode cards. This one breathes — one library, multi-region data, work that scans."* Three beats: artifact, contrast, value.
+
+**Before / After tag pattern.** When pairing inherited-vs-redesigned imagery, tag the "before" image with a small mono-uppercase chip ("Before"). The "after" rarely needs an "After" tag — the prose around it does the work. Tagging only the inherited side preserves visual restraint.
+
+**Drop "surface" jargon.** Use "app" or "screen" or the actual product name. "Surface" is design-school vocabulary that reads as cold to non-designers and abstract to designers; "app" is direct and concrete.
+
+The structural composition rules (3-chapter spine, KPI-inside-closing-chapter, image-rhythm strategy, layout-iteration during build) live in `styles/editorial.md` § Case-study composition — refinements. Cross-reference there for the structural patterns; the rules above are the voice patterns that fill the structure.
 
 ## What this command produces
 

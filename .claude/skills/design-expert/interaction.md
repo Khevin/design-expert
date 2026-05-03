@@ -141,7 +141,7 @@ Brand onboarding can be theatrical — the user is encountering the brand briefl
 
 ## Responsive design as content reflow
 
-Responsive design is not breakpoint juggling. It's content reflow — the same content arranged differently to suit input method, screen size, and context. Mobile-first means writing the small layout first and scaling up; desktop-first means writing the large layout and "making it responsive," which produces awkward intermediate sizes.
+Responsive design is not breakpoint juggling. It's content reflow — the same content arranged differently to suit input method, screen size, and context. Mobile-first means writing the small layout first and scaling up; desktop-first means writing the large layout and "making it responsive," which produces awkward intermediate sizes. Responsive design is the grid behaving across breakpoints; pick the breakpoints by where the content reflows, not by canonical device widths. Depth on this lives in `grids.md` § Responsive grids.
 
 Container queries (`@container`) handle component-level responsiveness; viewport queries handle page-level responsiveness. A card in a sidebar should stay compact; the same card in a main content area should expand. Container queries let the card respond to its container's width without knowing the viewport — the only way to build truly reusable components. Viewport queries handle layout-level decisions: single column on mobile, two-column tablet, multi-column desktop.
 

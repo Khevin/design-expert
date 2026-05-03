@@ -45,6 +45,23 @@ trap.
 
 One issue per block. No abstractions ("the spacing feels off"); no compounding ("several issues with hierarchy and color"). If two issues share a root cause, write the root-cause issue once; do not split it across three vague observations.
 
+**Register-conditional issues.** The same tell triggers different verdicts in different registers, and the issue block must name the register before naming the tell. A purple-blue gradient at 135 degrees is a Blocker on a product surface (it announces "AI made this," fails Heuristic 8, and signals defaultism); on a brand surface the same gradient is a Minor or Note (the surface is meant to be expressive); on an editorial surface the same gradient is a Major because editorial chrome is supposed to be monochrome. Always cite the register in the WHY clause. If the register has not been declared in `PRODUCT.md` or supplied in the brief, name that as a separate Blocker — register ambiguity poisons every downstream verdict.
+
+```
+[Major] Centered hero with three equal cards on a case-study page
+WHAT: The intro section is a centered headline + sub + three "Discover / Design /
+Deliver" cards in a 1/1/1 grid.
+WHY: Register here is editorial (case study, ~12 minutes of reading attention). The
+centered-hero + three-equal-cards pattern is appropriate on brand register but
+disqualifying on editorial — it reads as marketing-page cargo cult, not as long-form
+editorial. Cite: `styles/editorial.md` § Anti-patterns ("Marketing-page cargo cult")
+and `anti-slop.md` § Layout tells.
+WHERE: projects/case-study.html § Intro, lines 84–112.
+HOW: Replace with rail-and-body grid (3/9 split). Lead with a left-aligned title and
+a single-paragraph subhead in the body column; move the three "moves" into the first
+chapter as numbered chapter anchors (01/02/03), not equal cards.
+```
+
 ### Open Questions
 
 What the reviewer cannot answer without more information. This is where the confidence framework lives — see section five. Open Questions are decisions to be made, not problems to be fixed, and they belong in their own section because conflating them with Issues distorts both. Issues are findings; Open Questions are forks. A review with no Open Questions is suspicious — either the reviewer is omniscient (unlikely) or pretending to be (more common). Even small reviews usually have one or two genuine forks.

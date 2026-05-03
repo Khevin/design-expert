@@ -39,12 +39,16 @@ Plus the skill itself, invoked freely as `design-expert`.
     components.md      # cells, icons, charts (no pie / donut)
     interaction.md     # eight states, motion timing, responsive, onboarding, delight
     output-format.md   # review template, confidence framework, 5-dimension audit framework
-    nng-articles-index.md   # 270+ NNg articles indexed by topic
+    self-review.md     # end-of-work review discipline (anti-slop scan + craft tests + cuts/holds/risks)
     design-gods.md     # the pantheon: 13 historically influential designers
     design-gods/       # one file per designer
     references.md      # the 8 quality references
-    references/        # one file per reference
+    references/        # one file per reference + nng-articles-index.md (270+ NNg articles indexed)
     library.md         # the curated library of Do/Don't patterns
+    styles.md          # styles index (editorial, expressive)
+    styles/            # editorial.md, expressive.md
+    voices.md          # voices index (UX copy, long-form, marketing)
+    voices/            # ux-copy.md, long-form.md, marketing/{lois,bernbach,gossage,ogilvy}
     library/           # category READMEs: dashboards, navbars, tables, forms, empty-states, cards
 README.md
 LICENSE

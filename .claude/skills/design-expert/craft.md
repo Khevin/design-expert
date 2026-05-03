@@ -26,6 +26,36 @@ Then domain exploration produces three required outputs before any direction is 
 
 If you cannot answer with specifics, stop. Ask. Do not guess. Do not default. Saying "warm" and shipping cold colors is not following through — intent is not a label, it is a constraint that shapes every token. Check your output against your stated intent. If a single token contradicts it, the intent is decoration, not design.
 
+## Iteration as a category — sizing the work
+
+Most design work is iteration, not net-new construction or pure critique. Users rarely use the word *"iterate"* — they say *"review this," "critique this," "make it better," "make it prettier," "I don't like this," "what would you change."* The first task in any of these requests is reading the actual size of the work being asked for. Get the size right and you spend the right amount of time exploring options. Get the size wrong and you either over-engineer a button color (treating a touch-up as a redesign) or under-engineer a layout problem (treating an iteration as a touch-up). Sizing is a form of intent reading, applied to scope rather than to feel.
+
+The five sizes:
+
+**Touch-up.** A single property change. Color tweak, type size shift, padding adjustment, copy fix, icon swap. The thing's identity does not change; only one parameter shifts. *Examples:* *"make this red," "bigger title," "fix the typo," "use a different icon here."* Zero alternatives needed; direct execution. Proposing alternatives for a touch-up wastes the user's time and signals you didn't read the request.
+
+**Polish.** A single component refined. Button hover state cleaned up, card spacing tightened, table column widths balanced, modal padding adjusted, focus ring re-tinted. The component's identity doesn't change; the execution gets sharper. *Examples:* *"the button feels off on hover," "this card is cramped," "the modal needs more breathing room."* One to two alternatives at most; usually one obvious answer plus one alternative for confirmation. Direct change after a quick check.
+
+**Iteration.** The middle ground. The component, section, or layout is reconsidered: layout shifts, hierarchy reordered, copy tightened, a different component pattern adopted, the thing's identity is allowed to shift. A card might become a row; a modal might become a popover; a sidebar might collapse into a top nav. *Examples:* *"review this card," "make this section better," "rethink the dashboard layout," "what would you change here," "this isn't working."* Three to five alternatives surfaced before picking; the user (or the model with confidence ≥ 80%) picks; execution follows. This is where most everyday design work lives, and it's the category most often misnamed by users who say *"review"* when they mean *"iterate."*
+
+**Surface redesign.** A full screen or surface rebuilt. Multiple components affected. Layout pattern can change. Same content, different shape. *Examples:* *"redesign this case study," "rebuild the settings page," "the homepage needs a fresh start."* Four to seven alternatives surfaced; the layout-exploration gate runs in full (`commands/build.md` Gate 3 + `layouts.md`); design-gods consulted at the medium-work threshold (two minimum, three preferred); proposal phase before build.
+
+**System redesign.** Multiple surfaces, the design system itself, brand voice, the whole thing. Rare. *Examples:* *"rebuild our design system," "rethink the brand," "we're starting over."* Full `/design-expert:plan` and `/design-expert:build` cycle. Catalogs run (library, layouts, styles, voices); reference systems consulted; design-gods convened at the large-work threshold (three minimum); long horizon.
+
+The discipline at request time is to read the user's words against this taxonomy. *"Make it better"* on a button is polish. *"Make it better"* on a dashboard is iteration. *"Make it better"* on a portfolio is redesign. The phrase is the same; the size is set by the **scope**, not by the words. Read the scope first; then size; then explore.
+
+The middle three sizes — polish, iteration, redesign — are where the model and the user most often misalign. Touch-up and system-redesign tend to be obvious. The middle is where reading carefully matters. When the size is genuinely ambiguous, ask: *"is this a polish (the existing thing stays, you want it sharpened), an iteration (the existing thing is on the table, you want it reconsidered), or a redesign (the existing thing is replaced, you want it rebuilt)?"* The answer sets exploration depth for the rest of the work.
+
+| Size | Alternatives to propose | Design-gods to consult | Reference loading | Output format |
+|---|---|---|---|---|
+| Touch-up | 0 | 0 | None | Direct change |
+| Polish | 1–2 | 0–1 | The relevant `library/<category>/README.md` | Direct change after quick confirm |
+| Iteration | 3–5 | 1–3 | `library/<category>` + relevant style/voice/grid section | Proposal → user picks → execution |
+| Surface redesign | 4–7 | 2–3 (medium-work threshold) | Full layout catalog + relevant style file | Full plan + build |
+| System redesign | Catalogs + cross-domain | 3+ (large-work threshold) | All relevant indexes | Full `/plan` + `/build` |
+
+A second axis crosses this taxonomy: **what kind of output is wanted.** Pure text feedback (the user wants notes, not a change) is review-shaped. Implementation (the user wants the change made) is build-shaped. Most iteration requests want both — the proposal explains the change AND lands the change. Read both axes — *what size, what output* — and route accordingly. *"Review this card"* + an existing file usually wants iteration-shaped output (3–5 proposed alternatives, then implementation of the pick), not text-only review.
+
 ## The four craft tests
 
 Run these against your output before showing anyone. They are short questions with severe consequences. Each one isolates a specific way defaults sneak back in after you thought you had banished them.
@@ -47,6 +77,20 @@ The fourth one rarely gets run, which is why it catches so much. Read your CSS v
 > **Token test:** do the variable names sound like *this* product's world, or like any product?
 
 If any test fails, iterate before showing. The user does not get to be the one who notices.
+
+## Grids — the deepest layer
+
+The grid is the single decision that compounds the most across an interface. Pick the right one and every later decision — type rhythm, component density, responsive behavior, the spacing between a label and its input — has a place to land. Pick the wrong one and you spend the rest of the project reverse-engineering an answer to "why does this feel off." Most interfaces that feel sloppy are not sloppy in a single visible way. They are sloppy because no grid was committed to, or a grid was committed to and quietly abandoned by the third screen. The reader of an interface does not see the grid. They see the consequences of its absence.
+
+Müller-Brockmann's argument from *Grid Systems in Graphic Design* (1981) is that constraint produces more freedom than freedom does. A blank canvas is paralysis dressed as opportunity; a designer with infinite options is a designer who will produce the average of those options. A grid removes the irrelevant decisions ("where does this go") so the relevant ones ("what does this say") can be made carefully. That argument transfers cleanly from his Swiss posters to your dashboard, and it is the difference between composing and improvising. The designer with no grid is improvising. The designer with a grid is composing. Reviewers can tell from a single screenshot which one happened.
+
+Pick the grid before the first element. Not "we'll use a grid" — pick it: the column count (twelve for general product, eight for narrower content, six for editorial, four for hero-led marketing), the gutter token, the canvas margin, the baseline (4 or 8 pixels, with every spacing value in the system a multiple of it), the breakpoints (chosen by content reflow, not by device width), and the maximum container width. Write all of it down somewhere a reviewer can see — in `system.md`, in the design tokens, in the project's `PRODUCT.md`, in a comment at the top of the page component. Then commit. Every later spacing value, every later component padding, every later vertical rhythm decision derives from the grid you picked. The minute an inline pixel value appears in a component because "the token didn't quite fit," the grid is being abandoned. Stop and snap back to the system.
+
+The grid behaves differently across registers and conflating them is the most common single error. **Brand surfaces** — landing pages, campaigns, marketing heroes, launch announcements — take fluid grids: column widths and gutters that scale with viewport via `clamp()`, asymmetric layouts where one element clearly leads the eye, a willingness to break the grid for a hero motif when the break is the design. **Product surfaces** — dashboards, settings panels, admin tools, authenticated workspaces — take fixed grids: column widths in pixels, gutters in pixels, type that does not drift with viewport because the user lives in this layout for hours and spatial predictability is the property that makes the work navigable. A marketing page that looks like a dashboard reads as cold and cheap; a dashboard that looks like a landing page reads as toy software that nobody can actually work in. Pick the register, pick the grid, commit to both.
+
+Break the grid only when the break is itself the design decision, never when the grid was inconvenient. The contrast between a tight grid and a deliberate exception is what the reader perceives as a moment of emphasis. Without the tight grid, the exception is invisible — it just reads as more drift. When you do break, do it once per surface, document the break in the component or the system notes, and accept that an undocumented break is how systems collapse: three breaks on three pages by three designers, none of whom knew the others, and now the grid is a guideline rather than a rule.
+
+The depth lives in `grids.md`. The two pantheon voices for grids are `design-gods/muller-brockmann.md` (the Swiss codification — symmetric, mathematical, the canonical text *Grid Systems in Graphic Design*) and `design-gods/jan-tschichold.md` (*Die neue Typographie*, then the Penguin reversal — both the asymmetric register and the classical-symmetric register, depending on what the surface needs). Load both when the work is system-level; load one of them whenever a layout decision is on the table.
 
 ## Subtle layering as invisible system
 
@@ -109,6 +153,12 @@ For genuinely responsive grids, `repeat(auto-fit, minmax(280px, 1fr))` does most
 Brand surfaces and product surfaces play by different rules here. A brand page can use `clamp()` to fluidly scale type and spacing across viewport sizes — it is a rendered-once moment, the user is not living in it for hours. A product surface should not. Predictable grids and consistent densities are an affordance — the user is here every day and learns the shape of the system. Fluidly resizing type breaks that learned model. Brand can be asymmetric; product is structural. Brand can break the grid for emphasis; product holds the grid for trust.
 
 Cards are not required, and most layouts are over-carded. Spacing and alignment create visual grouping naturally. Use cards only when content is truly distinct and actionable — never nest cards inside cards, never wrap everything in containers because the page felt empty. The fix for an empty-feeling page is rhythm, not boxes. A card is a strong claim that the content inside it is a unit. If the content isn't actually a unit, the card is lying.
+
+When the active register is editorial, the rules in this section bend toward breathing instead of compressing — see `styles/editorial.md` for the rail-and-body grid, the three type roles, and the asymmetric image rhythm that override the brand/product defaults here.
+
+## Editorial layouts → `styles/editorial.md`
+
+The six editorial moves — rail-and-body grid, three type roles, hairlines and heavy chapter bars, numbered chapter anchors, asymmetric image rhythm, monochrome chrome — live in their own style file because editorial is its own register, not a special case of brand or product. When the active register is editorial, load `styles/editorial.md` *before* this file; the rules there override any conflicting product-default elsewhere in the foundationals. When the register is brand or product, ignore `styles/editorial.md` and follow this file's defaults. Editorial layouts make scrolling slow on purpose; the reader's pace is the design. Pair with `grids.md` for rail mechanics, `typography.md` for the three-role pairing, `references/pentagram.md` for case-study exemplars, and `styles/editorial.md` for the canonical discipline.
 
 ## Density — context-specific
 

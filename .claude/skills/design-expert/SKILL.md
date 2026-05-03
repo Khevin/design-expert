@@ -47,9 +47,101 @@ Good design has signature. Bad design is interchangeable. A great interface has 
 
 ## How to use this skill
 
-The skill is a layered system. The index files — this `SKILL.md`, `design-gods.md`, `references.md`, `library.md` — are the fast scan layer; you read them to know what is available and which depth file to load next. The depth files — `foundations.md`, `craft.md`, `anti-slop.md`, `typography.md`, `components.md`, `interaction.md`, `output-format.md` — are the substance; you load them when a current decision touches their territory. The sub-skills — `/design-expert:build`, `:review`, `:plan`, `:write` — orchestrate workflows that load the right depth files in the right order, gating each step against the foundations so the discipline sticks. When in doubt about where to start, run a sub-skill. The sub-skill enforces what loose work forgets.
+The skill is a layered system. The index files — this `SKILL.md`, `design-gods.md`, `references.md`, `library.md`, `styles.md` — are the fast scan layer; you read them to know what is available and which depth file to load next. The depth files — `foundations.md`, `craft.md`, `anti-slop.md`, `typography.md`, `components.md`, `interaction.md`, `output-format.md` — are the substance; you load them when a current decision touches their territory. The style files — `styles/<style>.md` — are register-conditional; you load the relevant style file *before* the foundationals when the active register has a style file (today: `styles/editorial.md` when the register is editorial). The sub-skills — `/design-expert:build`, `:review`, `:plan`, `:write` — orchestrate workflows that load the right depth files in the right order, gating each step against the foundations so the discipline sticks. When in doubt about where to start, run a sub-skill. The sub-skill enforces what loose work forgets.
 
-Context economy matters. The full skill is dense and loading it all for every task is wasteful. The sub-skills load the minimum required files for their workflow. When working freely without a sub-skill, load this `SKILL.md` plus the most relevant depth file or two for the surface — `craft.md` plus `anti-slop.md` for visual review, `components.md` for atomic patterns, `output-format.md` for review formatting, the relevant `library/<category>/README.md` when the surface type has a curated do-and-don't file. Skim the index, deepen on demand. Carrying every file in working memory dilutes attention; loading the wrong file dilutes craft.
+**Register is the second gate.** Before any visual decision, confirm the register: brand, product, or editorial. The Register check is the second gate in `/design-expert:build`, the first gate in `/design-expert:plan`, and the first step in `/design-expert:review`. Sub-skills enforce it via `AskUserQuestion` if confidence on the register sits below 80%. Once confirmed, the relevant style file (today, `styles/editorial.md` for editorial) is loaded and overrides any conflicting product-default in the foundationals.
+
+**Layout is the third gate.** Right after register, walk the layout catalog in `layouts.md` and present at least three candidate patterns from the relevant register's table — eight editorial patterns, eight dashboard patterns, eight interface patterns, eight landing patterns. Present each candidate's name, one-line when-to-use filtered to the brief's verb, one-line trade-off, and an exemplar. Ask the user to pick before any pixel decision. Layout cascades into every grid, type, density, color, and motion choice that follows; picking the wrong one means every later decision pays a tax. **Redesigns count as early in a project** — when the brief is "redesign," walk the catalog cold rather than preserving the existing layout by default. The most common redesign failure mode is treating the original layout as the constraint when the original layout is precisely what the redesign needs to escape.
+
+**Read the size of the request before applying any workflow.** Most design work is iteration — middle-ground requests where the user wants something between a critique and a redesign. Users rarely say *"iterate"*; they say *"review," "make it better," "what would you change."* Read the size of the request — touch-up, polish, iteration, surface redesign, system redesign — before deciding which command to run and how much exploration to do. The sizing framework lives in `craft.md` § Iteration as a category. Get the size right and exploration matches the work; get the size wrong and you either over-engineer a touch-up or under-engineer a layout problem. The size sets the number of alternatives to propose, the number of design-gods to consult, and the reference files to load.
+
+---
+
+## Communication conventions
+
+Sub-skills (`/design-expert:plan`, `:build`, `:review`, `:write`) operate in two question modes: structured questions via `AskUserQuestion` (for binary or option-list choices), and free-form questions inline in chat (for open answers). Both modes follow consistent visual conventions so the user can scan a long planner response and find the questions without re-reading the prose.
+
+**Free-form questions use the orange-question convention.** Every inline question is marked with a blockquote, an orange-disc emoji, and a bold "Question" tag, in this exact form:
+
+> 🟠 **Question** — [the question text, on one line if possible]
+
+The orange disc (🟠) renders as visible orange across platforms; the blockquote sets the question apart from prose; the bold "Question" tag makes the line scannable. The convention applies universally — every sub-skill, every gate, every free-form question. Compound questions split into multiple blockquotes, one question per block, so each lands separately and can be answered separately.
+
+**Structured questions use `AskUserQuestion`.** The tool already provides its own visual treatment (a permission card with options); the orange-question convention does not apply inside structured-question UI. Use `AskUserQuestion` whenever the user is picking from 2–4 mutually exclusive options; use the orange-question blockquote when the answer is open-ended (a sentence, a name, a paragraph, an essay-shaped reply).
+
+The visual contract is non-negotiable. A planner response that asks four questions in flowing prose without orange-question markers is a planner response that loses three of the four answers, because the user reads the response once and only catches the questions that visually called out for an answer. Mark every question.
+
+Context economy matters. The full skill is dense and loading it all for every task is wasteful. The sub-skills load the minimum required files for their workflow. When working freely without a sub-skill, load this `SKILL.md` plus the most relevant depth file or two for the surface — `craft.md` plus `anti-slop.md` for visual review, `components.md` for atomic patterns, `output-format.md` for review formatting, `grids.md` whenever a layout decision is being made, the relevant `library/<category>/README.md` when the surface type has a curated do-and-don't file, the relevant `styles/<style>.md` when the register has a style file. Skim the index, deepen on demand. Carrying every file in working memory dilutes attention; loading the wrong file dilutes craft.
+
+---
+
+## The grid is the deepest layer
+
+Most interfaces that feel sloppy are not sloppy in a single visible way. They are sloppy because no grid was committed to, or a grid was committed to and then quietly abandoned by the third screen. The reader of an interface does not see the grid. They see the consequences of its absence — gutters that drift between sections, type that does not align across columns, paddings that round to slightly different values, hero images that sit one or two pixels off where they should be. None of those failures is loud. All of them, together, are why a product reads as casual.
+
+Pick the grid before placing the first element. Not "we'll use a grid" — pick it: the column count, the gutter token, the canvas margin, the baseline, the breakpoints, and the maximum container width. Write it down somewhere a reviewer can see — in `system.md`, in the design tokens, in the project's PRODUCT.md, in a comment at the top of the page component. Then commit. Every later spacing value, every later component padding, every later vertical rhythm decision derives from the grid you picked. If you find yourself reaching for an inline pixel value instead of a grid token, the grid is being abandoned. Stop and snap back to the system.
+
+The grid behaves differently across registers. **Brand surfaces** (landing pages, campaigns, marketing heroes) take fluid grids — column widths and gutters that scale with viewport via `clamp()`, asymmetric layouts where one element clearly leads. **Product surfaces** (dashboards, settings, admin, authenticated workspaces) take fixed grids — column widths in pixels, gutters in pixels, type that does not drift with viewport because the user lives in this layout for hours and spatial predictability is the property that makes the work navigable. Mixing the registers is the most common error: a marketing-page grid applied to a settings panel, a product-page grid applied to a hero. Pick the register, pick the grid, commit to both.
+
+The depth lives in `grids.md`. The pantheon voices for grids are `design-gods/muller-brockmann.md` (the Swiss codification, the symmetric/mathematical register) and `design-gods/jan-tschichold.md` (the asymmetric register, *Die neue Typographie*, then the Penguin reversal — both halves apply on a screen). Load `grids.md` whenever a layout decision is on the table; load the two designers when the decision is structural enough to need their argument behind it. Reviews must include a grid lens — see `commands/review.md` for the procedure.
+
+---
+
+## Consulting the design-gods
+
+The pantheon is not decoration. Each designer's file in `design-gods/` carries a working principle that survives the medium, and ignoring them is how the work drifts back to defaults. Default to consulting more, not fewer. The cost of over-consulting is a few hundred tokens; the cost of under-consulting is templated work shipped under your name.
+
+The threshold is sized to the work:
+
+- **Trivial — zero gods required.** A single button label, a one-color tweak, a one-line copy edit, a one-icon swap. Consultation here is theater.
+- **Small — one god, optional.** A single contained component: a modal, a card, a form field, a status pill, an isolated hover treatment. Consult one designer if their principle is clearly load-bearing; otherwise skip without ceremony.
+- **Medium — two gods minimum, three preferred.** A feature surface that holds multiple components or that touches more than one screen — a settings panel, a dashboard section, a marketing hero, a navigation system, a populated empty state, a content-rich card grid. Two consultations are the floor; three are the bar. Building medium-sized work with one or zero gods is allowed only when you can name in writing why no second voice could improve the decision — and that note belongs in your working output.
+- **Large — three gods, no exceptions.** A full page, a full flow, a system-level decision (token system, type scale, component library). Anything below three voices is insufficient on a surface that touches this many later decisions.
+
+If you cannot pick two relevant gods, the file index in `design-gods.md` exists for exactly that — scan the capsules, identify which voices speak to the surface, and load those depth files. "I couldn't think of one" is not a defensible answer when a thirteen-designer index sits one file away.
+
+### How to consult
+
+To consult a designer, do four things, in order:
+
+1. **Load** their depth file: `design-gods/<key>.md` (e.g., `design-gods/rams.md`, `design-gods/muriel-cooper.md`).
+2. **Read** the "Why they matter" and "Principles they brought" sections at minimum. Skim "Quotes" for a phrase you can apply by reflex.
+3. **Apply** — name the specific principle you are taking from them and the specific decision it shapes. Generic invocations ("I consulted Rams") do not count; the consultation must produce a sentence of the form "Per Rams' eighth principle, I removed the third elevation level on the card."
+4. **Log** the consultation. See the counter section below.
+
+### Usage counter
+
+Every consultation must append one line to the usage log so we can see which voices are actually being used over time, and which are being neglected. The counter is honest only if you log every consultation. Failing to log is the same as failing to consult — you cannot improve what you cannot measure.
+
+**Log file:** `~/.claude/design-expert/usage-log.jsonl` (create the directory on first write).
+
+**Format:** one JSON object per line, no pretty-printing, UTC timestamp:
+
+```
+{"ts":"<ISO 8601 UTC>","god":"<key>","command":"<build|review|plan|write|other>","project":"<basename of cwd>"}
+```
+
+**How to write:** append using the Bash tool with `>>` redirection. Always create the directory first; always include the trailing newline:
+
+```bash
+mkdir -p ~/.claude/design-expert && \
+printf '%s\n' '{"ts":"2026-05-02T15:30:00Z","god":"rams","command":"build","project":"khev-portfolio"}' \
+  >> ~/.claude/design-expert/usage-log.jsonl
+```
+
+**How to inspect** the counts at any time, ranked by frequency:
+
+```bash
+jq -r '.god' ~/.claude/design-expert/usage-log.jsonl | sort | uniq -c | sort -rn
+```
+
+Or by command:
+
+```bash
+jq -r '.command + " · " + .god' ~/.claude/design-expert/usage-log.jsonl | sort | uniq -c | sort -rn
+```
+
+The keys are stable across the skill: `rams`, `vignelli`, `ive`, `kare`, `rand`, `norman`, `nielsen`, `eames`, `victor`, `corum`, `tufte`, `cooper`, `frere-jones`, `muriel-cooper`, `scher`, `muller-brockmann`, `jan-tschichold`. Use the same key as the filename in `design-gods/`.
 
 ---
 
@@ -63,27 +155,30 @@ The full set of files in this skill, with paths, one-line descriptions, and tags
 |---|---|---|
 | `SKILL.md` | This file. The manifesto, the index, and the how-to-use. | `#manifesto` `#index` |
 | `foundations.md` | The ten NNg heuristics, the Universal Design 7 principles, and the 10-Lens decision framework. | `#principles` `#heuristics` `#accessibility` |
-| `craft.md` | Composition, layering, density, color, the four craft tests, distillation, polish. | `#craft` `#visual` `#layering` |
+| `craft.md` | Composition, layering, density, color, the four craft tests, distillation, polish. Editorial layouts moved to `styles/editorial.md`; craft retains a stub pointer. | `#craft` `#visual` `#layering` |
+| `grids.md` | The Swiss school, asymmetric grids, types of grids, spacing systems, container/columns/gutters/baselines, brand/product/editorial registers, when to break. | `#grid` `#systems` `#spacing` `#editorial` |
+| `layouts.md` | The 32-pattern layout catalog organized by register: 8 editorial + 8 dashboard + 8 interface + 8 landing patterns. Each with name, when-to-use, structure, exemplar, refusal-condition. The lookup loaded at the layout-exploration gate. | `#layouts` `#composition` `#patterns` |
 | `anti-slop.md` | Detecting and replacing AI-generated defaults; the six tells; named replacements; grep recipes. | `#anti-defaultism` `#patterns` |
-| `typography.md` | Type system, hierarchy levels, 38 pairings, brand-vs-product type rules. | `#typography` `#fonts` |
+| `typography.md` | Type system, hierarchy levels, 38 pairings, brand-vs-product-vs-editorial type rules. | `#typography` `#fonts` `#editorial` |
 | `components.md` | Atomic patterns: cells, status pills, icons, charts, forms, navigation. | `#components` `#patterns` |
 | `interaction.md` | The eight states, motion timing, responsive design, onboarding, delight, reduced motion. | `#interaction` `#motion` `#states` |
 | `output-format.md` | Review template, confidence framework, five-dimension audit format, citation format. | `#review` `#format` |
-| `nng-articles-index.md` | 270+ NNg articles indexed by topic for fast citation lookup. | `#lookup` `#nng` |
+| `self-review.md` | End-of-work review discipline. Anti-slop self-scan, four craft tests, register-conditional verdict, voice consistency, image-rhythm honesty, honest cut-list, final polish. Produces a Cuts / Holds / Risks report. Loaded at the close of medium-to-long iterations and builds. | `#review` `#discipline` `#self-audit` |
 
 ### Pantheon — historical designers
 
 | File | What it covers | Tags |
 |---|---|---|
-| `design-gods.md` | The pantheon index — thirteen designers with capsules and tags pointing into per-designer files. | `#history` `#principles` |
-| `design-gods/<slug>.md` | One file per designer: Rams, Vignelli, Ive, Kare, Rand, Norman, Nielsen, Eames, Victor, Corum, Tufte, Cooper, Frere-Jones, Muriel Cooper. Tags vary per designer. | `#history` |
+| `design-gods.md` | The pantheon index — sixteen designers with capsules and tags pointing into per-designer files. | `#history` `#principles` |
+| `design-gods/<slug>.md` | One file per designer: Rams, Vignelli, Ive, Kare, Rand, Norman, Nielsen, Eames, Victor, Corum, Tufte, Cooper, Frere-Jones, Muriel Cooper, Müller-Brockmann, Tschichold. Tags vary per designer. | `#history` |
 
 ### Curated references — quality exemplars
 
 | File | What it covers | Tags |
 |---|---|---|
 | `references.md` | The references index — eight working systems and canonical texts with rationale. | `#references` `#exemplars` |
-| `references/<slug>.md` | One file per reference: Pentagram, IBM Carbon, Apple HIG, Linear, Stripe, Refactoring UI, Vignelli Canon, Material 3. | `#reference` |
+| `references/<slug>.md` | One file per reference: Pentagram, IBM Carbon, Apple HIG, Linear, Stripe, Refactoring UI, Vignelli Canon, Material 3, Grid Systems. | `#reference` |
+| `references/nng-articles-index.md` | 270+ NNg articles indexed by topic for fast citation lookup. | `#lookup` `#nng` |
 
 ### Curated library — Do / Don't research
 
@@ -96,6 +191,26 @@ The full set of files in this skill, with paths, one-line descriptions, and tags
 | `library/components/forms/README.md` | Do / Don't forms. | `#forms` |
 | `library/components/empty-states/README.md` | Do / Don't empty states. | `#empty-states` |
 | `library/components/cards/README.md` | Do / Don't cards. | `#cards` |
+
+### Curated styles — register-specific disciplines
+
+| File | What it covers | Tags |
+|---|---|---|
+| `styles.md` | The styles index — disciplines that govern surfaces by intent register. | `#styles` `#editorial` `#expressive` |
+| `styles/editorial.md` | Editorial register — case studies, long-form, magazine pieces, museum essays, design-agency project pages. Six editorial moves, anti-patterns, when to break the rules. | `#editorial` `#style` `#case-study` |
+| `styles/expressive.md` | Expressive register — avant-garde, motion-led, brand-as-product. For agency homepages, manifesto pages, product launches, awards-target work. Six expressive moves, color discipline, anti-patterns. Synthesizes Impeccable's bolder/colorize/delight/layout/craft. | `#expressive` `#style` `#brand` `#avant-garde` |
+
+### Curated voices — writing-context disciplines
+
+| File | What it covers | Tags |
+|---|---|---|
+| `voices.md` | The voices index — disciplines that govern copy by writing context (UX / long-form / marketing). | `#voices` `#writing` |
+| `voices/ux-copy.md` | UX copy voice — buttons, labels, errors, empty states, confirmations, micro-copy. Strunk and White as the floor. | `#voices` `#ux-copy` |
+| `voices/long-form.md` | Long-form voice — case studies, blog posts, magazine pieces, journalism. Work&Co tone + canonical exemplars (Talese, Schulz, McPhee, Didion, Coates, Wallace, Orlean, Scientific American) + pattern-formulae. | `#voices` `#long-form` `#editorial` |
+| `voices/marketing/george-lois.md` | The Mad-Man voice — bold image-and-line spectacle. Esquire covers, *I Want My MTV*, Tommy Hilfiger. | `#voices` `#marketing` `#ad-lord` |
+| `voices/marketing/bill-bernbach.md` | The honest-witty voice — DDB Creative Revolution. *Think Small*, *We Try Harder*, *You Don't Have to Be Jewish*. | `#voices` `#marketing` `#ad-lord` |
+| `voices/marketing/howard-gossage.md` | The conversational voice — Socrates of San Francisco, anti-hard-sell. Eagle Shirts, Pink Air, Sistine-Chapel rhetoric. | `#voices` `#marketing` `#ad-lord` |
+| `voices/marketing/david-ogilvy.md` | The research-led long-copy voice — *At 60 mph*, Hathaway eyepatch, Schweppes Commander, Dove, Guinness Book of Records. | `#voices` `#marketing` `#ad-lord` |
 
 ### Sub-skills — slash commands
 
@@ -122,12 +237,17 @@ These rules never bend. They exist because each one prevents a specific class of
 - **Validate on blur**, never on every keystroke (annoying false errors), never only on submit (forces re-scan). The error formula is WHAT happened / WHY in user terms / HOW to fix. See `interaction.md` and `commands/write.md`.
 - **Never use humor for failures, errors, or destructive confirmations.** Save warmth for empty states and celebrations. A joke at the moment of an error is the moment the user loses trust in the system. See `commands/write.md`.
 - **No silent overwrite of `PRODUCT.md` or `DESIGN.md`.** The loader check in `/design-expert:plan` is mandatory. Erasing a brief is erasing the project's memory.
+- **Two design-gods minimum on medium work, three preferred; three minimum on large work.** Every consultation logs to `~/.claude/design-expert/usage-log.jsonl`. See the "Consulting the design-gods" section above for the sizing definitions, the four-step consultation procedure, and the log format.
+- **Pick the grid before placing the first element.** The column count, the gutter token, the canvas margin, the baseline, the breakpoints, and the maximum container width — all chosen, all written down, all committed to. Improvised grids ship templated work. See `grids.md` and the "The grid is the deepest layer" section above.
+- **Free-form questions to the user use the orange-circle marker.** When the sub-skill needs a free-form answer (not a discrete choice via `AskUserQuestion`), prefix the question with the 🟠 emoji and treat the question as a Markdown blockquote so it stays visually distinct in long planner responses. Group related questions as `🟠 **Q1.**`, `🟠 **Q2.**`, `🟠 **Q3.**` so the user can answer by reference. The orange marker matches the design-expert plugin's accent color and lets the user scan a long planner response and jump straight to "what does this command actually need from me?" Convention is mandatory across all sub-skills (`/plan`, `/build`, `/review`, `/write`) — never use plain bold or numbered lists for free-form prompts when the orange-circle pattern applies.
 
 ---
 
-## Brand vs. product register
+## Brand vs. product vs. editorial register
 
-Every interface lives in one of two registers, and the same rules apply differently across them. Brand surfaces — landing pages, marketing sites, pitch decks, campaigns, launch heroes — exist to be distinctive; they trade familiarity for memorability, and they can deliberately violate consistency (Heuristic 4) and aesthetic-minimalism (Heuristic 8) for the sake of being remembered. Product surfaces — dashboards, admin panels, settings, in-app flows, authenticated tools — exist to disappear; they trade memorability for earned familiarity and cognitive ease, and consistency is non-negotiable because the user will be in this surface for hours and any inconsistency becomes a tax compounded across every interaction. Wrong register equals wrong everything downstream. The Register check is the second gate in `/design-expert:build` and surfaces throughout the depth files; if the register is uncertain at the start of any work, stop and ask.
+Every interface lives in one of three registers, and the same rules apply differently across them. **Brand** surfaces — landing pages, marketing sites, pitch decks, campaigns, launch heroes — exist to be distinctive; they trade familiarity for memorability, and they can deliberately violate consistency (Heuristic 4) and aesthetic-minimalism (Heuristic 8) for the sake of being remembered; the user is here in-and-out under a minute. **Product** surfaces — dashboards, admin panels, settings, in-app flows, authenticated tools — exist to disappear; they trade memorability for earned familiarity and cognitive ease, and consistency is non-negotiable because the user will be in this surface for hours and any inconsistency becomes a tax compounded across every interaction. **Editorial** surfaces — case studies, long-form essays, magazine pieces, museum sites, design-agency project pages, blog posts that aspire — exist to be read; they trade efficiency for attention, density inverts (whitespace becomes the design), color recedes (monochrome chrome with color confined to artwork), and the type does the work of containment that cards do in product. The user is here for ten or twenty minutes; the page earns those minutes through type, grid, and rhythm.
+
+Wrong register equals wrong everything downstream. The Register check is the **second gate** in `/design-expert:build` and the **first gate** in `/design-expert:plan`; sub-skills enforce it via `AskUserQuestion` if confidence on the register sits below 80%. Once the register is confirmed, the relevant style file is loaded — `styles/editorial.md` if editorial, otherwise the foundationals govern alone. See `styles/editorial.md` for the editorial register's discipline; see `commands/build.md` Gate 2 for the register-detection procedure.
 
 ---
 

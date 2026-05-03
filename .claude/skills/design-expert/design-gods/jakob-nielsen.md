@@ -36,7 +36,7 @@ The portable principles for interface work:
 This designer's principles surface in:
 - `foundations.md` — the ten heuristics are the literal spine of the file; every review tags failures by his numbers.
 - `output-format.md` — heuristic citations are the evidentiary floor of every review the skill produces.
-- `nng-articles-index.md` — the 270+ article database is largely his and NNg's output, and the only legal sourcebook the skill cites.
+- `references/nng-articles-index.md` — the 270+ article database is largely his and NNg's output, and the only legal sourcebook the skill cites.
 - `anti-slop.md` — heuristic 8 (aesthetic and minimalist design) is the direct rule against decorative clutter that AI-generated UI defaults to.
 - `interaction.md` — heuristic 1 (visibility of system status) anchors the loading and feedback states.
 - `craft.md` — heuristic 4 (consistency and standards) maps onto the "system over snowflakes" rule.
