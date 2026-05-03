@@ -22,22 +22,6 @@ $ /plugin install design-expert@khev-tools
 # SKILL.md loaded · 14 markdown files · 17 design-gods
 ```
 
-### First run
-
-A brief, then a build, then a review. Each command writes to disk — `PRODUCT.md` + `DESIGN.md` from `/plan`, source files from `/build`, scored notes from `/review` — so you can read what the skill thinks before it ships code.
-
-```bash
-$ /design-expert:plan a billing-settings page for a subscription SaaS
-# writes PRODUCT.md + DESIGN.md · audience, register, tokens, restrictions
-
-$ /design-expert:build billing-settings from PRODUCT.md + DESIGN.md
-# reads SKILL.md + the two briefs · ships components in src/billing/
-
-$ /design-expert:review src/billing/
-```
-
-> ✓ scored against 10-lens framework · 6 notes · 0 blockers
-
 ---
 
 ## Commands — Four verbs. A shared vocabulary.
