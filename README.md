@@ -2,120 +2,88 @@
 
 # design-expert
 
-A paragraph-first, evidence-grounded skill for interface design and others. Build, review, plan, and write UI with the discipline of NNg heuristics, the Universal Design seven principles, anti-AI-slop patterns, a 32-pattern layout catalog, register-aware style files (editorial / expressive), voice taxonomies (UX copy / long-form / marketing), self-review, and a curated 17-designer pantheon.
+A paragraph-first, evidence-grounded skill for interface design. One command that plans, builds, reviews, iterates, and writes UI with the discipline of NNg heuristics, the Universal Design seven principles, anti-AI-slop patterns, a 32-pattern layout catalog, register-aware style files, voice taxonomies, self-review, and a seventeen-designer pantheon that sits as a council when the work is large enough to deserve one.
 
-> Design is felt, not enforced. The principles in this skill exist not to constrain but to liberate — when the floor is solid, the ceiling lifts.
+> Design is felt, not enforced. The principles in this skill exist not to constrain but to liberate: when the floor is solid, the ceiling lifts.
 
-[**khevin.com/design-expert.html**](https://khevin.com/design-expert.html)
-
----
+[khevin.com/design-expert.html](https://khevin.com/design-expert.html)
 
 ## Install
 
-design-expert ships as a Claude Code plugin under the **khev-tools** marketplace. Requires a current Claude Code build (run `claude --version`; update via Homebrew, npm, or the native installer if `/plugin` isn't recognized).
+design-expert ships as a Claude Code plugin under the khev-tools marketplace. It needs a current Claude Code build; update if `/plugin` is not recognized.
 
 ```bash
-$ /plugin marketplace add https://github.com/Khevin/khev-tools
-# clones over HTTPS · no SSH key required
-
-$ /plugin install design-expert@khev-tools
-# SKILL.md loaded · 14 markdown files · 17 design-gods
+/plugin marketplace add https://github.com/Khevin/khev-tools
+/plugin install design-expert@khev-tools
 ```
 
-### First run
+## One command
 
-A brief, then a build, then a review. Each command writes to disk — `PRODUCT.md` + `DESIGN.md` from `/plan`, source files from `/build`, scored notes from `/review` — so you can read what the skill thinks before it ships code.
+Describe the work. The skill reads who you are, where the work will land, how the project's design system is implemented, how big the change is, and what you asked for, then it runs the right mode.
 
 ```bash
-$ /design-expert:plan a billing-settings page for a subscription SaaS
-# writes PRODUCT.md + DESIGN.md · audience, register, tokens, restrictions
-
-$ /design-expert:build billing-settings from PRODUCT.md + DESIGN.md
-# reads SKILL.md + the two briefs · ships components in src/billing/
-
-$ /design-expert:review src/billing/
+/design-expert a billing-settings page for a subscription SaaS
+/design-expert make it better
+/design-expert critique src/billing/, notes only
+/design-expert the error when a payment fails to send
 ```
 
-> ✓ scored against 10-lens framework · 6 notes · 0 blockers
+Force a mode when you already know which one you want: `/design-expert plan …`, `/design-expert build …`, `/design-expert review …`, `/design-expert write …`, `/design-expert iterate …`.
 
----
+### How it decides
 
-## Commands — Four verbs. A shared vocabulary.
+Every run prints one trace line before it works, so you can see each decision and correct it:
 
-### `/design-expert:plan` — Plan the design first.
+`Triage: role designer (profile) · handoff → developer · deploy figma-file · DS system.md + CLAUDE.md § tokens · register product · size iteration · mode iterate · target figma (prereq figma-use) · tier capsule`
 
-Discovery before pixels. Audience, register, brand voice, anti-references — captured as a brief the rest of the work reads. Stops the model from one-shotting a generic mock.
+- Who you are is asked once and remembered in `~/.claude/design-expert/profile.md`. The project's handoff direction, deploy target, Figma file, and design-system pointers live in `.design-expert/project.md`, safe to commit or ignore.
+- The design system comes before any judgment. The skill looks in briefs, `system.md`, `CLAUDE.md` token sections, tokens in code, component folders, Figma variables and libraries, and Claude Design projects, and asks how the system is implemented only when it finds nothing. A pattern your system mandates is never filed as slop.
+- The size of the change is read from its scope, not its phrasing. Touch-up, polish, iteration, surface redesign, system redesign. "Make it better" on a button is polish; on a dashboard it is iteration.
+- The output target follows the role. Designers with Figma connected work in Figma for concepts and build. Everyone else sees concepts on the Claude Design canvas and builds in code or briefs. Small changes never open a surface.
+- The pantheon is a council. Plan convenes all seventeen designers as parallel seats, each reading only its own file; a chair turns their verdicts into rulings, contested points you are asked about, and recorded dissent. Redesigns and full reviews convene a room seated by the surface's tags. Medium work gets a capsule consultation. Trivial work gets none.
 
-```bash
-$ /design-expert:plan checkout flow for a calm clinical SaaS
-```
+## Modes
 
-### `/design-expert:build` — Build it on the bar.
+**Plan** writes `PRODUCT.md`, `DESIGN.md`, and `DECISIONS.md` through a discovery interview, direction probes on your concept surface, the full council, a layout walk, and personas. Briefs stay within word budgets; dated decisions go to the decision log. It never overwrites a brief silently.
 
-From brief to real screens, real components, real type. Reads your tokens, respects your system, ships code — not a Figma mock the model can't render.
+**Build** takes a brief to real screens through gates: shape, layout exploration, references, intent, domain, inventory, proposal, the council at redesign size, build on your target, iteration on the rendered result, then presentation and handoff. Every iterate request enters here at its size.
 
-```bash
-$ /design-expert:build pricing page from PRODUCT.md + DESIGN.md
-```
+**Review** walks anti-defaultism with the mandated-pattern check first, the ten-lens checklist, Universal Design 7, Nielsen scoring, the five-dimension audit, the grid audit, hardening, distillation, and onboarding, and produces the eight-section document with citations. The council rules on the fixes at full depth.
 
-### `/design-expert:write` — Write copy that holds.
-
-Display lines, microcopy, error states, empty states — written in the voice the brief committed to, not in default-AI breeziness.
-
-```bash
-$ /design-expert:write hero for a calm clinical SaaS
-```
-
-### `/design-expert:review` — Review with a real reviewer.
-
-The work gets walked, scored against the foundations, and graded. The reviewer cites the principle behind every note — no vibes-based feedback, no "looks great, ship it."
-
-```bash
-$ /design-expert:review src/pages/pricing.tsx
-```
-
-Plus the skill itself, invoked freely as `design-expert`.
-
----
+**Write** produces copy in three contexts, UX micro-copy, long-form, and marketing, each in its voice file, and sweeps the result for the tells that turn copy into wallpaper.
 
 ## Updates
 
-### v1.2.0 — May 3, 2026
+### v2.0.0, September 7, 2026
 
-- **Library + Pantheon popovers.** Tap any row in `02 — The Library` or any Pantheon card; a paper-card dialog lifts off the page. Four designers added; total seventeen.
-- **Foundations expanded.** New `grids.md` (Swiss + asymmetric); new `layouts.md` (32 patterns by register); `craft.md` gains the iteration-sizing framework.
-- **Register, layout, intent gates wired in.** `plan` opens with a register hard-ask; `build`'s gates 2, 3, 7, 10 enforce register, layout-catalog walk, aspect-ratio inventory, and asset-fit re-check. Per-surface `PRODUCT.md` + `DESIGN.md` naming is now standard.
-- **New taxonomies + self-review + slop catalog.** `styles/` ships editorial and expressive; `voices/` ships ux-copy, long-form (Work&Co tone), and four marketing files by ad-lord (Lois, Bernbach, Gossage, Ogilvy). New `self-review.md` for end-of-work discipline. Impeccable's catalog folded into `anti-slop.md`.
+One entry point. `/design-expert` triages every request and picks the mode; the four sub-commands are gone. The pantheon became a council with parallel seats and a chair. The skill now discovers the project's design system before judging, remembers who you are and where the work lands, chooses Figma, canvas, or code by role, and hands off in the receiver's medium. Briefs gained word budgets and a `DECISIONS.md` log. Paula Scher and Alan Cooper joined the pantheon. A ninth anti-slop category names the structural and rhetorical tells: numbered section markers, decorative side-stripes, fragment triads, reversal formulas, dash-label headers. The plugin follows the current `skills/` layout. Full notes in `CHANGELOG.md`.
 
-### v1.0.0 — April 30, 2026
+### v1.2.0, May 3, 2026
 
-- **Initial plugin release.** Four commands — `plan`, `build`, `write`, `review` — backed by a 12-file markdown library and 13 designer-specific reference files in `design-gods/`.
-- **Reviewer scores against ten lenses.** Foundations, hierarchy, type, color, composition, motion, copy, accessibility, anti-slop, brand fit. Each note cites the principle behind it.
-- **PROJECT.md awareness.** Per-project overrides — audience, brand voice, anti-references — read on every command. Drop one in your repo root.
+Editorial and expressive style registers, the 32-pattern layout catalog, `grids.md`, iteration sizing in `craft.md`, `self-review.md`, the voices taxonomy with four marketing voices, register and layout gates in plan and build, per-surface brief naming.
 
-### v0.9 · beta — April 22, 2026
+### v1.0.0, April 30, 2026
 
-- **anti-slop.md graduates.** 30+ named patterns the reviewer now flags on sight, each with a recommended replacement.
-- **Brand vs product registers.** The skill picks before it generates — landing pages stop being critiqued for breaking dashboard conventions and vice versa.
+Initial plugin release with four commands, a twelve-file reference library, and thirteen designer files.
 
-### v0.5 · alpha — April 8, 2026
+### v0.9 beta, April 22, 2026
 
-- **First public alpha.** SKILL.md + foundations + craft + a single review command. The reviewer was the seed; everything else grew around it.
+`anti-slop.md` graduated with thirty named patterns; brand and product registers separated.
 
----
+### v0.5 alpha, April 8, 2026
+
+First public alpha: `SKILL.md`, foundations, craft, and a single review command.
 
 ## Sources
 
 design-expert is a standalone evolution of three predecessor skills:
 
-- **`nng-agent`** — Nielsen Norman Group heuristics, Universal Design 7, anti-defaultism, IBM Carbon, font pairings, decision checklist, review template, confidence framework, data-viz tree
-- **`interface-design`** by [Damola Akinleye](https://github.com/Dammyjay93) — manifesto voice, Intent-First, swap/squint/signature/token tests, subtle layering
-- **`impeccable`** by [Patrick Bakaus](https://github.com/pbakaus) — brand vs product register, 0–4 heuristic scoring, shape/teach/document workflow, ux-writing patterns
+- `nng-agent`: Nielsen Norman Group heuristics, Universal Design 7, anti-defaultism, IBM Carbon, font pairings, the decision checklist, the review template, the confidence framework, the data-viz tree.
+- `interface-design` by [Damola Akinleye](https://github.com/Dammyjay93): manifesto voice, Intent-First, the swap, squint, signature, and token tests, subtle layering.
+- `impeccable` by [Patrick Bakaus](https://github.com/pbakaus): brand vs. product register, 0–4 heuristic scoring, the shape, teach, and document workflow, ux-writing patterns.
 
-Plus original research on a curated 17-designer pantheon (Rams, Vignelli, Ive, Kare, Rand, Norman, Nielsen, Eames, Victor, Corum, Tufte, Cooper, Frere-Jones, Tschichold, Müller-Brockmann, Scher, Muriel Cooper), eight quality reference systems (Pentagram, IBM Carbon, Apple HIG, Linear, Stripe, Refactoring UI, Vignelli Canon, Material Design 3), the 32-pattern layout catalog, the editorial/expressive style taxonomy, and the four-flavor marketing voices folder.
-
----
+Plus original research on the seventeen-designer pantheon (Rams, Vignelli, Ive, Kare, Rand, Norman, Nielsen, Eames, Victor, Corum, Tufte, Muriel Cooper, Frere-Jones, Tschichold, Müller-Brockmann, Scher, Alan Cooper), eight reference systems (Pentagram, IBM Carbon, Apple HIG, Linear, Stripe, Refactoring UI, the Vignelli Canon, Material Design 3), the layout catalog, the style taxonomy, the marketing voices, and the council protocol.
 
 ## License
 
-MIT — see [LICENSE](./LICENSE).
+MIT. See [LICENSE](./LICENSE).

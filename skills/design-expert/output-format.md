@@ -58,8 +58,10 @@ editorial. Cite: `styles/editorial.md` § Anti-patterns ("Marketing-page cargo c
 and `anti-slop.md` § Layout tells.
 WHERE: projects/case-study.html § Intro, lines 84–112.
 HOW: Replace with rail-and-body grid (3/9 split). Lead with a left-aligned title and
-a single-paragraph subhead in the body column; move the three "moves" into the first
-chapter as numbered chapter anchors (01/02/03), not equal cards.
+a single-paragraph subhead in the body column; fold the three "moves" into the first
+chapter as prose with sentence-case run-in heads, not equal cards and not
+numbered markers (the zero-padded numeral is its own tell; see `anti-slop.md`
+§ Structural and rhetorical tells).
 ```
 
 ### Open Questions
