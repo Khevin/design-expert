@@ -12,7 +12,7 @@
     {
       "name": "design-expert",
       "description": "One command that triages design work (plan, build, review, write, iterate), discovers the project's design system, picks the output surface (Figma, Claude Design canvas, or code), and ships with craft and evidence: NNg heuristics, Universal Design 7, anti-AI-slop patterns, and a eighteen-designer pantheon convened as a council.",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "author": {
         "name": "Khevin",
         "url": "https://github.com/Khevin"
