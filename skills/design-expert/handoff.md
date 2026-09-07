@@ -12,7 +12,7 @@ Work that is finished but not handed over is finished for one person. A develope
 
 ## Designer → developer
 
-Produced as a spec page in the same Figma file through `use_figma` (after `figma:figma-use`), and mirrored in chat so it survives outside the file. Sections, in order, each at most ten lines:
+Produced as a spec page in the same Figma file through `use_figma` (after `figma:figma-use`) when the destination is a Figma file, and as a Markdown spec attached to the pull request when the deploy target is a repository; mirrored in chat either way so it survives outside the file. Sections, in order, each at most ten lines:
 
 - **Overview.** What the surface is, who uses it, the scene sentence.
 - **Frames.** A link per screen and per state.

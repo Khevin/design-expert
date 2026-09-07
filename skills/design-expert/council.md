@@ -151,7 +151,7 @@ mkdir -p ~/.claude/design-expert && printf '%s\n' \
 >> ~/.claude/design-expert/usage-log.jsonl
 ```
 
-Line schema: `ts` ISO 8601 UTC; `god` stem; `command` one of plan, build, review, write, other; `project` the basename of the working directory; `tier` capsule or council; `verdict` approve, revise, block, none, or malformed. Inspect without jq:
+Line schema: `ts` ISO 8601 UTC; `god` stem; `command` one of plan, build, iterate, review, write, other; `project` the basename of the working directory; `tier` capsule or council; `verdict` approve, revise, block, none, or malformed. Inspect without jq:
 
 ```bash
 grep -o '"god":"[^"]*"' ~/.claude/design-expert/usage-log.jsonl | sort | uniq -c | sort -rn

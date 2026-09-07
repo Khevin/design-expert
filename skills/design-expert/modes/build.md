@@ -14,7 +14,7 @@ Eleven gates in order, plus the council at 8½. Each gate is a stop point. You d
 
 ### Gate 1: Shape
 
-The size arrives from triage: touch-up, polish, iteration, surface redesign, or system redesign, per `craft.md` § Iteration as a category. It sets which gates run and how deep. Touch-up skips Gates 3 through 8 and executes. Polish runs Gate 5 quickly, proposes one or two alternatives at Gate 8, and executes. Iteration runs Gates 5 through 11 at trimmed depth with three to five alternatives, and runs Gate 3 only when the layout is on the table. Surface redesign runs every gate in full, convenes the council at Gate 8½, and shows concepts before building. System redesign requires plan mode first; route back if no plan exists.
+The size arrives from triage: touch-up, polish, iteration, surface redesign, or system redesign, per `craft.md` § Iteration as a category. It sets which gates run and how deep. Touch-up skips Gates 3 through 8 and executes. Polish runs Gate 5 quickly, proposes one or two alternatives at Gate 8, and executes. Iteration runs Gates 4 through 11 at trimmed depth with three to five alternatives, and runs Gate 3 only when the layout is on the table. Surface redesign runs every gate in full, convenes the council at Gate 8½, and shows concepts before building. System redesign requires plan mode first; route back if no plan exists.
 
 `PRODUCT.md` and `DESIGN.md` are required at redesign sizes and read when present at any size. Below redesign, the discovered design system and a one-sentence restatement of the brief are sufficient; do not send a polish request to plan mode. Restate the brief in one sentence so you and the user agree on the artifact before any pixel decision.
 
@@ -85,7 +85,7 @@ Iterate is a build at a size, not a separate workflow. Triage sets the size; thi
 
 - **Touch-up** (one property): Gate 9, then Gate 11 without self-review. No alternatives, no consultation, no concept surface. Execute directly; proposing alternatives for a touch-up signals you did not read the request.
 - **Polish** (one component): Gate 5 quickly, Gate 8 with one or two alternatives inline, Gates 9 through 11. Capsule consultation of at most one seat. No concept surface.
-- **Iteration** (a section reconsidered): Gates 5 through 11 at trimmed depth; Gate 3 only when the layout shifts; three to five alternatives at Gate 8, inline unless the layout is on the table or the user asks to see them; capsule consultation of three to five seats; self-review at Gate 11.
+- **Iteration** (a section reconsidered): Gates 4 through 11 at trimmed depth, Gate 4 loading the discovered system plus only the reference files the surface needs; Gate 3 only when the layout shifts; three to five alternatives at Gate 8, inline unless the layout is on the table or the user asks to see them; capsule consultation of three to five seats; self-review at Gate 11.
 - **Surface redesign** and **system redesign** are builds, not iterations, and run the full gate sequence above.
 
 Users rarely say "iterate". They say "review this" with a file attached, "make it better", "what would you change", "I don't like this". A request that asks for change is iterate-shaped regardless of the word; triage has already read it that way when it routed here.
