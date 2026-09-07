@@ -58,8 +58,10 @@ editorial. Cite: `styles/editorial.md` § Anti-patterns ("Marketing-page cargo c
 and `anti-slop.md` § Layout tells.
 WHERE: projects/case-study.html § Intro, lines 84–112.
 HOW: Replace with rail-and-body grid (3/9 split). Lead with a left-aligned title and
-a single-paragraph subhead in the body column; move the three "moves" into the first
-chapter as numbered chapter anchors (01/02/03), not equal cards.
+a single-paragraph subhead in the body column; fold the three "moves" into the first
+chapter as prose with sentence-case run-in heads, not equal cards and not
+numbered markers (the zero-padded numeral is its own tell; see `anti-slop.md`
+§ Structural and rhetorical tells).
 ```
 
 ### Open Questions
@@ -165,7 +167,7 @@ Not every review needs all eight sections. A two-line copy change does not need 
 
 **Light-mode review.** Single component, PR diff, tooltip copy, microcopy edit. Three sections: Context, Issues with severity tiers, References. Two hundred to five hundred words. Skip the audits, the score, the anti-defaultism scan. Running the full template on a microcopy edit teaches the team that reviews are bureaucratic, and they will avoid them.
 
-**Sub-surface review.** A single screen inside a larger flow, a redesigned table inside a dashboard, a new modal inside an existing app. Four sections: Context, Issues, anti-defaultism scan, Next Steps. Skip the Universal Design audit if the surface is a small fragment of a larger flow audited recently — but cite the parent audit. Five hundred to twelve hundred words.
+**Sub-surface review.** A single screen inside a larger flow, a redesigned table inside a dashboard, a new modal inside an existing app. Four sections: Context, Issues, anti-defaultism scan, Next Steps. Skip the Universal Design audit if the surface is a small fragment of a larger flow audited recently — but cite the parent audit; when no parent audit exists, walk the seven principles in one line each instead of skipping them. Five hundred to twelve hundred words.
 
 **Full template.** Primary user flow, new feature, system-level change, redesign, brand surface launch. All eight sections. Full citation discipline. Numeric score. Confidence framework where forks exist. Use when stakes are high and the surface will outlive the conversation.
 

@@ -14,7 +14,7 @@ The taxonomy mirrors `styles/`. Where a style file describes the discipline that
 
 ## How to use a voice file
 
-Loaded by `/design-expert:write` based on the writing brief. The command first determines what kind of copy is being written, then loads the appropriate voice file. The voice file is authoritative for that copy; the foundationals (`anti-slop.md`, `output-format.md`) still apply but the voice file's rules govern any conflict.
+Loaded by `/design-expert write` based on the writing brief. The command first determines what kind of copy is being written, then loads the appropriate voice file. The voice file is authoritative for that copy; the foundationals (`anti-slop.md`, `output-format.md`) still apply but the voice file's rules govern any conflict.
 
 For surfaces with multiple voices on one page (e.g., a landing page with a hero + CTAs), the writer composes each piece in its own voice rather than averaging the rules. The CTA stays in UX-copy voice (verb-plus-object, no marketing tone). The hero stays in marketing voice (clever, brief, reader-respecting). The body stays in long-form voice (peer-to-peer, evidence-led).
 

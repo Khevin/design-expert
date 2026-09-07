@@ -42,7 +42,7 @@ This designer's principles surface in:
 - `grids.md` — the asymmetric vs. symmetric grid registers are his. The "asymmetric grids: Tschichold's rebellion" section names him directly.
 - `typography.md` — the brand-vs-product type rules echo his asymmetric/symmetric distinction. Brand surfaces get the asymmetric *Neue Typographie*; product surfaces get the Penguin Rules' steady classical reading.
 - `craft.md` — Tschichold's "function-first" argument is craft.md's intent-first principle, written half a century earlier.
-- `commands/write.md` — the WHAT/WHY/HOW error formula and the disciplined microcopy approach are descendants of his "the work of a book designer is the loyal and tactful servant of the written word."
+- `modes/write.md` — the WHAT/WHY/HOW error formula and the disciplined microcopy approach are descendants of his "the work of a book designer is the loyal and tactful servant of the written word."
 
 ## Sources
 

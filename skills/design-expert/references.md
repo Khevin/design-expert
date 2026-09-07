@@ -10,7 +10,7 @@ Most "design inspiration" lists are noise. Dribbble shots, Pinterest boards, scr
 
 A quality reference also fails productively. Carbon teaches what enterprise discipline looks like; it also teaches what *not* to copy when your product is a meditation app. Linear teaches what opinionated SaaS craft looks like; it also teaches what is wrong about borrowing its monochrome palette without earning the discipline behind it. The references in this list are powerful precisely because they have a position — they say no to certain choices, and that no is the gift. A reference that tries to please everyone has refused to teach.
 
-The thirteen designers in `design-gods.md` are the principle layer of this skill. The eight references here are the working systems and canonical texts that show those principles in production. Together they answer a single question: when you are about to make a design decision, who has already made the same decision, well, and at scale?
+The eighteen designers in `design-gods.md` are the principle layer of this skill. The eight references here are the working systems and canonical texts that show those principles in production. Together they answer a single question: when you are about to make a design decision, who has already made the same decision, well, and at scale?
 
 ## How to use a reference
 

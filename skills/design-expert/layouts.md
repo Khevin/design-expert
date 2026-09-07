@@ -16,9 +16,9 @@ The discipline is: **enumerate at least three candidates from the relevant regis
 
 ## How to use this catalog
 
-Load this file at `commands/build.md` Gate 3 (Layout exploration) and `commands/plan.md` Gate 4 (Layout exploration). Filter to the register confirmed at the prior gate (brand → landing-page table; product → dashboard or interface table; editorial → editorial table). Read the eight patterns in that register. Pick three to five candidates that genuinely fit the brief — not the first three you read, but the ones whose when-to-use clauses match the project's verb. Present them to the user with one-line summaries and trade-offs. Wait for the pick before proceeding.
+Load this file at `modes/build.md` Gate 3 (Layout exploration) and `modes/plan.md` Gate 4 (Layout exploration). Filter to the register confirmed at the prior gate (brand → landing-page table; product → dashboard or interface table; editorial → editorial table). Read the eight patterns in that register. Pick three to five candidates that genuinely fit the brief — not the first three you read, but the ones whose when-to-use clauses match the project's verb. Present them to the user with one-line summaries and trade-offs. Wait for the pick before proceeding.
 
-The catalog is opinionated. Eight patterns per register is calibrated to the same instinct that limits the design-gods to thirteen and references to eight: small enough to read in one sitting, dense enough that every entry earned its place. Patterns appear in this catalog because they recur across well-made shipping work AND because they are distinguishable from each other in structure — patterns that are minor variants of one another are folded into the same entry. If a brief asks for a layout that is not in the catalog, the answer is one of two things: the catalog should be extended (rare), or the brief is reaching for novelty instead of fit (common).
+The catalog is opinionated. Eight patterns per register is calibrated to the same instinct that limits the design-gods to eighteen and references to eight: small enough to read in one sitting, dense enough that every entry earned its place. Patterns appear in this catalog because they recur across well-made shipping work AND because they are distinguishable from each other in structure — patterns that are minor variants of one another are folded into the same entry. If a brief asks for a layout that is not in the catalog, the answer is one of two things: the catalog should be extended (rare), or the brief is reaching for novelty instead of fit (common).
 
 Pair the catalog with `grids.md` for the grid mechanics (column counts, gutter tokens, breakpoints, container widths) and with the relevant `styles/<style>.md` (today: `styles/editorial.md`) for the register-specific discipline that overrides product defaults. Layout sets the overall composition; grid mechanics and style discipline fill it in.
 
@@ -109,7 +109,7 @@ Then ask the user to pick. State the inference if confidence on a single pattern
 
 **Redesigns count as early.** When the brief is "redesign this surface," do not preserve the existing layout by default. Walk the catalog cold, as if the project were brand new. The most common redesign failure mode is treating the original layout as the constraint when the original layout is precisely what the redesign needs to escape. If the user wants to keep the existing layout, they will say so explicitly; otherwise, the layout is on the table — and the LLM should make this explicit at the start of the redesign so the user can confirm or veto.
 
-The catalog is also the source for the grid lens in `commands/review.md`. When reviewing existing work, identify which catalog pattern the surface is closest to, then ask: is this the right pattern for the register and the verb? Layout audits root in pattern fit, not in pixel-level alignment — the alignment is correct or wrong relative to the pattern, and the pattern is correct or wrong relative to the brief.
+The catalog is also the source for the grid lens in `modes/review.md`. When reviewing existing work, identify which catalog pattern the surface is closest to, then ask: is this the right pattern for the register and the verb? Layout audits root in pattern fit, not in pixel-level alignment — the alignment is correct or wrong relative to the pattern, and the pattern is correct or wrong relative to the brief.
 
 ---
 
@@ -150,7 +150,7 @@ The cycle:
 2. **Mock-fidelity inventory** at Gate 7 (build), logging the actual aspect ratios and counts as the contract
 3. **First build** at Gate 9 (build), placing real images into the chosen pattern
 4. **Iteration re-check** at Gate 10 (build) — has the inventory drifted from the Gate 7 contract? If yes, return to Gate 3 with the new inventory and re-run the catalog filter
-5. **Review-time lens** at `/design-expert:review` — pattern-fit-to-imagery is a review check
+5. **Review-time lens** at `/design-expert review` — pattern-fit-to-imagery is a review check
 
 The discipline: treat the layout pattern as **held loosely** until the build reaches "no material image changes pending" status. Don't refuse layout changes after Gate 9 simply because Gate 3 has already picked. Don't change layout impulsively either — the re-check happens when imagery has materially shifted, not when the model second-guesses itself.
 

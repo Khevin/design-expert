@@ -78,7 +78,7 @@ Load this file *before* `craft.md`, `grids.md`, `typography.md`, and `components
 - **Components:** drop the card vocabulary, the status-pill vocabulary, the elevated-tile vocabulary in `components.md`. Editorial uses hairlines, headings, and whitespace to do the work that cards do in product.
 - **Anti-slop:** apply `anti-slop.md` with the editorial-register lens. The same tells (purple gradient, three-equal-cards, centered hero) are *more* disqualifying in editorial than in brand and *much* more disqualifying than in product. See `anti-slop.md` § Color tells and § Layout tells for the named patterns.
 
-The register is decided at brief time. `/design-expert:plan` Gate 0 (Register) asks the user explicitly. `/design-expert:build` Gate 2 reads `PRODUCT.md` and runs a confidence check; if confidence on "is this editorial?" is below 80%, the gate asks. `/design-expert:review` Step 1 (Anti-defaultism scan) reads register first and applies register-conditional verdicts. Once the register is confirmed editorial, this file is loaded and stays loaded for the remainder of the session.
+The register is decided at brief time. `/design-expert plan` Gate 0 (Register) asks the user explicitly. `/design-expert build` Gate 2 reads `PRODUCT.md` and runs a confidence check; if confidence on "is this editorial?" is below 80%, the gate asks. `/design-expert review` Step 1 (Anti-defaultism scan) reads register first and applies register-conditional verdicts. Once the register is confirmed editorial, this file is loaded and stays loaded for the remainder of the session.
 
 ---
 
@@ -98,11 +98,11 @@ Patterns that emerged during the spaces.html v2 build, refining the six editoria
 
 **Cinematic break for the climactic reveal.** Editorial case studies benefit from one strategic moment that breaks the rail-and-body rhythm — typically the V2.0 reveal or the after-shot of the rebuilt surface. Use a paper-warm tinted band, an italic-mono "Version 2.0 — the reveal" label centered above, the image at natural aspect (no fixed crop), and an italic-serif caption beneath. The break reads as cinematic when the surrounding rhythm is consistent rail-and-body; without the surrounding consistency, the break is just another image.
 
-**Drop "surface" jargon.** Use "app" or "screen" or the actual product name. "Surface" is design-school vocabulary that reads as cold to non-designers and abstract to designers; "app" is direct and concrete. (This rule is also in the voice section of `commands/write.md`; restated here for builders who load editorial.md without write.md.)
+**Drop "surface" jargon.** Use "app" or "screen" or the actual product name. "Surface" is design-school vocabulary that reads as cold to non-designers and abstract to designers; "app" is direct and concrete. (This rule is also in the voice section of `modes/write.md`; restated here for builders who load editorial.md without write.md.)
 
-**Per-surface PRODUCT.md / DESIGN.md.** Each case study gets its own brief at `<surface>.PRODUCT.md` and `<surface>.DESIGN.md` (e.g., `projects/spaces.PRODUCT.md`). Documented in `commands/plan.md` Gate 6 as the canonical naming convention. The brief survives the build and feeds future iterations and `/design-expert:review` runs.
+**Per-surface PRODUCT.md / DESIGN.md.** Each case study gets its own brief at `<surface>.PRODUCT.md` and `<surface>.DESIGN.md` (e.g., `projects/spaces.PRODUCT.md`). Documented in `modes/plan.md` Gate 6 as the canonical naming convention. The brief survives the build and feeds future iterations and `/design-expert review` runs.
 
-**Voice rules for case-study prose** live in `commands/write.md` § Case-study writing — the Lyft tone. Cross-reference there for plain-words discipline, active-voice rules, decision-walk patterns, functional stakeholder framing, numbers-inline anchoring, and the three-beat caption rhythm.
+**Voice rules for case-study prose** live in `modes/write.md` § Case-study writing — the Lyft tone. Cross-reference there for plain-words discipline, active-voice rules, decision-walk patterns, functional stakeholder framing, numbers-inline anchoring, and the three-beat caption rhythm.
 
 ---
 

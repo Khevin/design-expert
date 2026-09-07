@@ -30,9 +30,9 @@ The test cuts harder for product surfaces than for brand. A purple gradient is f
 
 ---
 
-## The eight detectable tells
+## The nine detectable tells
 
-The categories below cover the AI-default failure modes most often seen on shipping product. Seven describe visual and structural mistakes; the eighth covers project-specific clichés that recur enough to deserve their own section. Many of the named patterns are cross-referenced with **Impeccable's AI Slop catalog** (`https://impeccable.style/slop/#catalog`) — a curated taxonomy of 37 deterministic slop patterns with corresponding CLI checks (`npx impeccable detect`). Where Impeccable names a pattern, the inline tag `(Impeccable)` is added so reviewers can cross-cite both sources. The "Source: Impeccable's slop catalog" footnote at the end of this file is the canonical reference.
+The categories below cover the AI-default failure modes most often seen on shipping product. Seven describe visual and structural mistakes; the eighth covers project-specific clichés that recur enough to deserve their own section. The ninth lives in the skeleton and the sentences: structural and rhetorical tells that survive a perfect visual pass. Many of the named patterns are cross-referenced with **Impeccable's AI Slop catalog** (`https://impeccable.style/slop/#catalog`) — a curated taxonomy of 37 deterministic slop patterns with corresponding CLI checks (`npx impeccable detect`). Where Impeccable names a pattern, the inline tag `(Impeccable)` is added so reviewers can cross-cite both sources. The "Source: Impeccable's slop catalog" footnote at the end of this file is the canonical reference.
 
 ### Visual and CSS tells
 
@@ -134,6 +134,22 @@ Detect cliché metaphors by signature. A rocket icon next to anything labeled "L
 
 Replacements are less obvious metaphors. Bolt or spark for launch instead of rocket. Fingerprint or vault or key for security instead of shield. For AI features specifically, drop the icon entirely and use editorial framing — the system name in the lede ("Studio noticed:") carries the attribution, no sparkle required. Standardize stroke width across the entire icon set: pick 1.5 or 2.0 and enforce it. For dashboard card titles, drop the topic icon. The rule is: if removing an icon loses no meaning, remove it. "Sales by channel" with a chart icon means the same thing as "Sales by channel" without one. Carbon's enterprise dashboard pattern, the canonical reference, doesn't put topic icons on card titles — it uses title text alone, with an optional `(i)` info tooltip when there's a real explanatory tooltip to attach. Standalone icons (a search field's magnifier, a button's trailing arrow) get presence with a subtle background container or by sitting at the right size; topic icons get deleted.
 
+### Structural and rhetorical tells
+
+The tells above live in pixels. This family lives in the skeleton and the sentences, and it survives a perfect visual pass: a page can hold a committed grid, tinted shadows, and a domain palette and still read as machine-shaped because its sections count themselves and its headlines argue in triplets. The rhythm was learned from the most-copied portfolio and landing pages of 2022 to 2025, which numbered their sections, striped their callouts, and wrote every headline as three clipped beats. A reader cannot say what is wrong. A reader can say "AI made that" in two seconds.
+
+Detect them by signature. **Numbered section markers and meta-labels**: `01`, `02`, `03` as eyebrows, chapter anchors, or process steps, zero-padded, often in mono; `SECTION 01`, `Q · 05`, `ABOUT US` over a section that is plainly about us. The third section does not need to be told it is third. In the editorial register a chapter numeral set at the chapter title's own scale is a typographic device from `styles/editorial.md`, not a marker; the tell is the small zero-padded eyebrow that labels what the heading already names. **Decorative side-stripes and top bars**: a two-to-four-pixel colored `border-left`, `border-right`, or `border-top` on cards, quotes, callouts, list items, or table rows, used as category paint rather than as an encoding the system defines. **Fragment triads**: three clipped sentences standing as one line, *"Four verbs. A shared vocabulary. One bar."*, and the rule-of-three that follows it everywhere: three cards, three pillars, three adjectives, three steps, when the content did not ask for three. **Reversal formulas**: *"It's not X. It's Y."*, *"Not a tool. A colleague."* **Dash and colon label headers**: headings shaped `Label — payoff` or `Label: payoff`, where the label is the heading and the payoff is a slogan. **Dash-appositive chains**: two or more dashes in a sentence, or one in every sentence of a paragraph, doing the work a period should do. **Decorative circles, dots, and index numerals** used as ornament beside text that already carries the meaning.
+
+Replacements are structural, not cosmetic. Delete the numeral and let the heading carry sequence; if order matters, write it into the heading ("First, the inbox"). Give the striped card the same border as every other card and encode category with a small dot plus a sentence-case word, or with the card's position, or with a label; do not swap the stripe for an inset shadow, which is the same tell in a quieter voice. Rewrite a triad as one sentence with a subject and a verb. Rewrite `Label — payoff` as a sentence-case heading that states the claim. Rewrite the reversal as the direct claim. Allow one dash per paragraph and make it earn its place. Let the content set the count: two things when there are two, five when there are five.
+
+**Design-system exemption.** A pattern the project's design system mandates is never a tell. Before filing any item from this file, check the `mandated_patterns` gathered at discovery (`discovery.md`). A match downgrades the finding to a Note that cites the mandate, filed once per project and addressed to the system's owner rather than the surface's author: *"3px left accent per `CLAUDE.md` § AI Suggestion / Lais Patterns; system-mandated."* The same stroke on a surface outside that system is filed normally. The exemption covers the mandated form only; a mandated stroke does not exempt the numbered eyebrow beside it. Hard rejects (pure black, AI clichés, the three-equal-card row, meta-labels) are fixed without asking; soft rejects (glassmorphism, blobs, a stripe the system mandates) wait for the user.
+
+Grep recipes for this family:
+
+- `grep -nE '(^|[>"[:space:]])0[1-9]([^0-9.:]|$)' file.html` finds zero-padded section markers.
+- `grep -nE 'border-(left|right|top|inline-start):[[:space:]]*[2-4]px[[:space:]]+solid' file.css` finds accent stripes; check `mandated_patterns` before filing.
+- `grep -nE "(It'?s not [^.]+\. It'?s|isn'?t [^.;]+[;.] it'?s)" file` finds reversal constructions.
+
 ---
 
 ## Project-specific clichés
@@ -176,6 +192,8 @@ The card now uses the same border treatment as every other card on the page. Whi
 The editorial frame works because it implies a person, not a feature. A byline says "someone wrote this and they stand behind it." A sparkle icon in a tile says "the system generated this and you're free to ignore it." The same insight, framed two ways, lands as either a colleague's note or marketing copy. The byline framing is what changes the affordance from "feature to dismiss" to "colleague to read." For multi-suggestion stacks, use a single suggestions queue with a stack visual — one front card with full content, one or two ghost cards peeking from behind, pagination dots — never a column of N consecutive banner cards down the page, which multiplies the cliché and turns the surface into AI noise.
 
 Other acceptable AI-attribution patterns: inline within the page header ("Studio · noticed: 7 items still pending review"); speech-bubble framing with a small avatar and message-bubble shape; annotation directly on the chart when the insight is about a specific data point. Each one frames the system as a colleague rather than a feature. Tone encoding goes on a small dot plus sentence-case word ("Heads up," "Warning," "Growth") — never as a full-card colored stroke.
+
+When the project's own design system mandates the stroke, the tile, or the label, the cliché is not a Blocker against the surface. File one Note per project, addressed to the system's owner and citing the mandate, and review the rest of the surface as if the mandated traits were neutral. The design-system exemption in § Structural and rhetorical tells governs; it covers the mandated traits only, so an uppercase eyebrow or a sparkle the system did not ask for is still filed normally.
 
 ### Decorative card-title icons
 

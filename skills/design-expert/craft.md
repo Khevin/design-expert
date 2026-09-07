@@ -38,21 +38,21 @@ The five sizes:
 
 **Iteration.** The middle ground. The component, section, or layout is reconsidered: layout shifts, hierarchy reordered, copy tightened, a different component pattern adopted, the thing's identity is allowed to shift. A card might become a row; a modal might become a popover; a sidebar might collapse into a top nav. *Examples:* *"review this card," "make this section better," "rethink the dashboard layout," "what would you change here," "this isn't working."* Three to five alternatives surfaced before picking; the user (or the model with confidence ≥ 80%) picks; execution follows. This is where most everyday design work lives, and it's the category most often misnamed by users who say *"review"* when they mean *"iterate."*
 
-**Surface redesign.** A full screen or surface rebuilt. Multiple components affected. Layout pattern can change. Same content, different shape. *Examples:* *"redesign this case study," "rebuild the settings page," "the homepage needs a fresh start."* Four to seven alternatives surfaced; the layout-exploration gate runs in full (`commands/build.md` Gate 3 + `layouts.md`); design-gods consulted at the medium-work threshold (two minimum, three preferred); proposal phase before build.
+**Surface redesign.** A full screen or surface rebuilt. Multiple components affected. Layout pattern can change. Same content, different shape. *Examples:* *"redesign this case study," "rebuild the settings page," "the homepage needs a fresh start."* Four to seven alternatives surfaced; the layout-exploration gate runs in full (`modes/build.md` Gate 3 + `layouts.md`); the council convened at build Gate 8½ (see `council.md`); proposal phase before build.
 
-**System redesign.** Multiple surfaces, the design system itself, brand voice, the whole thing. Rare. *Examples:* *"rebuild our design system," "rethink the brand," "we're starting over."* Full `/design-expert:plan` and `/design-expert:build` cycle. Catalogs run (library, layouts, styles, voices); reference systems consulted; design-gods convened at the large-work threshold (three minimum); long horizon.
+**System redesign.** Multiple surfaces, the design system itself, brand voice, the whole thing. Rare. *Examples:* *"rebuild our design system," "rethink the brand," "we're starting over."* a plan-mode then build-mode cycle. Catalogs run (library, layouts, styles, voices); reference systems consulted; the full council convened in plan mode (see `council.md`); long horizon.
 
 The discipline at request time is to read the user's words against this taxonomy. *"Make it better"* on a button is polish. *"Make it better"* on a dashboard is iteration. *"Make it better"* on a portfolio is redesign. The phrase is the same; the size is set by the **scope**, not by the words. Read the scope first; then size; then explore.
 
 The middle three sizes — polish, iteration, redesign — are where the model and the user most often misalign. Touch-up and system-redesign tend to be obvious. The middle is where reading carefully matters. When the size is genuinely ambiguous, ask: *"is this a polish (the existing thing stays, you want it sharpened), an iteration (the existing thing is on the table, you want it reconsidered), or a redesign (the existing thing is replaced, you want it rebuilt)?"* The answer sets exploration depth for the rest of the work.
 
-| Size | Alternatives to propose | Design-gods to consult | Reference loading | Output format |
+| Size | Alternatives to propose | Council tier | Reference loading | Output format |
 |---|---|---|---|---|
-| Touch-up | 0 | 0 | None | Direct change |
-| Polish | 1–2 | 0–1 | The relevant `library/<category>/README.md` | Direct change after quick confirm |
-| Iteration | 3–5 | 1–3 | `library/<category>` + relevant style/voice/grid section | Proposal → user picks → execution |
-| Surface redesign | 4–7 | 2–3 (medium-work threshold) | Full layout catalog + relevant style file | Full plan + build |
-| System redesign | Catalogs + cross-domain | 3+ (large-work threshold) | All relevant indexes | Full `/plan` + `/build` |
+| Touch-up | 0 | none | None | Direct change |
+| Polish | 1–2 | capsule, 0–1 seats | The relevant `library/<category>/README.md` | Direct change after quick confirm |
+| Iteration | 3–5 | capsule, 3–5 seats for build; 3 for a sub-surface review (see `council.md`) | `library/<category>` + relevant style/voice/grid section | Proposal, user picks, execution |
+| Surface redesign | 4–7 | council at build Gate 8½ | Full layout catalog + relevant style file | Concepts, council, then build |
+| System redesign | Catalogs + cross-domain | council, all eighteen, in plan mode | All relevant indexes | Plan mode, then build mode |
 
 A second axis crosses this taxonomy: **what kind of output is wanted.** Pure text feedback (the user wants notes, not a change) is review-shaped. Implementation (the user wants the change made) is build-shaped. Most iteration requests want both — the proposal explains the change AND lands the change. Read both axes — *what size, what output* — and route accordingly. *"Review this card"* + an existing file usually wants iteration-shaped output (3–5 proposed alternatives, then implementation of the pick), not text-only review.
 
@@ -213,9 +213,11 @@ Apply 60-30-10 by visual weight, not by pixel count. Sixty percent of the percei
 
 Dark mode is not inverted light mode. You cannot just swap colors. Depth in light mode comes from shadows; depth in dark mode comes from *lighter surfaces* — there are no shadows in the dark. Build a three-step surface scale where higher elevations are lighter (15% / 20% / 25% lightness, with the same hue and chroma as your brand). Body text weight should drop slightly in dark mode (350 instead of 400) because light text on dark reads as heavier than dark text on light. Never use pure black for backgrounds; use dark gray around 12-18% lightness. The void is not a design choice.
 
-Borders are hairline (1px) and applied to the *full* perimeter, not as side-stripes. The colored 4px-left-border on a status card is one of the most recognizable amateur tells — it announces "notice this" instead of trusting the system to communicate. If you need to mark a card as warning or active, use a full hairline border, a faint background wash (4-8%), a leading icon, or a numbered prefix. A side-stripe is a workaround for a hierarchy that never got designed. Heavy alpha is a similar smell: incomplete palette substituted by transparency hacks.
+Borders are hairline (1px) and applied to the *full* perimeter, not as side-stripes. The colored 4px-left-border on a status card is one of the most recognizable amateur tells — it announces "notice this" instead of trusting the system to communicate. If you need to mark a card as warning or active, use a full hairline border, a faint background wash (4-8%), a leading icon, or a label. When the project's own design system mandates the stripe, the exemption in `discovery.md` applies: the note goes to the system's owner, and the surface is reviewed as if the stripe were neutral. A side-stripe is a workaround for a hierarchy that never got designed. Heavy alpha is a similar smell: incomplete palette substituted by transparency hacks.
 
 WCAG AA is the floor for body text (4.5:1) and UI components (3:1). Do not trust your eyes — use a contrast checker. The most common failure is light gray placeholder text on white, which almost universally fails. Gray text on a colored background also fails, and looks washed out and dead besides — use a darker shade of the background color, or transparency, instead. Eight percent of men cannot reliably distinguish red from green; never rely on color alone to convey state. Pair color with an icon, a label, or a position.
+
+The pantheon voice for color is `design-gods/johannes-itten.md`: the twelve-hue circle for constructing a palette by relation rather than by feel, the seven contrasts for naming what a color decision is doing, and simultaneous contrast for why a neutral reads tinted beside a saturated accent.
 
 ## Distillation — what to remove
 
