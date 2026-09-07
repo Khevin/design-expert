@@ -54,11 +54,11 @@ Every run prints one trace line before it works, so you can see each decision an
 
 ## Updates
 
-### v2.0.0, September 7, 2026
+### v1.2.0, September 7, 2026
 
 One entry point. `/design-expert` triages every request and picks the mode; the four sub-commands are gone. The pantheon became a council with parallel seats and a chair. The skill now discovers the project's design system before judging, remembers who you are and where the work lands, chooses Figma, canvas, or code by role, and hands off in the receiver's medium. Briefs gained word budgets and a `DECISIONS.md` log. Paula Scher, Alan Cooper, and Johannes Itten joined the pantheon. A ninth anti-slop category names the structural and rhetorical tells: numbered section markers, decorative side-stripes, fragment triads, reversal formulas, dash-label headers. The plugin follows the current `skills/` layout. Full notes in `CHANGELOG.md`.
 
-### v1.2.0, May 3, 2026
+### v1.1.0, May 3, 2026
 
 Editorial and expressive style registers, the 32-pattern layout catalog, `grids.md`, iteration sizing in `craft.md`, `self-review.md`, the voices taxonomy with four marketing voices, register and layout gates in plan and build, per-surface brief naming.
 

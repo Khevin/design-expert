@@ -22,10 +22,10 @@
 - The README no longer headlines its own commands with a fragment triad.
 - Usage-log keys are canonical filename stems; the log gains `tier` and `verdict`; the legacy log is migrated once with a backup.
 
-## 1.2.1 (2026-09-06)
+## 1.1.1 (2026-09-06)
 - Committed the pending edits: full-pantheon consultation at plan Gate 3½ and scaled consultation floors for build, review, and write.
 
-## 1.2.0 (2026-05-03)
+## 1.1.0 (2026-05-03)
 - Editorial and expressive style registers, the 32-pattern layout catalog, `grids.md`, iteration sizing in `craft.md`, `self-review.md`, the voices taxonomy with four marketing voices, register and layout gates in plan and build, per-surface `PRODUCT.md` and `DESIGN.md` naming.
 
 ## 1.0.0 (2026-04-30)
