@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.0 (2026-09-07)
+## 1.2.0 (2026-09-07)
 
 ### Changed
 - One entry point. `/design-expert` triages every request (memory, explicit override, role and handoff and deploy target, design-system discovery, register, size, intent, output target, council tier) and runs the right mode. The four sub-commands `/design-expert:plan`, `:build`, `:review`, `:write` are removed without aliases; `/design-expert plan …` and friends force a mode.
