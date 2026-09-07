@@ -20,7 +20,11 @@ Write runs when the visible work is the words: a new flow whose copy does not ex
 
 ### Step 1: Load voice, tone, and register
 
-Read `PRODUCT.md` if it exists. Extract the brand pillars (three adjectives, calm, direct, useful, never marketing abstractions like "innovative"), the bans, and the register, which triage has already confirmed. If there is no `PRODUCT.md`, ask for the pillars and the bans with the orange marker before generating, because every line after inherits them; the register is already known and is not re-asked.
+Read `PRODUCT.md` if it exists. Read also the copy rules discovery recorded as mandated patterns from the system files (a `CLAUDE.md` copy-rules section, a `system.md` voice section); they are bans, and they bind before any question is asked. Extract the brand pillars (three adjectives, calm, direct, useful, never marketing abstractions like "innovative"), the bans, and the register, which triage has already confirmed. If there is no `PRODUCT.md`, ask before generating, one question per blockquote, because every line after inherits the answers; the register is already known and is not re-asked:
+
+> 🟠 **Question**: What are the three brand pillars for this copy? Adjectives such as calm, direct, useful; not marketing abstractions such as innovative.
+
+> 🟠 **Question**: What does this product never say? Words, tones, or moves the copy must avoid.
 
 Register-conditional copy guidance. Editorial copy carries voice and personality: long pull quotes, italic display ems inside the prose, discursive captions, evocative chapter titles. Product copy carries clarity and brevity: labels do one job per word, errors follow WHAT, WHY, HOW strictly, buttons are verb plus object with no decoration. Brand copy carries memorability: taglines hit hard and short, hero subheads are specific to the moment, microcopy can play where the surface invites it. The error formula holds across all three; the elasticity is in everything that is not an error. See `styles/editorial.md` for the editorial voice rules.
 

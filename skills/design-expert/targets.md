@@ -25,6 +25,8 @@ The same brief produces different deliverables for different people. A designer 
 
 ---
 
+**The deploy target decides the handoff column.** When memory carries a `deploy_target`, the handoff artifact follows it regardless of role: `repo-pr` is the pull-request description from `handoff.md`; `figma-file` is the Figma spec page; `hosted-url` is the pull-request description plus the preview URL; `canvas-only` is the canvas share plus a Markdown spec. The concept and build columns still follow the role row, so a designer without Figma who ships to a repository sees concepts on the canvas, builds a token-faithful prototype, and hands off as a pull request.
+
 ## The size rule
 
 Touch-up and polish never open a concept surface: no `create_new_file`, no `design` skill. They edit in place, with `use_figma` on the linked file or in code. Iteration opens the concept surface only when the layout shifts or the user asks to see alternatives; its default is three to five inline proposals, then the pick. Surface redesign always shows concepts before the build. System redesign shows its concepts inside plan mode's Gate 3. Write and review never open a surface; review reads Figma through `get_screenshot`, `get_metadata`, and `get_variable_defs`.
