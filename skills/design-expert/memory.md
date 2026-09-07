@@ -39,6 +39,7 @@ design_system:
   also: [CLAUDE.md § AI Suggestion / Lais Patterns]
   mandated_patterns: ["3px left accent border on AI suggestion cards (CLAUDE.md § AI Suggestion / Lais Patterns)"]
 register: product
+council: full                   # full | tagged; how plan mode seats the council
 briefs: [root, lais-inicio/funil-fluxo]
 asked_on: 2026-09-06
 ---

@@ -25,7 +25,7 @@ The council is also sized. Convening seventeen designers to approve a hover colo
 | review | none (light) | capsule 1 (light) | capsule 3 (sub-surface) | council (full) | council (full) |
 | write / other | none | none | capsule 1–2 | capsule 3 | capsule 3 |
 
-**Seat selection.** For `capsule`, seat the designers whose `Tags:` line intersects the brief's `surface_tags`, up to five. Load a full designer file only when the decision is load-bearing (it sets a token, grid, layout, or type role that later work inherits) or when two capsules disagree, and never more than two full files. No subagents. For `council` in build and review, always seat `dieter-rams`, `don-norman`, and `jakob-nielsen`; add every designer whose tags intersect `surface_tags`; if the room is under seven, add seats in index order until it reaches seven; the cap is seventeen. For `council` in plan, seat all seventeen. Plan surfaces are broad, a tag filter would save about four seats, and a filter is a place where the working context can talk itself down.
+**Seat selection.** For `capsule`, seat the designers whose `Tags:` line intersects the brief's `surface_tags`, up to five. Load a full designer file only when the decision is load-bearing (it sets a token, grid, layout, or type role that later work inherits) or when two capsules disagree, and never more than two full files. No subagents. For `council` in build and review, always seat `dieter-rams`, `don-norman`, and `jakob-nielsen`; add every designer whose tags intersect `surface_tags`; if the room is under seven, add seats in index order until it reaches seven; the cap is seventeen. For `council` in plan, seat all seventeen unless the project record says `council: tagged`, in which case plan uses the same tag-filtered room as build and review. Plan surfaces are broad, a tag filter would save several seats, and a filter is a place where the working context can talk itself down; the record setting exists so the owner makes that trade once, on purpose, rather than the room making it under pressure.
 
 **Surface tags.** Fix two to four in the brief from this map: chart or metric → `#data-viz #information-design`; type → `#typography #typeface-design`; grid or layout → `#grid #systems`; icon, status, or empty state → `#icons #cognition`; identity or brand hero → `#branding #typography`; form, flow, settings, or errors → `#cognition #usability #heuristics`; live control or motion → `#interaction #direct-manipulation`; long-form → `#editorial #typography #grid`; token system or library → `#minimalism #systems #principles`.
 
@@ -105,7 +105,7 @@ dissent_ok: true
 The chair is the main context. The verdict blocks land there as `Agent` results; a separate chair agent would need them sent again and would add a serial hop before the one thing that must happen in the main context anyway, which is asking the user. The protocol is arithmetic on at most seventeen ten-line records. Apply it per decision D, with A, R, and B the counts of approve, revise, and block verdicts that address D, and n their sum.
 
 1. A result that does not contain exactly one nine-key block, or that carries `confidence: 0`, is excluded from every tally and listed under *Not counted*.
-2. If n is zero, D is *Unaddressed*.
+2. If n is zero, D is *Unaddressed*. If n is one, the lone verdict rules only at confidence 75 or above; below that it is recorded as *Advisory*, neither adopted nor asked, and the mode decides D by its own gates.
 3. A domain veto is a `block` whose `domain_match` is true. If a veto is present, no domain-matched seat approved D, and no other change is incompatible with the veto's change, the ruling is **veto adopted**, marked as such. If a veto is present under any other condition, D is **Contested**.
 4. If A is at least ⌈2n/3⌉, the ruling is **stands**.
 5. If R plus B is at least ⌈2n/3⌉ and every change can be applied together (two values for one property are never merged), the ruling is **revised** with the merged changes.
@@ -126,6 +126,7 @@ Print the result before the question, as a table, in under two hundred and fifty
 
 Contested (your call): D2 layout: rail-and-body 55% (6 seats), bento 30% (3), keep 15% (2).
 Dissents: D1 massimo-vignelli (70): one display face, not two. D4 jonathan-ive.
+Advisory: D5 tobias-frere-jones (68): Red Hat Text in cells, Display for the headline only.
 Unaddressed: D5. Not counted: paula-scher (file-missing).
 ```
 
@@ -162,4 +163,4 @@ The seventeen stems: `alan-cooper`, `bret-victor`, `charles-and-ray-eames`, `die
 
 ## Cost
 
-Plan mode under the old procedure cost about twenty-one thousand tokens of designer prose in the working context and thirty tool calls before the layout walk could begin. A council of seventeen costs about thirteen thousand working-context tokens (nine thousand writing prompts, three thousand reading verdicts, one thousand for the chair and the log) and fifty to eighty-five thousand tokens on Sonnet seats that run as one wave of thirty to ninety seconds. The room is cheaper where it matters and it produces disagreement, which the old procedure could not.
+Plan mode under the old procedure cost about twenty-one thousand tokens of designer prose in the working context and thirty tool calls before the layout walk could begin. A council keeps the working-context cost near thirteen thousand tokens (writing the seat prompts, reading the verdict blocks, running the chair and the log) regardless of the seat count. The seats themselves are the expense: the first live test measured roughly ninety thousand tokens per seat when a seat ran as a general-purpose agent, most of it fixed per-agent overhead, in one wave of one to four minutes. The dedicated `council-member` agent carries a single tool and a short body and should cost a fraction of that; measure it, and if a seventeen-seat plan stays expensive, set `council: tagged` in the project record. The room moves the cost out of the working context, finishes in one wave, and produces disagreement, which the old procedure could not.

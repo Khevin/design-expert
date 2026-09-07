@@ -115,7 +115,7 @@ The pantheon is not decoration. Each designer's file in `design-gods/` carries a
 
 | Work | Tier | What happens |
 |---|---|---|
-| Plan, any size | council, all seventeen | One parallel seat per designer, each reading only its own file and the brief; a chair in the main context turns verdicts into rulings, contested points, and recorded dissent; the user is asked about the contested points only |
+| Plan, any size | council, all seventeen (or the tagged room when the project record says `council: tagged`) | One parallel seat per designer, each reading only its own file and the brief; a chair in the main context turns verdicts into rulings, contested points, and recorded dissent; the user is asked about the contested points only |
 | Build at surface redesign; review at full depth | council, seven to seventeen by tag | Same room, seated by the surface's tags with three permanent seats |
 | Iteration, sub-surface review, polish | capsule, one to five | The main context reads the capsules in `design-gods.md`, seats by tag, and writes one sentence per seat of the form "Per Kare's warmth at low resolution, the status pill keeps a two-pixel inset so it reads at 11px" |
 | Touch-up, light review, copy | none | Consultation here is theater |
