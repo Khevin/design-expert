@@ -1,5 +1,5 @@
 ---
-description: Generate PRODUCT.md and DESIGN.md for a project, following the Google DESIGN.md / impeccable convention. Runs Discovery interview, Visual probe, Persona selection, then writes the two files. Does not silently overwrite existing files; loader check is mandatory.
+description: Generate PRODUCT.md and DESIGN.md for a project, following the Google DESIGN.md / impeccable convention. Runs Discovery interview, Visual probe, full-pantheon design-gods consultation, Persona selection, then writes the two files. Does not silently overwrite existing files; loader check is mandatory.
 ---
 
 # /design-expert:plan
@@ -12,7 +12,7 @@ Run `/design-expert:plan` when starting a brand-new project, when encountering a
 
 ## The plan workflow — gate-driven
 
-The workflow is ten gates in fixed order (numbered 0 through 9). Each gate is a checkpoint that either advances or sends you back. The first four are the most consequential: Gate 0 is the register hard-ask (everything downstream depends on the register being right); Gate 1 is the loader check (never silently overwrite project state); Gate 4 is the layout exploration (the catalog walk that picks the named layout pattern before personas or `PRODUCT.md`); Gate 9 is the hard stop after the brief (never bleed planning into implementation in the same response). The middle gates produce the substance: a scene sentence, two to four direction probes, three to five layout candidates, two to three personas, the brand pillars, the tokens. Skip a gate and the brief is decoration. Walk every gate and the brief is a contract.
+The workflow is eleven gates in fixed order (numbered 0 through 9, with the full-pantheon consultation at 3½). Each gate is a checkpoint that either advances or sends you back. The most consequential: Gate 0 is the register hard-ask (everything downstream depends on the register being right); Gate 1 is the loader check (never silently overwrite project state); Gate 3½ is the full-pantheon consultation (every design-god, every plan, no exceptions); Gate 4 is the layout exploration (the catalog walk that picks the named layout pattern before personas or `PRODUCT.md`); Gate 9 is the hard stop after the brief (never bleed planning into implementation in the same response). The middle gates produce the substance: a scene sentence, two to four direction probes, three to five layout candidates, two to three personas, the brand pillars, the tokens. Skip a gate and the brief is decoration. Walk every gate and the brief is a contract.
 
 ### Gate 0: Register (HARD ASK)
 
@@ -43,6 +43,14 @@ Round two deepens into what impeccable calls the scene sentence — a single phy
 Before writing the brief, show two to four directionally-distinct visual probes. Probes are not designs — they are mood references. Each probe goes in a different direction: warm-editorial, cool-technical, minimalist-monochrome, expressive-color. The point is contrast, not refinement. The user picks the lane that matches the scene sentence, and that pick is now a constraint that shapes every token, every component, every component-level rule downstream.
 
 Use native image generation if the harness supports it. If it does not, describe the four directions in prose with named real-world references — actual products, brands, printed objects, never adjectives like "modern" or "clean." If two probes feel close, kill one and replace it with something further away; the value is in distance, not in detail. The user pick is the visual north star for everything that follows.
+
+### Gate 3½: Full-pantheon consultation (MANDATORY — every plan, every time)
+
+Between the visual probe and the layout walk, consult the full pantheon: every designer file in `design-gods/`, the complete roster, no sizing exception. Planning is the highest-leverage moment in the workflow — a voice skipped here is a constraint the brief never encodes and the build never inherits. The old sized thresholds (one god on small work, three on medium) apply to build, review, and write; they never applied to planning and they do not apply now. A plan that consulted four gods is a plan that silently discarded the rest of the pantheon's judgment at the exact moment it was cheapest to include.
+
+For each designer: load the file, read "Why they matter" and "Principles they brought," extract at least one principle that bears on this specific brief, and write it down as a candidate constraint — feeding `PRODUCT.md` restrictions, `DESIGN.md` do's-and-don'ts, or the layout walk at Gate 4. A consultation that cannot produce a sentence of the form "Per <designer>'s <principle>, this plan <specific decision>" is not a consultation; go back and read the file properly. Log every consultation to `~/.claude/design-expert/usage-log.jsonl` with `command: "plan"` — the full roster, one line each.
+
+The distilled principles feed the next three gates directly: layout candidates at Gate 4 are argued with pantheon voices, persona constraints at Gate 5 cite them, and the do's-and-don'ts of `DESIGN.md` at Gate 7 inherit the strongest refusals. In the planner response, present the consultation as a compact table — designer, principle taken, decision it shapes — so the user can see which voice drove which constraint.
 
 ### Gate 4: Layout exploration
 
@@ -101,7 +109,7 @@ Why hard-stop. Each phase deserves its own attention. The user reviews the plan,
 
 ## Hard rules across the workflow
 
-Register hard-ask at Gate 0 — never proceed past discovery without an explicit brand / product / editorial pick from the user. Layout exploration at Gate 4 — never proceed past visual direction with fewer than three layout candidates surfaced from `layouts.md`; redesigns count as early-in-project, with the existing layout opened to the table by default. Never silently overwrite `PRODUCT.md` or `DESIGN.md` — the loader check is mandatory and the user's confirmation is in chat, never inferred. Two-round minimum on discovery, with a scene sentence as the explicit deliverable of round two. Two to four visual probes before the brief, never zero, never one, never seven. Three to five layout candidates from the catalog at Gate 4. Two to three personas as the default, four to five when constraints are additive — the soft cap reflects increasing synthesis cost, not a hard refusal. Separate personas over fused ones for decision traceability. Brand pillars capped at three. Hard stop after brief confirmation, no implementation in the same response.
+Register hard-ask at Gate 0 — never proceed past discovery without an explicit brand / product / editorial pick from the user. Full-pantheon consultation at Gate 3½ — every designer in `design-gods/` loaded, applied, and logged on every plan, no sizing exception. Layout exploration at Gate 4 — never proceed past visual direction with fewer than three layout candidates surfaced from `layouts.md`; redesigns count as early-in-project, with the existing layout opened to the table by default. Never silently overwrite `PRODUCT.md` or `DESIGN.md` — the loader check is mandatory and the user's confirmation is in chat, never inferred. Two-round minimum on discovery, with a scene sentence as the explicit deliverable of round two. Two to four visual probes before the brief, never zero, never one, never seven. Three to five layout candidates from the catalog at Gate 4. Two to three personas as the default, four to five when constraints are additive — the soft cap reflects increasing synthesis cost, not a hard refusal. Separate personas over fused ones for decision traceability. Brand pillars capped at three. Hard stop after brief confirmation, no implementation in the same response.
 
 ## What this command produces
 
