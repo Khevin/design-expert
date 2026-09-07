@@ -7,7 +7,7 @@ user-invocable: true
 
 # design-expert
 
-design-expert is a paragraph-first, evidence-grounded skill for interface design. It plans, builds, reviews, iterates, and writes, and every action is backed by Nielsen Norman Group heuristics, the Universal Design seven principles, and a pantheon of seventeen designers whose work survives the medium, convened as a council when the work is large enough to deserve one. It is one command. You describe the work; the skill reads who you are, where the work will land, how the project's design system is implemented, how big the change is, and what you actually asked for, and then it runs the right mode. Use it when defaults are not acceptable. Use it when "clean and modern" is not a brief. Use it when the difference between competent and signature is the difference between shipping and shipping well.
+design-expert is a paragraph-first, evidence-grounded skill for interface design. It plans, builds, reviews, iterates, and writes, and every action is backed by Nielsen Norman Group heuristics, the Universal Design seven principles, and a pantheon of eighteen designers whose work survives the medium, convened as a council when the work is large enough to deserve one. It is one command. You describe the work; the skill reads who you are, where the work will land, how the project's design system is implemented, how big the change is, and what you actually asked for, and then it runs the right mode. Use it when defaults are not acceptable. Use it when "clean and modern" is not a brief. Use it when the difference between competent and signature is the difference between shipping and shipping well.
 
 ---
 
@@ -111,12 +111,12 @@ The grid behaves differently across registers. Brand surfaces take fluid grids, 
 
 ## Consulting the design-gods
 
-The pantheon is not decoration. Each designer's file in `design-gods/` carries a working principle that survives the medium, and ignoring them is how the work drifts back to defaults. The pantheon is also not a checklist: a consultation that produces agreement from seventeen voices has produced nothing. So the pantheon is consulted in two tiers, sized to the work, with the full procedure in `council.md`.
+The pantheon is not decoration. Each designer's file in `design-gods/` carries a working principle that survives the medium, and ignoring them is how the work drifts back to defaults. The pantheon is also not a checklist: a consultation that produces agreement from eighteen voices has produced nothing. So the pantheon is consulted in two tiers, sized to the work, with the full procedure in `council.md`.
 
 | Work | Tier | What happens |
 |---|---|---|
-| Plan, any size | council, all seventeen (or the tagged room when the project record says `council: tagged`) | One parallel seat per designer, each reading only its own file and the brief; a chair in the main context turns verdicts into rulings, contested points, and recorded dissent; the user is asked about the contested points only |
-| Build at surface redesign; review at full depth | council, seven to seventeen by tag | Same room, seated by the surface's tags with three permanent seats |
+| Plan, any size | council, all eighteen (or the tagged room when the project record says `council: tagged`) | One parallel seat per designer, each reading only its own file and the brief; a chair in the main context turns verdicts into rulings, contested points, and recorded dissent; the user is asked about the contested points only |
+| Build at surface redesign; review at full depth | council, seven to eighteen by tag | Same room, seated by the surface's tags with three permanent seats |
 | Iteration, sub-surface review, polish | capsule, one to five | The main context reads the capsules in `design-gods.md`, seats by tag, and writes one sentence per seat of the form "Per Kare's warmth at low resolution, the status pill keeps a two-pixel inset so it reads at 11px" |
 | Touch-up, light review, copy | none | Consultation here is theater |
 
@@ -166,7 +166,7 @@ The skill is layered. This file and the index files (`design-gods.md`, `referenc
 | `anti-slop.md` | Nine categories of AI-default tells, named replacements, the design-system exemption, grep recipes. |
 | `typography.md` · `components.md` · `interaction.md` | Type system and pairings; atomic patterns; states, motion, responsive, onboarding. |
 | `output-format.md` · `self-review.md` | The review template, tiers, scores, confidence framework; the end-of-work self-review. |
-| `design-gods.md` · `design-gods/<slug>.md` | The pantheon index and seventeen designer files: Rams, Vignelli, Ive, Kare, Rand, Norman, Nielsen, Eames, Victor, Corum, Tufte, Muriel Cooper, Frere-Jones, Müller-Brockmann, Tschichold, Scher, Alan Cooper. |
+| `design-gods.md` · `design-gods/<slug>.md` | The pantheon index and eighteen designer files: Rams, Vignelli, Ive, Kare, Rand, Norman, Nielsen, Eames, Victor, Corum, Tufte, Muriel Cooper, Frere-Jones, Müller-Brockmann, Tschichold, Scher, Alan Cooper, Itten. |
 | `references.md` · `references/<slug>.md` | Eight working systems and canonical texts, plus the NNg article index. |
 | `library.md` · `library/**/README.md` | Do and don't research for dashboards, navbars, tables, forms, empty states, cards. |
 | `styles.md` · `styles/<style>.md` | The editorial and expressive registers. |

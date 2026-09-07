@@ -8,9 +8,9 @@ How the design-gods are consulted, how they disagree, and how a disagreement bec
 
 The first version of this skill consulted the pantheon by reading every designer file into the working context, extracting one principle per designer, and printing a table. It looked like a board. It behaved like a reading list. Fifteen files entered the same context that was about to make the decision, so the voices blurred into the reader's own; nothing was ever refused; no two designers were ever recorded disagreeing; and the log written afterwards counted consultations that had changed nothing. The usage log from four months of daily use shows the shape of the failure: two hundred and forty plan runs, each one loading fourteen thousand words of designers, each one producing agreement.
 
-A council is different in three ways. Each seat reads only its own designer and the brief, so Tufte does not soften because Rams spoke first. Each seat must return a verdict in a fixed shape, so "I consulted Vignelli" cannot pass for a consultation. And a chair with written rules turns the verdicts into rulings, contested points, and recorded dissent, so the user is asked about the two things the room could not settle instead of being shown seventeen paragraphs of praise. The cost moves out of the working context and into parallel seats that cost little and finish together.
+A council is different in three ways. Each seat reads only its own designer and the brief, so Tufte does not soften because Rams spoke first. Each seat must return a verdict in a fixed shape, so "I consulted Vignelli" cannot pass for a consultation. And a chair with written rules turns the verdicts into rulings, contested points, and recorded dissent, so the user is asked about the two things the room could not settle instead of being shown eighteen paragraphs of praise. The cost moves out of the working context and into parallel seats that cost little and finish together.
 
-The council is also sized. Convening seventeen designers to approve a hover color is theater, and theater trains the user to skip the output. The tier table below is the whole discipline: small work gets a glance at the capsules, large work gets the room, and nothing in between gets to pretend.
+The council is also sized. Convening eighteen designers to approve a hover color is theater, and theater trains the user to skip the output. The tier table below is the whole discipline: small work gets a glance at the capsules, large work gets the room, and nothing in between gets to pretend.
 
 ---
 
@@ -20,14 +20,14 @@ The council is also sized. Convening seventeen designers to approve a hover colo
 
 | mode \ size | touch-up | polish | iteration | surface redesign | system redesign |
 |---|---|---|---|---|---|
-| plan | council (all 17) | council (all 17) | council (all 17) | council (all 17) | council (all 17) |
+| plan | council (all 18) | council (all 18) | council (all 18) | council (all 18) | council (all 18) |
 | build | none | capsule 0–1 | capsule 3–5 | council | route to plan first; the build that follows runs capsule |
 | review | none (light) | capsule 1 (light) | capsule 3 (sub-surface) | council (full) | council (full) |
 | write / other | none | none | capsule 1–2 | capsule 3 | capsule 3 |
 
-**Seat selection.** For `capsule`, seat the designers whose `Tags:` line intersects the brief's `surface_tags`, up to five. Load a full designer file only when the decision is load-bearing (it sets a token, grid, layout, or type role that later work inherits) or when two capsules disagree, and never more than two full files. No subagents. For `council` in build and review, always seat `dieter-rams`, `don-norman`, and `jakob-nielsen`; add every designer whose tags intersect `surface_tags`; if the room is under seven, add seats in index order until it reaches seven; the cap is seventeen. For `council` in plan, seat all seventeen unless the project record says `council: tagged`, in which case plan uses the same tag-filtered room as build and review. Plan surfaces are broad, a tag filter would save several seats, and a filter is a place where the working context can talk itself down; the record setting exists so the owner makes that trade once, on purpose, rather than the room making it under pressure.
+**Seat selection.** For `capsule`, seat the designers whose `Tags:` line intersects the brief's `surface_tags`, up to five. Load a full designer file only when the decision is load-bearing (it sets a token, grid, layout, or type role that later work inherits) or when two capsules disagree, and never more than two full files. No subagents. For `council` in build and review, always seat `dieter-rams`, `don-norman`, and `jakob-nielsen`; add every designer whose tags intersect `surface_tags`; if the room is under seven, add seats in index order until it reaches seven; the cap is eighteen. For `council` in plan, seat all eighteen unless the project record says `council: tagged`, in which case plan uses the same tag-filtered room as build and review. Plan surfaces are broad, a tag filter would save several seats, and a filter is a place where the working context can talk itself down; the record setting exists so the owner makes that trade once, on purpose, rather than the room making it under pressure.
 
-**Surface tags.** Fix two to four in the brief from this map: chart or metric → `#data-viz #information-design`; type → `#typography #typeface-design`; grid or layout → `#grid #systems`; icon, status, or empty state → `#icons #cognition`; identity or brand hero → `#branding #typography`; form, flow, settings, or errors → `#cognition #usability #heuristics`; live control or motion → `#interaction #direct-manipulation`; long-form → `#editorial #typography #grid`; token system or library → `#minimalism #systems #principles`.
+**Surface tags.** Fix two to four in the brief from this map: chart or metric → `#data-viz #information-design`; type → `#typography #typeface-design`; grid or layout → `#grid #systems`; icon, status, or empty state → `#icons #cognition`; identity or brand hero → `#branding #typography`; form, flow, settings, or errors → `#cognition #usability #heuristics`; live control or motion → `#interaction #direct-manipulation`; long-form → `#editorial #typography #grid`; token system or library → `#minimalism #systems #principles`; color, palette, or contrast → `#color #cognition`.
 
 ---
 
@@ -102,7 +102,7 @@ dissent_ok: true
 
 ## The chair
 
-The chair is the main context. The verdict blocks land there as `Agent` results; a separate chair agent would need them sent again and would add a serial hop before the one thing that must happen in the main context anyway, which is asking the user. The protocol is arithmetic on at most seventeen ten-line records. Apply it per decision D, with A, R, and B the counts of approve, revise, and block verdicts that address D, and n their sum.
+The chair is the main context. The verdict blocks land there as `Agent` results; a separate chair agent would need them sent again and would add a serial hop before the one thing that must happen in the main context anyway, which is asking the user. The protocol is arithmetic on at most eighteen ten-line records. Apply it per decision D, with A, R, and B the counts of approve, revise, and block verdicts that address D, and n their sum.
 
 1. A result that does not contain exactly one nine-key block, or that carries `confidence: 0`, is excluded from every tally and listed under *Not counted*.
 2. If n is zero, D is *Unaddressed*. If n is one, the lone verdict rules only at confidence 75 or above; below that it is recorded as *Advisory*, neither adopted nor asked, and the mode decides D by its own gates.
@@ -113,10 +113,10 @@ The chair is the main context. The verdict blocks land there as `Agent` results;
 7. Seats on the losing side of a ruling are **Dissents**. A seat with `dissent_ok: false` prints its key, confidence, and change; a seat with `dissent_ok: true` prints its key only.
 8. One `AskUserQuestion` call carries every Contested decision, at most four. Overflow defaults to "keep as stated" and is named in the output so the user can reopen it. A user who overrules a veto is logged as `overruled-by-user`.
 
-Print the result before the question, as a table, in under two hundred and fifty words even at seventeen seats:
+Print the result before the question, as a table, in under two hundred and fifty words even at eighteen seats:
 
 ```
-## Council: plan, product register, 17 seated, 2026-09-06
+## Council: plan, product register, 18 seated, 2026-09-06
 
 | Decision | Ruling | Tally |
 |---|---|---|
@@ -157,10 +157,10 @@ Line schema: `ts` ISO 8601 UTC; `god` stem; `command` one of plan, build, iterat
 grep -o '"god":"[^"]*"' ~/.claude/design-expert/usage-log.jsonl | sort | uniq -c | sort -rn
 ```
 
-The seventeen stems: `alan-cooper`, `bret-victor`, `charles-and-ray-eames`, `dieter-rams`, `don-norman`, `edward-tufte`, `jakob-nielsen`, `jan-tschichold`, `jonathan-corum`, `jonathan-ive`, `massimo-vignelli`, `muller-brockmann`, `muriel-cooper`, `paul-rand`, `paula-scher`, `susan-kare`, `tobias-frere-jones`.
+The eighteen stems: `alan-cooper`, `bret-victor`, `charles-and-ray-eames`, `dieter-rams`, `don-norman`, `edward-tufte`, `jakob-nielsen`, `jan-tschichold`, `johannes-itten`, `jonathan-corum`, `jonathan-ive`, `massimo-vignelli`, `muller-brockmann`, `muriel-cooper`, `paul-rand`, `paula-scher`, `susan-kare`, `tobias-frere-jones`.
 
 ---
 
 ## Cost
 
-Plan mode under the old procedure cost about twenty-one thousand tokens of designer prose in the working context and thirty tool calls before the layout walk could begin. A council keeps the working-context cost near thirteen thousand tokens (writing the seat prompts, reading the verdict blocks, running the chair and the log) regardless of the seat count. The seats themselves are the expense: the first live test measured roughly ninety thousand tokens per seat when a seat ran as a general-purpose agent, most of it fixed per-agent overhead, in one wave of one to four minutes. The dedicated `council-member` agent carries a single tool and a short body and should cost a fraction of that; measure it, and if a seventeen-seat plan stays expensive, set `council: tagged` in the project record. The room moves the cost out of the working context, finishes in one wave, and produces disagreement, which the old procedure could not.
+Plan mode under the old procedure cost about twenty-one thousand tokens of designer prose in the working context and thirty tool calls before the layout walk could begin. A council keeps the working-context cost near thirteen thousand tokens (writing the seat prompts, reading the verdict blocks, running the chair and the log) regardless of the seat count. The seats themselves are the expense: the first live test measured roughly ninety thousand tokens per seat when a seat ran as a general-purpose agent, most of it fixed per-agent overhead, in one wave of one to four minutes. The dedicated `council-member` agent carries a single tool and a short body and should cost a fraction of that; measure it, and if a eighteen-seat plan stays expensive, set `council: tagged` in the project record. The room moves the cost out of the working context, finishes in one wave, and produces disagreement, which the old procedure could not.

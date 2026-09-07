@@ -5,7 +5,7 @@
 ### Changed
 - One entry point. `/design-expert` triages every request (memory, explicit override, role and handoff and deploy target, design-system discovery, register, size, intent, output target, council tier) and runs the right mode. The four sub-commands `/design-expert:plan`, `:build`, `:review`, `:write` are removed without aliases; `/design-expert plan …` and friends force a mode.
 - Layout follows current Claude Code conventions: `skills/design-expert/SKILL.md` with `modes/` and sibling reference files; `agents/` for the council seat; no `commands/`.
-- The pantheon is a council. Plan convenes all seventeen designers as parallel seats, each reading only its own file, with a chair in the main context turning verdicts into rulings, contested points, and recorded dissent. Redesign-size builds and full reviews convene a tag-seated room; medium work gets capsule consultation; trivial work gets none.
+- The pantheon is a council. Plan convenes all eighteen designers as parallel seats, each reading only its own file, with a chair in the main context turning verdicts into rulings, contested points, and recorded dissent. Redesign-size builds and full reviews convene a tag-seated room; medium work gets capsule consultation; trivial work gets none.
 - Briefs stay briefs: `PRODUCT.md` (at most 1,500 words) and `DESIGN.md` (at most 2,500 words) hold current state; dated decisions append to `DECISIONS.md`. Plan offers *distill* for oversized briefs.
 
 ### Added
@@ -14,7 +14,7 @@
 - `targets.md`: the output-target matrix. Designers with Figma work in Figma for concepts and build; others see concepts on the Claude Design canvas and build in code or briefs; touch-ups and polish never open a surface.
 - `handoff.md`: designer → developer, developer → designer, and product → either handoff formats.
 - `council.md` and `agents/council-member.md`: the tier table, seat prompt, nine-key verdict block, chair rules with domain veto, output table, and the one-call log write.
-- `design-gods/paula-scher.md` and `design-gods/alan-cooper.md`; the pantheon is seventeen everywhere it is counted.
+- `design-gods/paula-scher.md`, `design-gods/alan-cooper.md`, and `design-gods/johannes-itten.md` (with a new `#color` tag); the pantheon is eighteen everywhere it is counted.
 - `anti-slop.md` § Structural and rhetorical tells: numbered section markers, decorative side-stripes, fragment triads, reversal formulas, dash-label headers, with the design-system exemption and grep recipes.
 
 ### Fixed

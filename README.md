@@ -2,7 +2,7 @@
 
 # design-expert
 
-A paragraph-first, evidence-grounded skill for interface design. One command that plans, builds, reviews, iterates, and writes UI with the discipline of NNg heuristics, the Universal Design seven principles, anti-AI-slop patterns, a 32-pattern layout catalog, register-aware style files, voice taxonomies, self-review, and a seventeen-designer pantheon that sits as a council when the work is large enough to deserve one.
+A paragraph-first, evidence-grounded skill for interface design. One command that plans, builds, reviews, iterates, and writes UI with the discipline of NNg heuristics, the Universal Design seven principles, anti-AI-slop patterns, a 32-pattern layout catalog, register-aware style files, voice taxonomies, self-review, and a eighteen-designer pantheon that sits as a council when the work is large enough to deserve one.
 
 > Design is felt, not enforced. The principles in this skill exist not to constrain but to liberate: when the floor is solid, the ceiling lifts.
 
@@ -40,7 +40,7 @@ Every run prints one trace line before it works, so you can see each decision an
 - The design system comes before any judgment. The skill looks in briefs, `system.md`, `CLAUDE.md` token sections, tokens in code, component folders, Figma variables and libraries, and Claude Design projects, and asks how the system is implemented only when it finds nothing. A pattern your system mandates is never filed as slop.
 - The size of the change is read from its scope, not its phrasing. Touch-up, polish, iteration, surface redesign, system redesign. "Make it better" on a button is polish; on a dashboard it is iteration.
 - The output target follows the role. Designers with Figma connected work in Figma for concepts and build. Everyone else sees concepts on the Claude Design canvas and builds in code or briefs. Small changes never open a surface.
-- The pantheon is a council. Plan convenes all seventeen designers as parallel seats, each reading only its own file; a chair turns their verdicts into rulings, contested points you are asked about, and recorded dissent. Redesigns and full reviews convene a room seated by the surface's tags. Medium work gets a capsule consultation. Trivial work gets none.
+- The pantheon is a council. Plan convenes all eighteen designers as parallel seats, each reading only its own file; a chair turns their verdicts into rulings, contested points you are asked about, and recorded dissent. Redesigns and full reviews convene a room seated by the surface's tags. Medium work gets a capsule consultation. Trivial work gets none.
 
 ## Modes
 
@@ -56,7 +56,7 @@ Every run prints one trace line before it works, so you can see each decision an
 
 ### v2.0.0, September 7, 2026
 
-One entry point. `/design-expert` triages every request and picks the mode; the four sub-commands are gone. The pantheon became a council with parallel seats and a chair. The skill now discovers the project's design system before judging, remembers who you are and where the work lands, chooses Figma, canvas, or code by role, and hands off in the receiver's medium. Briefs gained word budgets and a `DECISIONS.md` log. Paula Scher and Alan Cooper joined the pantheon. A ninth anti-slop category names the structural and rhetorical tells: numbered section markers, decorative side-stripes, fragment triads, reversal formulas, dash-label headers. The plugin follows the current `skills/` layout. Full notes in `CHANGELOG.md`.
+One entry point. `/design-expert` triages every request and picks the mode; the four sub-commands are gone. The pantheon became a council with parallel seats and a chair. The skill now discovers the project's design system before judging, remembers who you are and where the work lands, chooses Figma, canvas, or code by role, and hands off in the receiver's medium. Briefs gained word budgets and a `DECISIONS.md` log. Paula Scher, Alan Cooper, and Johannes Itten joined the pantheon. A ninth anti-slop category names the structural and rhetorical tells: numbered section markers, decorative side-stripes, fragment triads, reversal formulas, dash-label headers. The plugin follows the current `skills/` layout. Full notes in `CHANGELOG.md`.
 
 ### v1.2.0, May 3, 2026
 
@@ -82,7 +82,7 @@ design-expert is a standalone evolution of three predecessor skills:
 - `interface-design` by [Damola Akinleye](https://github.com/Dammyjay93): manifesto voice, Intent-First, the swap, squint, signature, and token tests, subtle layering.
 - `impeccable` by [Patrick Bakaus](https://github.com/pbakaus): brand vs. product register, 0–4 heuristic scoring, the shape, teach, and document workflow, ux-writing patterns.
 
-Plus original research on the seventeen-designer pantheon (Rams, Vignelli, Ive, Kare, Rand, Norman, Nielsen, Eames, Victor, Corum, Tufte, Muriel Cooper, Frere-Jones, Tschichold, Müller-Brockmann, Scher, Alan Cooper), eight reference systems (Pentagram, IBM Carbon, Apple HIG, Linear, Stripe, Refactoring UI, the Vignelli Canon, Material Design 3), the layout catalog, the style taxonomy, the marketing voices, and the council protocol.
+Plus original research on the eighteen-designer pantheon (Rams, Vignelli, Ive, Kare, Rand, Norman, Nielsen, Eames, Victor, Corum, Tufte, Muriel Cooper, Frere-Jones, Tschichold, Müller-Brockmann, Scher, Alan Cooper, Itten), eight reference systems (Pentagram, IBM Carbon, Apple HIG, Linear, Stripe, Refactoring UI, the Vignelli Canon, Material Design 3), the layout catalog, the style taxonomy, the marketing voices, and the council protocol.
 
 ## License
 

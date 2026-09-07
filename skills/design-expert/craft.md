@@ -52,7 +52,7 @@ The middle three sizes — polish, iteration, redesign — are where the model a
 | Polish | 1–2 | capsule, 0–1 seats | The relevant `library/<category>/README.md` | Direct change after quick confirm |
 | Iteration | 3–5 | capsule, 3–5 seats for build; 3 for a sub-surface review (see `council.md`) | `library/<category>` + relevant style/voice/grid section | Proposal, user picks, execution |
 | Surface redesign | 4–7 | council at build Gate 8½ | Full layout catalog + relevant style file | Concepts, council, then build |
-| System redesign | Catalogs + cross-domain | council, all seventeen, in plan mode | All relevant indexes | Plan mode, then build mode |
+| System redesign | Catalogs + cross-domain | council, all eighteen, in plan mode | All relevant indexes | Plan mode, then build mode |
 
 A second axis crosses this taxonomy: **what kind of output is wanted.** Pure text feedback (the user wants notes, not a change) is review-shaped. Implementation (the user wants the change made) is build-shaped. Most iteration requests want both — the proposal explains the change AND lands the change. Read both axes — *what size, what output* — and route accordingly. *"Review this card"* + an existing file usually wants iteration-shaped output (3–5 proposed alternatives, then implementation of the pick), not text-only review.
 
@@ -216,6 +216,8 @@ Dark mode is not inverted light mode. You cannot just swap colors. Depth in ligh
 Borders are hairline (1px) and applied to the *full* perimeter, not as side-stripes. The colored 4px-left-border on a status card is one of the most recognizable amateur tells — it announces "notice this" instead of trusting the system to communicate. If you need to mark a card as warning or active, use a full hairline border, a faint background wash (4-8%), a leading icon, or a numbered prefix. A side-stripe is a workaround for a hierarchy that never got designed. Heavy alpha is a similar smell: incomplete palette substituted by transparency hacks.
 
 WCAG AA is the floor for body text (4.5:1) and UI components (3:1). Do not trust your eyes — use a contrast checker. The most common failure is light gray placeholder text on white, which almost universally fails. Gray text on a colored background also fails, and looks washed out and dead besides — use a darker shade of the background color, or transparency, instead. Eight percent of men cannot reliably distinguish red from green; never rely on color alone to convey state. Pair color with an icon, a label, or a position.
+
+The pantheon voice for color is `design-gods/johannes-itten.md`: the twelve-hue circle for constructing a palette by relation rather than by feel, the seven contrasts for naming what a color decision is doing, and simultaneous contrast for why a neutral reads tinted beside a saturated accent.
 
 ## Distillation — what to remove
 
