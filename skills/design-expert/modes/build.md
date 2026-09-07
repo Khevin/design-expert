@@ -1,138 +1,103 @@
----
-description: Build a new interface or component from intent. Loads the design-expert craft, anti-slop, components, typography, interaction, and foundations files (plus styles/editorial.md when the register is editorial, plus layouts.md for the layout-pattern catalog); runs Shape, Register, Layout exploration, Domain, and Test gates before showing output.
----
+# Build mode
 
-# /design-expert:build
+Loaded by `SKILL.md` triage when the mode is build or iterate. Build is for the moment when there is nothing on the screen yet, when the first decision is the heaviest, when every default in the model leans forward to fill the void with the most common dashboard the training set has ever seen. Iterate is for the far more common moment when something is on the screen and the user wants it changed rather than described; it enters this file at the section named for it, sized by triage, and runs the subset of gates the size deserves. The job of this mode is to keep the default from happening at either entry.
 
-This command is the entry point for building a new interface or component from intent — a fresh dashboard, a new flow, a component that did not exist yesterday. It is not for editing existing UI. Editing has its own discipline and lives in `/design-expert:review`. Build is for the moment when there is nothing on the screen yet, when the first decision is the heaviest one, when every default in the model is leaning forward to fill the void with the most common dashboard the training set has ever seen. The job of this command is to keep that from happening.
+Triage has already read memory, discovered the design system, confirmed the register, sized the request, picked the output target, and set the council tier. The gates below assume those facts and cite them; where a gate used to ask, it now states.
 
-## When to use this command
+## When triage picks this mode
 
-Reach for build when the work is net-new. A new screen, a new flow, a new component, or a redesign that throws the existing artifact away rather than tuning it. Build is generative. If the surface already exists and the user is asking for fixes, sharpening, or critique, that is review — `/design-expert:review` is the right command and it skips most of the early gates because the structure is already on the page. If the project has no `PRODUCT.md` yet — no agreed-on user, no agreed-on register, no agreed-on signature — that is a planning problem, not a building one, and `/design-expert:plan` runs first. Build assumes the project is set up and the brief is fresh.
+Build runs for net-new work: a new screen, a new flow, a component that did not exist yesterday, or a redesign that replaces the existing artifact rather than tuning it. Iterate runs for every change request on existing work: "make it better", "what would you change", "fix this", "I don't like this". Notes without change is review mode. A project with no `PRODUCT.md` at redesign size, or any request at system size, is plan mode first; this mode routes back when it finds itself there.
 
-## The build workflow — gate-driven
+## The build workflow, gate-driven
 
-The workflow runs as eleven gates in order. Each gate is a stop point. You cannot proceed past a gate without passing it, and you do not get to argue with the gate — the gate is the discipline. Skip Intent-First and you ship a generic dashboard. Skip Register and you ship marketing-hero typography on a settings screen. Skip Layout exploration and you ship the same centered hero / sidebar-and-canvas / bento default the model reaches for by reflex. Skip the swap, squint, signature, or token tests and you ship slop dressed as competence. The gates feel slow on the first run and stop feeling slow once the user sees what the build looks like with all of them passed.
+Eleven gates in order, plus the council at 8½. Each gate is a stop point. You do not argue with the gate; the gate is the discipline. Skip Intent-First and you ship a generic dashboard. Skip Layout exploration and you ship the centered hero or the sidebar-and-canvas the model reaches for by reflex. Skip the four craft tests and you ship slop dressed as competence.
 
 ### Gate 1: Shape
 
-Confirm a `PRODUCT.md` exists for this project and that a user-approved task brief exists for this build. If either is missing, stop and route to `/design-expert:plan` first. Building without a brief is building from defaults — the brief is the constraint that lets craft happen, and skipping it means the model fills the gap with the average of every dashboard it has ever seen. Read `PRODUCT.md` if it is present so the project's user, register, and signature decisions are loaded into context. If the user already supplied a confirmed brief in the conversation, that is sufficient; restate it back in one sentence so you and the user agree on the same artifact before any pixel decision happens.
+The size arrives from triage: touch-up, polish, iteration, surface redesign, or system redesign, per `craft.md` § Iteration as a category. It sets which gates run and how deep. Touch-up skips Gates 3 through 8 and executes. Polish runs Gate 5 quickly, proposes one or two alternatives at Gate 8, and executes. Iteration runs Gates 5 through 11 at trimmed depth with three to five alternatives, and runs Gate 3 only when the layout is on the table. Surface redesign runs every gate in full, convenes the council at Gate 8½, and shows concepts before building. System redesign requires plan mode first; route back if no plan exists.
 
-**Size the request.** Read the brief against the sizing taxonomy in `craft.md` § Iteration as a category. Five sizes: touch-up (single property change), polish (one component refined), iteration (component or section reconsidered, identity may shift), surface redesign (full screen rebuilt), system redesign (multiple surfaces / design system / brand). The size sets the exploration depth for the rest of the gates:
-
-- **Touch-up** — skip Gates 3–8 entirely. No layout exploration, no domain exploration, no proposal phase. Execute directly.
-- **Polish** — abbreviated Gates 5 and 8. Intent-First confirmed quickly; propose 1–2 alternatives at most; execute after a brief confirm.
-- **Iteration** — full Gates 5–8 at appropriate scope. Three to five alternatives surfaced at Gate 8; user (or model at ≥80% confidence) picks; execute. The middle path runs all gates but trims their depth.
-- **Surface redesign** — every gate in full. Layout exploration runs the catalog walk (Gate 3 + `layouts.md`); design-gods at the medium-work threshold (two minimum, three preferred).
-- **System redesign** — requires `/design-expert:plan` first; this command should not run on a system-scale brief without a plan. Route back if no plan exists.
-
-**Recognize iteration intent in non-iteration words.** Users rarely say *"iterate"* — they say *"review this," "critique this," "make it better," "make it prettier," "I don't like this," "what would you change."* Recognize the intent: a request that asks for changes (not just notes) is build-shaped, not review-shaped, regardless of the word the user used. *"Review this card"* with an attached file usually wants iteration-shaped output (3–5 proposals, then implementation of the pick), not text-only feedback. Read intent + size; route accordingly.
+`PRODUCT.md` and `DESIGN.md` are required at redesign sizes and read when present at any size. Below redesign, the discovered design system and a one-sentence restatement of the brief are sufficient; do not send a polish request to plan mode. Restate the brief in one sentence so you and the user agree on the artifact before any pixel decision.
 
 ### Gate 2: Register
 
-Decide whether this surface is **brand**, **product**, or **editorial**. Three registers, not two — the same craft rules apply differently across each, and getting this wrong poisons every later decision.
-
-**Brand** surfaces are distinctive and memorable — fluid type, expressive color, ambitious motion, signature hero moments, asymmetric composition, single-purpose folds. **Product** surfaces are familiar and forgettable — fixed rem type scale, restrained color, motion that carries state and nothing more, repeatable patterns, predictable grids that the user learns and trusts over an eight-hour session. **Editorial** surfaces are read for ten or twenty minutes — rail-and-body grid (3/9 or 4/8 split), three type roles (display sans + body serif + label sans), monochrome chrome with color confined to artwork, hairlines and heavy chapter bars, asymmetric image rhythm with generous breathing room.
-
-**Confidence check before asking.** If `PRODUCT.md` carries a `register:` field (set by `/design-expert:plan` Gate 0 or by prior agreement), read it and proceed; do not re-ask. If the user has supplied a brief in the conversation, derive register from explicit cues: "case study," "long-form essay," "magazine," "museum site," "design-agency project page" → editorial; "marketing landing," "campaign," "launch page," "about page" → brand; "dashboard," "admin panel," "settings," "data table," "tool" → product. If the cues give ≥80% confidence, state the inference in chat ("Inferred register: editorial — proceeding") and proceed. If confidence is below 80%, **call `AskUserQuestion`** with the three register options and inline definitions, and wait for the answer. Do not guess. The cost of asking is a single user-prompt; the cost of guessing wrong is a full rebuild.
-
-**Load order branches by register.** For editorial register, load `styles/editorial.md` *before* `craft.md`, `grids.md`, `typography.md`, and `components.md` — the rules in `styles/editorial.md` override conflicting product-defaults in those files. The editorial branch loads three-role typography per `typography.md` (with the extreme-scale loosening rules from § Type for case studies and long-form), the rail-and-body grid per `grids.md` (3/9 or 4/8 split, 60–75ch body cap, 200–280px rail), and the six editorial moves per `styles/editorial.md`. For brand and product register, load order remains as in Gate 4 below; `styles/editorial.md` is not loaded.
+Resolved in triage. State it ("register: product, per `leads-semanais.PRODUCT.md`") and load by register. For editorial, load `styles/editorial.md` before `craft.md`, `grids.md`, `typography.md`, and `components.md`, because its rules override conflicting product defaults: three-role typography, the rail-and-body grid with a 60–75ch body and a 200–280px rail, the six editorial moves. For brand, load `styles/expressive.md` when the brief asks for expression. For product, the foundationals govern alone. Re-ask only if the brief contradicts the stored register, and then through `AskUserQuestion` with the three options.
 
 ### Gate 3: Layout exploration
 
-Right after register and before any pixel decision, walk the layout pattern catalog in `layouts.md`. Filter to the register confirmed at Gate 2 (brand → landing-page table; product → dashboard or interface table; editorial → editorial table). Read all eight patterns in the relevant table. Pick three to five candidates that genuinely fit the brief — not the first three you read, but the ones whose when-to-use clauses match the project's verb.
+Skipped at touch-up and polish; at iteration, run only when the change shifts the layout. Otherwise, before any pixel decision, walk `layouts.md` filtered to the register. Read all eight patterns in the relevant table. Pick three to five candidates whose when-to-use clauses match the brief's verb, not the first three you read. Present each with the pattern name as cited, a one-line when-to-use filtered to this brief, a one-line trade-off, and an exemplar matching the project's voice. Three is the floor; five is the bar. Below three you have not enumerated; you have defaulted. If `PRODUCT.md` carries a `layout:` field from plan mode, that is the constraint, and the walk is skipped unless the user opens the layout on the table.
 
-Present the candidates to the user with:
-
-- **Pattern name** (cited from `layouts.md`)
-- **One-line "when to use"** filtered to this brief's verb (not the generic clause)
-- **One-line trade-off** (what this pattern costs, what it gains)
-- **Exemplar matching the project's voice** (preferred) or the canonical exemplar from the table
-
-Three candidates is the floor; five is the bar. Below three you have not enumerated; you have defaulted. State a single-pattern inference only if confidence is genuinely above 80% — rare on a first build, more common on a tight brief. Otherwise call `AskUserQuestion` with the candidates and wait for the pick.
-
-**Redesigns count as early.** When the brief is "redesign this surface," do not preserve the existing layout by default. Walk the catalog cold, as if the project were brand new. The most common redesign failure mode is treating the original layout as the constraint when the original layout is precisely what the redesign needs to escape. Open the layout exploration with that explicit framing — *"the existing surface uses pattern X; the redesign opens that on the table. Here are three to five alternatives to consider, including X as a candidate if the user wants to keep it consciously."* Let the user veto the layout-on-the-table framing if they have a reason; otherwise proceed.
-
-The layout pick at Gate 3 cascades into every grid, type, density, color, and motion choice that follows. Get this right; everything later is filling in the chosen frame. Get it wrong and every later gate pays a tax — the wrong layout cannot be polished into the right design.
+Redesigns count as early. Do not preserve the existing layout by default; walk the catalog cold and present the existing pattern as one candidate the user may keep consciously. The layout pick cascades into every grid, type, density, color, and motion choice that follows; the wrong layout cannot be polished into the right design.
 
 ### Gate 4: Load references
 
-Load the relevant files in this order so the constraints are warm before the first decision:
+Load in this order so the constraints are warm before the first decision:
 
-- `SKILL.md` — the manifesto and the index over the rest
-- `foundations.md` — NNg heuristics, the Universal Design 7 principles, the 10-Lens audit
-- `craft.md` — composition, layering, density, the four tests
-- `anti-slop.md` — the named defaults you will not ship
-- `typography.md` — the type system and the brand-vs-product type rules
-- `grids.md` — Swiss school, asymmetric grids, types of grids, register-conditional grid mechanics
-- `layouts.md` — already loaded at Gate 3 for the layout-pattern catalog; keep it in working memory
-- `components.md` — the atomic patterns: cells, icons, charts
-- `interaction.md` — states, motion, responsive behavior, onboarding
-- The relevant `library/<category>/README.md` for the surface being built — dashboards, navbars, tables, forms, empty states, cards
-- The relevant `styles/<style>.md` for the register confirmed at Gate 2 — `styles/editorial.md` when the register is editorial; loaded *before* the foundationals so its rules override conflicting product-defaults
-- A relevant `references/<exemplar>.md` if a specific exemplar applies — Pentagram for brand, Linear for product, Carbon for enterprise dense data
-- Optionally `design-gods/<designer>.md` if a specific principle source informs the work — Vignelli for type, Tufte for charts, Rams for restraint
+- The discovered design system first, per the pointer from triage: its tokens, its depth strategy, its component primitives, its mandated patterns. Everything below is read through it.
+- `SKILL.md`, then `foundations.md`, `craft.md`, `anti-slop.md`, `typography.md`, `grids.md`, `layouts.md` (already loaded at Gate 3), `components.md`, `interaction.md`.
+- The relevant `library/<category>/README.md` for the surface: dashboards, navbars, tables, forms, empty states, cards.
+- The register's style file, loaded before the foundationals when the register has one.
+- A relevant `references/<exemplar>.md` when a specific exemplar applies: Pentagram for brand, Linear for product, Carbon for enterprise dense data.
+- The designer files the council or the capsule consultation names.
 
-You are not memorizing all of these. You are pulling the constraints into working memory so they apply by reflex when the build starts. The four tests cannot catch defaults you never knew were defaults.
+You are not memorizing these. You are pulling constraints into working memory so they apply by reflex. The four tests cannot catch defaults you never knew were defaults.
 
 ### Gate 5: Intent-First (WHO / WHAT / HOW)
 
-You must answer all three questions before any visual decision. Not approximately — specifically. **WHO is this human?** Not "users." The actual person. A teacher at 7am with cold coffee is not a developer debugging at midnight is not a founder between investor meetings. Their world shapes the interface. **WHAT must they accomplish?** The verb. Grade these submissions. Find the broken deployment. Approve the payment. The verb determines what leads, what follows, what hides. **HOW should this feel?** Concrete adjectives only. Warm like a notebook. Cold like a terminal. Dense like a trading floor. Calm like a reading app. Quiet like a museum caption. Not "clean and modern" — that is the universal AI default and it means nothing.
-
-If you cannot answer with specifics, stop and ask the user. Do not guess. Saying "warm" and then shipping cool blue tokens is intent-as-decoration, not intent-as-constraint. Check your answers against your downstream decisions at every later gate. The intent is a constraint on every token, every spacing value, every weight. If a single later choice contradicts the stated intent, the intent has not actually been applied — it has been quoted.
+Answer all three before any visual decision, specifically. **WHO is this human?** Not "users": the actual person, in their world. **WHAT must they accomplish?** The verb. Grade these submissions. Find the broken deployment. Approve the payment. **HOW should this feel?** Concrete adjectives only. Warm like a notebook. Cold like a terminal. Dense like a trading floor. Not "clean and modern"; that is the universal default and it means nothing. If you cannot answer with specifics, ask, with the orange marker. Check every later decision against these answers; a stated intent that a downstream token contradicts has been quoted, not applied.
 
 ### Gate 6: Domain exploration
 
-Three required outputs before any direction is proposed. **Signature elements** — at least one element that could only exist for this product, this user, this verb. Not the overall vibe — an actual component or motif you can name. The shape of the assignment-status pill on the grading screen. The temperature of the empty inbox illustration. The chip pattern for assignee filters. **Color world** — five or more colors that exist naturally in this product's domain. Not "warm" or "cool" but the actual material colors of the world this product serves. A bakery tool's palette has flour and crust in it. A hospital tool's does not. **Defaults to reject** — three obvious choices for this surface type that you will not make, named explicitly, with what replaces each.
-
-You cannot avoid patterns you have not named. Without an explicit list of rejected defaults, the design will drift to the obvious answer the moment your attention is elsewhere. Writing the rejections down is what turns avoidance from a wish into a rule.
+Three outputs before any direction is proposed. **Signature elements**: at least one element that could only exist for this product, this user, this verb; an actual component or motif you can name, and one that does not collide with a primitive the design system already defines. **Color world**: five or more colors that exist in this product's domain; when a design system exists, these are its tokens first, and any new color is proposed in the system's naming dialect and marked new. **Defaults to reject**: three obvious choices for this surface type you will not make, each with its replacement. You cannot avoid patterns you have not named.
 
 ### Gate 7: Mock-fidelity inventory
 
-Before code, list every section, motif, hero, nav item, CTA, and image need on the screen, with the implementation method per item. Semantic HTML/CSS/SVG, generated asset, sourced project asset, icon from the chosen library, an explicitly accepted omission. **For every image, name its aspect ratio explicitly** — vertical (3:4, 2:3, 9:16), square (1:1), horizontal (4:3, 16:9, 21:9). Image shape is a layout parameter; surfaces that pretend all images are square produce wireframes that don't match the real assets. The inventory must be honest about the image library before pixels start. See `layouts.md` § Image-shape as a layout parameter for the rhythm strategy that follows from a mixed inventory.
-
-This forces you to plan the build instead of improvising it section by section, which is the fastest path to a screen that loses its hero by the time you reach the footer. The inventory is short. It does not need to be elegant. It needs to exist.
+Before building, list every section, motif, hero, nav item, CTA, and image need on the screen, with the implementation method per item: semantic HTML/CSS/SVG, a library component, a generated asset, a sourced project asset, an icon from the chosen library, or an explicitly accepted omission. Name every image's aspect ratio. Image shape is a layout parameter; a surface that pretends every image is square produces wireframes that fight the real assets. See `layouts.md` § Image-shape as a layout parameter.
 
 ### Gate 8: Propose
 
-If multiple valid directions exist for this brief, surface them with confidence percentages following the format in `output-format.md`. Two to four options, each with a one-line description, a stated trade-off, and a confidence number. Force the user to pick. Do not pick silently and call it preference — silent picks are how the model's bias becomes the project's direction without anyone noticing. If only one direction is genuinely defensible from the brief, say so and explain why; do not invent fake alternates to satisfy the format.
+If multiple valid directions exist, surface them with confidence percentages in the `output-format.md` format: two to four options, each with a one-line description, a trade-off, and a confidence number, then make the user pick. Do not pick silently. If only one direction is genuinely defensible, say so and why; do not invent alternates to satisfy the format.
+
+Where the alternatives are shown follows `targets.md`. At redesign size, or when an iteration shifts the layout or the user asks to see alternatives, render them on the concept surface: Figma frames through `use_figma` for a designer with the MCP, the Claude Design canvas through the `design` skill for everyone else, one artboard per alternative labeled with its name. At polish and at iterations that keep the layout, the alternatives are inline prose, then the pick. At capsule tier the consultation happens here: seat by tag from `design-gods.md` and write one sentence per seat naming the principle and the decision it shapes.
+
+### Gate 8½: Council
+
+Surface redesign and system redesign only, per `council.md`. Assemble the brief: mode build, size, register, the surface, two to four surface tags, the scene sentence, the artifact (the Gate 8 alternatives as a screenshot or summary, never a directory), and the decisions: the Gate 8 directions, the layout pick, the signature element, the defaults to reject. Seat the three permanent seats plus every designer whose tags intersect the surface tags, seven at minimum, in one message. Run the chair, print the table, ask about Contested decisions in one `AskUserQuestion` call, write the log in one call. Rulings are adopted before Gate 9 begins.
 
 ### Gate 9: Build
 
-Build the interface. As you build, hold the four craft tests open as a live checklist instead of a final review:
+Build on the target triage chose. On the **code path**, write semantic HTML, CSS, and the repository's framework, with every color, space, radius, and type value drawn from the design system's tokens; a raw value where a token exists is a defect. On the **Figma path**, invoke `figma:figma-use` first, read the library's variables with `get_variable_defs` before creating any frame, find components with `search_design_system`, and bind every fill and gap to a variable; when the surface is a web page, render it locally, capture it with `generate_figma_design` after `figma:figma-generate-design`, and refine the capture with the library's components, deleting the capture once the built frames match it.
 
-- **Swap test:** would swapping the typeface for your usual default change the product's identity? If no, the type was a default.
-- **Squint test:** when the screen is blurred, can you still see the hierarchy? If no, hierarchy is incidental.
-- **Signature test:** can you point to five elements that only exist on this product? If no, the design is interchangeable.
-- **Token test:** do the variable names sound like this product's world, or like any product? Generic names are the receipt that intent never made it to the implementation layer.
+Hold the four craft tests open as a live checklist. **Swap test**: would swapping the typeface for your usual default change the identity? **Squint test**: blurred, does the hierarchy survive? **Signature test**: can you point to five elements that only exist on this product? **Token test**: do the variable names sound like this product's world? Plus the two-second test: would a stranger say "AI made that"? If any test fails, iterate before showing the user. The user is not the proofreader.
 
-Plus the impeccable test: would a viewer say "AI made that"? If yes — even a maybe — the work is not done. If any test fails, iterate before showing the user. The user is not the proofreader.
+### Gate 10: Iteration on the rendered result
 
-### Gate 10: Browser iteration
+Open the result. Inspect screenshots, not just the DOM: the browser for code, `get_screenshot` for Figma. Walk mobile narrow, tablet, and desktop wide at minimum. Look for overlap, clipping, weak hierarchy, off-grid alignment, awkward whitespace, cramped controls, unreadable type, hover-only functionality, layout shift, text overflow. Patch, re-inspect, repeat until no material defect appears at any viewport. The exit bar is "the rendered result looks intentional at every checked viewport, every state is handled, no placeholder remains".
 
-Open the result. Inspect screenshots, not just DOM. Walk it through mobile narrow, tablet or small laptop, and desktop wide at minimum. Look for overlap, clipping, weak hierarchy, off-grid alignment, awkward whitespace, cramped controls, unreadable type, hover-only functionality, layout shift, text overflow. Patch defects. Re-inspect. Repeat until no material defect appears at any breakpoint. Most AI-generated UI ships looking acceptable on the desktop the agent rendered against and breaks at every other size, because the inspection step was skipped or done once instead of looped. The exit bar is not "it works" — it is "the rendered result looks intentional at every checked viewport, every state is handled, no placeholder remains."
+Re-check the image inventory against the Gate 7 contract. If it has shifted materially (images added or removed, dominant ratios changed, count shifted by thirty percent or more), return to Gate 3 and re-run the catalog filter; ask whether the chosen layout still fits. Layout is held loosely until no material image changes are pending. See `layouts.md` § Layout is iterative.
 
-**Layout-image fit re-check.** Compare current image inventory against the Gate 7 contract. If the inventory has materially shifted — new images added, key images removed, dominant aspect ratios changed, image count shifted by ≥30% — return to Gate 3 (Layout exploration) and re-run the catalog filter against the new inventory. Ask via `AskUserQuestion`: does the chosen layout still fit, or has a different pattern become stronger? If stronger, propose the change before continuing iteration. Layout is held loosely until "no material image changes pending"; don't refuse a layout change at this stage simply because Gate 3 has already picked. See `layouts.md` § Layout is iterative for the material-vs-non-material shift criteria.
+### Gate 11: Present, self-review, save, hand off
 
-### Gate 11: Present and offer to save
+Run `self-review.md` at iteration size and above and present its Cuts, Holds, and Risks with the work. Present the rationale grounded in the gates passed: the brief, the register, the defaults rejected, the signature elements that landed, the tests the build now passes. Walk the user through the key states and name any limitation honestly. Offer to save the patterns the build introduced to the project's `system.md` (or the discovered system file); saved patterns compound. At redesign sizes, append a `DECISIONS.md` entry. When memory says the work is handed to someone else, produce the handoff artifact from `handoff.md` for that direction.
 
-Present the work with a short rationale grounded in the gates that were passed — the brief, the register, the named defaults rejected, the signature elements that landed, the tests the build now passes. Walk the user through the key states. Note honestly any limitation or follow-up risk. Then offer to save the patterns the build introduced to the project's `system.md`. Saved patterns compound — each pattern saved makes the next build faster, more consistent, and more recognizably this product's work.
+## Iterate entry
 
-## Hard rules — non-negotiable across the workflow
+Iterate is a build at a size, not a separate workflow. Triage sets the size; this section names the gates.
 
-- No emojis as UI under any circumstance.
-- One icon library; no mixed icon families.
-- IBM Carbon defaults for any enterprise or dense-data product UI.
-- No pie charts, no donut charts.
-- `prefers-reduced-motion` is mandatory.
-- 44 by 44 pixel minimum touch targets on any interactive element.
-- Native `<dialog>` plus `inert` for modals — never a div masquerading as a dialog.
-- Layout exploration at Gate 3 — at least three candidates surfaced from `layouts.md` before any pixel decision. Redesigns count as early-in-project; the existing layout opens to the table by default.
+- **Touch-up** (one property): Gate 9, then Gate 11 without self-review. No alternatives, no consultation, no concept surface. Execute directly; proposing alternatives for a touch-up signals you did not read the request.
+- **Polish** (one component): Gate 5 quickly, Gate 8 with one or two alternatives inline, Gates 9 through 11. Capsule consultation of at most one seat. No concept surface.
+- **Iteration** (a section reconsidered): Gates 5 through 11 at trimmed depth; Gate 3 only when the layout shifts; three to five alternatives at Gate 8, inline unless the layout is on the table or the user asks to see them; capsule consultation of three to five seats; self-review at Gate 11.
+- **Surface redesign** and **system redesign** are builds, not iterations, and run the full gate sequence above.
 
-## What this command produces
+Users rarely say "iterate". They say "review this" with a file attached, "make it better", "what would you change", "I don't like this". A request that asks for change is iterate-shaped regardless of the word; triage has already read it that way when it routed here.
 
-The output is a built interface or component, plus a short rationale tied to the gates passed and the tests cleared, plus optional `system.md` updates that capture the patterns the build introduced so the next build inherits them. The build is presentable to a senior designer without apology. If it is not, a gate was skipped — go back and find which one.
+## Hard rules across the workflow
+
+No emojis as UI. One icon library. IBM Carbon defaults for enterprise and dense-data product UI. No pie or donut charts. `prefers-reduced-motion` mandatory. 44 by 44 pixel touch targets. Native `<dialog>` plus `inert` for modals. Tokens from the discovered system; a raw value beside an existing token is a defect. Layout exploration at redesign size with at least three candidates, the existing layout opened to the table. Figma writes preceded by their prerequisite skill. Council at Gate 8½ for redesign sizes; capsule below; none at touch-up.
+
+## What this mode produces
+
+A built interface or component on the target triage chose, a short rationale tied to the gates passed and the tests cleared, the self-review report at iteration size and above, optional saves to the project's system file, a `DECISIONS.md` entry at redesign sizes, and the handoff artifact when someone else receives the work. The build is presentable to a senior designer without apology. If it is not, a gate was skipped; go back and find which one.
 
 ## Closing
 
-The gates are not bureaucracy. They are the discipline that separates signature from template, this product from any product, craft from retrieval. Skip them and you ship the same design every other AI would ship from the same prompt — competent, average, indistinguishable, forgotten. Run them and you ship work that could only have come from this brief, for this user, doing this verb, in this world. That is the bar. That is the only output worth shipping.
+The gates are not bureaucracy. They are the discipline that separates signature from template, this product from any product, craft from retrieval. Skip them and you ship the same design every other model would ship from the same prompt. Run them and you ship work that could only have come from this brief, for this user, doing this verb, in this world, inside the system this project already has.

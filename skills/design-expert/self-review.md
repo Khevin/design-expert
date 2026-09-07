@@ -101,13 +101,13 @@ For pure code refactor work without visual output, only step 1 (anti-slop scan, 
 
 ## How self-review fits into the sub-skills
 
-`commands/build.md` Gate 11 (Present and offer to save) — runs self-review before presenting the work, surfaces the cuts/holds/risks alongside the build output. The build is not "done" until self-review has happened.
+`modes/build.md` Gate 11 (Present and offer to save) — runs self-review before presenting the work, surfaces the cuts/holds/risks alongside the build output. The build is not "done" until self-review has happened.
 
-`commands/review.md` final step — adds self-review even when the user-facing output is review-only. The reviewer reviews their own review for anti-defaultism, register confusion, voice mismatch, and honest cut-candidates before delivering it to the user.
+`modes/review.md` final step — adds self-review even when the user-facing output is review-only. The reviewer reviews their own review for anti-defaultism, register confusion, voice mismatch, and honest cut-candidates before delivering it to the user.
 
-`commands/plan.md` Gate 9 (HARD stop after brief confirmation) — self-review applies a lighter form: scan PRODUCT.md and DESIGN.md for honest cuts before declaring the brief done. Pillars over three? Restrictions wishy-washy? Persona constraints contradictory? Catch these before they become downstream constraints in the build.
+`modes/plan.md` Gate 9 (HARD stop after brief confirmation) — self-review applies a lighter form: scan PRODUCT.md and DESIGN.md for honest cuts before declaring the brief done. Pillars over three? Restrictions wishy-washy? Persona constraints contradictory? Catch these before they become downstream constraints in the build.
 
-`commands/write.md` Step 10 (Final sweep against anti-slop) — already overlaps with self-review step 1; the rest of the self-review walk applies when the writing is long-form (case study, blog post, manifesto) rather than micro-copy.
+`modes/write.md` Step 10 (Final sweep against anti-slop) — already overlaps with self-review step 1; the rest of the self-review walk applies when the writing is long-form (case study, blog post, manifesto) rather than micro-copy.
 
 ---
 

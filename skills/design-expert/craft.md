@@ -38,21 +38,21 @@ The five sizes:
 
 **Iteration.** The middle ground. The component, section, or layout is reconsidered: layout shifts, hierarchy reordered, copy tightened, a different component pattern adopted, the thing's identity is allowed to shift. A card might become a row; a modal might become a popover; a sidebar might collapse into a top nav. *Examples:* *"review this card," "make this section better," "rethink the dashboard layout," "what would you change here," "this isn't working."* Three to five alternatives surfaced before picking; the user (or the model with confidence ≥ 80%) picks; execution follows. This is where most everyday design work lives, and it's the category most often misnamed by users who say *"review"* when they mean *"iterate."*
 
-**Surface redesign.** A full screen or surface rebuilt. Multiple components affected. Layout pattern can change. Same content, different shape. *Examples:* *"redesign this case study," "rebuild the settings page," "the homepage needs a fresh start."* Four to seven alternatives surfaced; the layout-exploration gate runs in full (`commands/build.md` Gate 3 + `layouts.md`); design-gods consulted at the medium-work threshold (two minimum, three preferred); proposal phase before build.
+**Surface redesign.** A full screen or surface rebuilt. Multiple components affected. Layout pattern can change. Same content, different shape. *Examples:* *"redesign this case study," "rebuild the settings page," "the homepage needs a fresh start."* Four to seven alternatives surfaced; the layout-exploration gate runs in full (`modes/build.md` Gate 3 + `layouts.md`); the council convened at build Gate 8½ (see `council.md`); proposal phase before build.
 
-**System redesign.** Multiple surfaces, the design system itself, brand voice, the whole thing. Rare. *Examples:* *"rebuild our design system," "rethink the brand," "we're starting over."* Full `/design-expert:plan` and `/design-expert:build` cycle. Catalogs run (library, layouts, styles, voices); reference systems consulted; design-gods convened at the large-work threshold (three minimum); long horizon.
+**System redesign.** Multiple surfaces, the design system itself, brand voice, the whole thing. Rare. *Examples:* *"rebuild our design system," "rethink the brand," "we're starting over."* a plan-mode then build-mode cycle. Catalogs run (library, layouts, styles, voices); reference systems consulted; the full council convened in plan mode (see `council.md`); long horizon.
 
 The discipline at request time is to read the user's words against this taxonomy. *"Make it better"* on a button is polish. *"Make it better"* on a dashboard is iteration. *"Make it better"* on a portfolio is redesign. The phrase is the same; the size is set by the **scope**, not by the words. Read the scope first; then size; then explore.
 
 The middle three sizes — polish, iteration, redesign — are where the model and the user most often misalign. Touch-up and system-redesign tend to be obvious. The middle is where reading carefully matters. When the size is genuinely ambiguous, ask: *"is this a polish (the existing thing stays, you want it sharpened), an iteration (the existing thing is on the table, you want it reconsidered), or a redesign (the existing thing is replaced, you want it rebuilt)?"* The answer sets exploration depth for the rest of the work.
 
-| Size | Alternatives to propose | Design-gods to consult | Reference loading | Output format |
+| Size | Alternatives to propose | Council tier | Reference loading | Output format |
 |---|---|---|---|---|
-| Touch-up | 0 | 0 | None | Direct change |
-| Polish | 1–2 | 0–1 | The relevant `library/<category>/README.md` | Direct change after quick confirm |
-| Iteration | 3–5 | 1–3 | `library/<category>` + relevant style/voice/grid section | Proposal → user picks → execution |
-| Surface redesign | 4–7 | 2–3 (medium-work threshold) | Full layout catalog + relevant style file | Full plan + build |
-| System redesign | Catalogs + cross-domain | 3+ (large-work threshold) | All relevant indexes | Full `/plan` + `/build` |
+| Touch-up | 0 | none | None | Direct change |
+| Polish | 1–2 | capsule, 0–1 seats | The relevant `library/<category>/README.md` | Direct change after quick confirm |
+| Iteration | 3–5 | capsule, 3–5 seats | `library/<category>` + relevant style/voice/grid section | Proposal, user picks, execution |
+| Surface redesign | 4–7 | council at build Gate 8½ | Full layout catalog + relevant style file | Concepts, council, then build |
+| System redesign | Catalogs + cross-domain | council, all seventeen, in plan mode | All relevant indexes | Plan mode, then build mode |
 
 A second axis crosses this taxonomy: **what kind of output is wanted.** Pure text feedback (the user wants notes, not a change) is review-shaped. Implementation (the user wants the change made) is build-shaped. Most iteration requests want both — the proposal explains the change AND lands the change. Read both axes — *what size, what output* — and route accordingly. *"Review this card"* + an existing file usually wants iteration-shaped output (3–5 proposed alternatives, then implementation of the pick), not text-only review.
 

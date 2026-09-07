@@ -16,7 +16,7 @@ UX copy is rarely allowed to be witty. Wit belongs to marketing copy and editori
 
 ## Patterns
 
-The full pattern catalog with formulas and examples lives in `commands/write.md` as a numbered Steps workflow. Each Step describes a UX-copy pattern:
+The full pattern catalog with formulas and examples lives in `modes/write.md` as a numbered Steps workflow. Each Step describes a UX-copy pattern:
 
 - **Button labels — verb plus object.** *"Save changes"* beats *"Save."* Never *"OK / Cancel / Submit / Continue."*
 - **Error messages — WHAT / WHY / HOW.** What happened, why in user terms, how to recover. Three pieces, all required.
@@ -25,7 +25,7 @@ The full pattern catalog with formulas and examples lives in `commands/write.md`
 - **Confirmations — only for irreversible actions.** Confirm destructive actions; trust the click everywhere else.
 - **Length discipline.** Buttons under 20 chars. Headings under 60. Body under 280. The cap is calibrated to scanning attention, not absolute readability.
 
-Load `commands/write.md` for the full Step-by-Step UX copy workflow with examples.
+Load `modes/write.md` for the full Step-by-Step UX copy workflow with examples.
 
 ---
 
@@ -67,7 +67,7 @@ See `anti-slop.md` § Content tells for the full catalog of UX-copy slop pattern
 
 ## See also
 
-- `commands/write.md` — the Step-by-Step UX copy workflow with full formulas and examples
+- `modes/write.md` — the Step-by-Step UX copy workflow with full formulas and examples
 - `anti-slop.md` § Content tells — the catalog of AI-generated UX-copy defaults to refuse
 - `voices/long-form.md` — when the writing is editorial / case-study rather than micro-copy
 - `voices/marketing/` — when the writing is advertising or brand voice (a landing page with a hero + CTAs uses marketing voice for the hero and UX-copy voice for the CTAs)

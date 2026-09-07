@@ -168,7 +168,7 @@ When the writing is for a portfolio case study, a long-form blog post, a magazin
 
 ## See also
 
-- `commands/write.md` § Case-study writing — the Work&Co tone (the canonical voice rules with longer examples)
+- `modes/write.md` § Case-study writing — the Work&Co tone (the canonical voice rules with longer examples)
 - `styles/editorial.md` — the editorial register's structural discipline (rail-and-body grid, three type roles, cinematic break, etc.); voice rules cross-reference here
 - `voices/ux-copy.md` — when the writing is interface micro-copy rather than long-form prose
 - `voices/marketing/` — when the writing is advertising or brand voice

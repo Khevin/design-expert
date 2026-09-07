@@ -1,6 +1,6 @@
 # Design Gods
 
-A pantheon for the design-expert skill. Thirteen historically influential designers whose principles still cut on a screen built in 2026. Each entry is a capsule. Tap the path when a current decision touches their territory.
+A pantheon for the design-expert skill. Seventeen historically influential designers whose principles still cut on a screen built in 2026. Each entry is a capsule. Tap the path when a current decision touches their territory.
 
 ---
 
@@ -10,7 +10,7 @@ Patterns rotate every eighteen months. Glassmorphism, neumorphism, bento grids, 
 
 The difference between an *influential* designer and a *famous* one is whether their decisions still produce work after they stop making it. A famous designer made a thing you remember. An influential designer made a discipline other designers practice without naming. Most of the people in this pantheon are influential rather than famous — Muriel Cooper is in here, Frank Gehry is not. The criterion is whether their work bequeathed a usable principle to the people designing the dashboard you opened this morning, not whether the public could pick them out of a lineup. The bar is contribution to the practice, not name recognition.
 
-This file is the answer to a single question: which voices are worth keeping in the room when you are making a design decision today? Thirteen is enough to hold the field. Fewer becomes a cult, more becomes a survey course. Each entry below earned its place by giving us a principle that survives the medium.
+This file is the answer to a single question: which voices are worth keeping in the room when you are making a design decision today? Seventeen is enough to hold the field. Fewer becomes a cult, more becomes a survey course. Each entry below earned its place by giving us a principle that survives the medium.
 
 ## How to read this index
 
@@ -154,14 +154,28 @@ File: design-gods/muller-brockmann.md
 Tags: `#grid` `#typography` `#editorial` `#manifesto`
 File: design-gods/jan-tschichold.md
 
+### 16. Paula Scher
+
+**paula-scher** — Pentagram partner. Made typography the image: Public Theater posters, Citi's arc, type painted across buildings. Read her when a brand surface needs a voice loud enough to be remembered and disciplined enough to be a system.
+
+Tags: `#typography` `#branding` `#signage` `#editorial`
+File: design-gods/paula-scher.md
+
+### 17. Alan Cooper
+
+**alan-cooper** — Invented personas and goal-directed design; wrote *About Face* and *The Inmates Are Running the Asylum*. Named cognitive friction, excise, and posture. Read him when a flow serves the system's convenience instead of the user's goal.
+
+Tags: `#interaction` `#cognition` `#usability` `#principles`
+File: design-gods/alan-cooper.md
+
 ---
 
 ## Cross-references
 
 The pantheon is wired into the rest of the skill. The ten NNg heuristics that anchor `foundations.md` are Nielsen and his collaborators — when a review tags `[Heuristic 4]`, you are citing him. The "less but better" framing throughout `craft.md` is Rams; the four craft tests echo his principle that good design is unobtrusive. The typography manifesto in `typography.md` cites the Vignelli Canon directly, and any rule about restraint in font selection traces back to him through Frere-Jones. The data-viz rules in `components.md` — no pies, prefer small multiples, label the chart with the question it answers — are Tufte and Corum stacked. The "sameness is failure" mandate in `craft.md` and `anti-slop.md` is Rand's "design is thinking made visual" reapplied: if the thinking is generic, the visual will be too. The grid argument throughout `grids.md` and `craft.md`'s "Grids — the deepest layer" section is Müller-Brockmann's, with Tschichold's asymmetric/symmetric duality naming the two registers a designer chooses between.
 
-When the design-expert skill is invoked for a typography decision, load Vignelli and Frere-Jones first; for a data-viz decision, Tufte and Corum; for a status-indicator or icon decision, Kare; for a question about whether a static interface should have been dynamic, Bret Victor and Muriel Cooper; for a question about how an identity system should be structured, Rand and Vignelli; for any audit of cognitive friction, Norman and Nielsen; for a layout, grid, or spacing-system decision, Müller-Brockmann (symmetric, mathematical) and Tschichold (asymmetric, functional). The tags above are the index; the per-designer files are the depth.
+When the design-expert skill is invoked for a typography decision, load Vignelli and Frere-Jones first; for a data-viz decision, Tufte and Corum; for a status-indicator or icon decision, Kare; for a question about whether a static interface should have been dynamic, Bret Victor and Muriel Cooper; for a question about how an identity system should be structured, Rand and Vignelli; for any audit of cognitive friction, Norman and Nielsen; for a layout, grid, or spacing-system decision, Müller-Brockmann (symmetric, mathematical) and Tschichold (asymmetric, functional). For a brand surface that needs a loud, disciplined typographic voice, Scher; for personas, goal-directed flows, and excise, Alan Cooper. The tags above are the index; the per-designer files are the depth.
 
 ## Closing
 
-The pantheon is small on purpose. Fifteen voices is enough to hold the field — more becomes a survey course, fewer becomes a cult. Each entry above earned its place by giving us a principle that survives the medium. Read the capsule when scanning, tap the path when a decision touches their territory, and treat their work as ammunition for "why" questions. The interface you are about to design has been designed before, in adjacent forms, by the people listed here. Borrowing is not theft when the lineage is honored.
+The pantheon is small on purpose. Seventeen voices is enough to hold the field — more becomes a survey course, fewer becomes a cult. Each entry above earned its place by giving us a principle that survives the medium. Read the capsule when scanning, tap the path when a decision touches their territory, and treat their work as ammunition for "why" questions. The interface you are about to design has been designed before, in adjacent forms, by the people listed here. Borrowing is not theft when the lineage is honored.
