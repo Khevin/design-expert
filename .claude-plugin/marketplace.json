@@ -2,7 +2,7 @@
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "design-expert",
   "metadata": {
-    "description": "design-expert: a paragraph-first, evidence-grounded skill for interface design. Build, review, plan, and write UI with the discipline of NNg heuristics, Universal Design, anti-AI-slop patterns, and a curated pantheon of historical designers."
+    "description": "design-expert: a paragraph-first, evidence-grounded skill for interface design. One command that plans, builds, reviews, iterates, and writes UI with the discipline of NNg heuristics, Universal Design, anti-AI-slop patterns, and a pantheon of designers convened as a council."
   },
   "owner": {
     "name": "Khevin",
@@ -11,8 +11,8 @@
   "plugins": [
     {
       "name": "design-expert",
-      "description": "Design-expert: build, review, plan, and write interfaces with craft and evidence. Merges NNg heuristics, Universal Design, anti-AI-slop patterns, and a manifesto-voiced craft framework. Use for design reviews, UX critiques, accessibility audits, dashboard or admin builds, and any brand or product surface.",
-      "version": "0.1.0",
+      "description": "One command that triages design work (plan, build, review, write, iterate), discovers the project's design system, picks the output surface (Figma, Claude Design canvas, or code), and ships with craft and evidence: NNg heuristics, Universal Design 7, anti-AI-slop patterns, and a seventeen-designer pantheon convened as a council.",
+      "version": "2.0.0",
       "author": {
         "name": "Khevin",
         "url": "https://github.com/Khevin"
@@ -33,7 +33,10 @@
         "nng",
         "universal-design",
         "typography",
-        "craft"
+        "craft",
+        "figma",
+        "handoff",
+        "design-system"
       ]
     }
   ]
