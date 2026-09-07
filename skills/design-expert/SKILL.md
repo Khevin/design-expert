@@ -47,7 +47,7 @@ Every invocation starts here, in the main context, and ends with one trace line.
 
 > 🟠 **Question**: Which Figma file should this land in? Paste the link, or say "new".
 
-Persist every answer with its source (asked or inferred) before moving on.
+When role and deploy target are inferred but the receiver is unknown, ask the receiver question alone in one call; it has no inference path. Persist every answer with its source (asked or inferred) before moving on.
 
 **(d) Design system, then register.** Run the probes in `discovery.md` unless memory already points at a system that exists on disk. The probes read the project-wide system files (`system.md`, `.interface-design/system.md`, the token and copy sections of `CLAUDE.md`) and the brief written for this surface, both when present; only when neither exists do they fall back to tokens in code, component folders, Figma variables and libraries, and Claude Design projects, stopping at the first tier that answers. The whole pass loads at most fifteen hundred words. Every "always" or "must" sentence about a visual pattern is recorded as a mandated pattern, because a mandated pattern is never a slop finding later. If nothing is found, ask once how the system is implemented (the wording is in `discovery.md`) and persist the answer. Then confirm the register: read `register:` from the scoped `PRODUCT.md`, or infer from cues at eighty percent or better (case study, essay, magazine → editorial; landing, campaign, launch → brand; dashboard, settings, table, tool → product), and state the inference. Below that, `AskUserQuestion` with the three registers and their one-line definitions. Plan mode asks cold at Gate 0 only for a project with no brief; a stored register is never re-asked.
 

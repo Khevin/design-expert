@@ -50,7 +50,7 @@ The middle three sizes — polish, iteration, redesign — are where the model a
 |---|---|---|---|---|
 | Touch-up | 0 | none | None | Direct change |
 | Polish | 1–2 | capsule, 0–1 seats | The relevant `library/<category>/README.md` | Direct change after quick confirm |
-| Iteration | 3–5 | capsule, 3–5 seats | `library/<category>` + relevant style/voice/grid section | Proposal, user picks, execution |
+| Iteration | 3–5 | capsule, 3–5 seats for build; 3 for a sub-surface review (see `council.md`) | `library/<category>` + relevant style/voice/grid section | Proposal, user picks, execution |
 | Surface redesign | 4–7 | council at build Gate 8½ | Full layout catalog + relevant style file | Concepts, council, then build |
 | System redesign | Catalogs + cross-domain | council, all seventeen, in plan mode | All relevant indexes | Plan mode, then build mode |
 
