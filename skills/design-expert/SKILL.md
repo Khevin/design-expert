@@ -1,13 +1,13 @@
 ---
 name: design-expert
 description: Use when the work is an interface, screen, component, layout, design system, design brief, or product copy. Triggers on building or redesigning UI, reviewing or critiquing a screen, iteration asks ("make it better", "what would you change", "I don't like this"), planning a PRODUCT.md or DESIGN.md, writing UX, long-form or marketing copy, accessibility or AI-slop audits, and whenever a Figma link, screenshot, dashboard, landing or settings surface is in play. Not for backend, data, or non-visual work.
-argument-hint: "[plan|build|review|write|iterate] <what> [path | url | figma link]"
-user-invocable: true
 ---
 
 # design-expert
 
 design-expert is a paragraph-first, evidence-grounded skill for interface design. It plans, builds, reviews, iterates, and writes, and every action is backed by Nielsen Norman Group heuristics, the Universal Design seven principles, and a pantheon of eighteen designers whose work survives the medium, convened as a council when the work is large enough to deserve one. It is one command. You describe the work; the skill reads who you are, where the work will land, how the project's design system is implemented, how big the change is, and what you actually asked for, and then it runs the right mode. Use it when defaults are not acceptable. Use it when "clean and modern" is not a brief. Use it when the difference between competent and signature is the difference between shipping and shipping well.
+
+This skill is first-class in Claude Code and ChatGPT/Codex. Read `harnesses.md` once at the start of every run to resolve the skill root, question UI, personal state, concept surface, and council mechanism. The user's instructions and the active environment's policies take precedence over this skill.
 
 ---
 
@@ -37,21 +37,21 @@ Generic equals failure. If another model, given a similar prompt, produces subst
 
 Every invocation starts here, in the main context, and ends with one trace line. Triage is not bureaucracy; it is the ten seconds that decide whether the next hour builds the right thing in the right place for the right person. It runs the same nine steps every time, and because the answers are remembered, the second run in a project asks nothing.
 
-**(a) Memory.** Read `~/.claude/design-expert/profile.md` and `<project>/.design-expert/project.md` if they exist, at most sixty lines each, and pre-fill role, handoff, deploy target, design system, and register. A field that is present is a fact and is never asked again. `memory.md` holds both schemas.
+**(a) Memory.** Resolve the personal state root through `harnesses.md`, then read its `profile.md` and `<project>/.design-expert/project.md` if they exist, at most sixty lines each. Pre-fill role, handoff, deploy target, design system, and register. A field that is present is a fact and is never asked again. `memory.md` holds both schemas. If personal state is inaccessible, continue with project and conversation memory.
 
 **(b) Override.** If the first word of the arguments is `plan`, `build`, `review`, `write`, or `iterate`, that is the mode; mark it `(forced)` and skip step (f). If there are no arguments and no artifact in the conversation, ask before anything else:
 
 > 🟠 **Question**: What are we working on, and what should be different when we're done? A path, a Figma link, or a sentence is enough.
 
-**(c) Role, handoff, deploy.** If all three are in memory, skip. Otherwise infer first, and only from strong signals: Figma MCP tools present in the session and no repository at all reads as designer; a repository with `package.json` or `src/` and no Figma MCP reads as developer; everything else, including a repository of HTML prototypes, sits below eighty percent and is asked once. One `AskUserQuestion` call carries three questions: *Which describes you on this project?* (Designer: I ship Figma files or specs · Developer: I ship code · Product: I ship briefs, others build) · *Who receives the finished work?* (A developer · A designer · Stakeholders only · Me, end to end) · *Where does it land?* (Repo → pull request · Figma file · Hosted URL · Canvas or deck only). On the developer path, read `git remote -v`; a `github.com` or `bitbucket.org` remote becomes the deploy detail, and no remote earns one orange question about where the repository lives. On the designer path, a missing Figma file earns one:
+**(c) Role, handoff, deploy.** If all three are in memory, skip. Otherwise infer first, and only from strong signals: Figma MCP tools present in the session and no repository at all reads as designer; a repository with `package.json` or `src/` and no Figma MCP reads as developer; everything else, including a repository of HTML prototypes, sits below eighty percent and is asked once. One structured-choice interaction, using the mechanism resolved in `harnesses.md`, carries three questions: *Which describes you on this project?* (Designer: I ship Figma files or specs · Developer: I ship code · Product: I ship briefs, others build) · *Who receives the finished work?* (A developer · A designer · Stakeholders only · Me, end to end) · *Where does it land?* (Repo → pull request · Figma file · Hosted URL · Visual workspace or deck only). On the developer path, read `git remote -v`; a `github.com` or `bitbucket.org` remote becomes the deploy detail, and no remote earns one orange question about where the repository lives. On the designer path, a missing Figma file earns one:
 
 > 🟠 **Question**: Which Figma file should this land in? Paste the link, or say "new".
 
 When role and deploy target are inferred but the receiver is unknown, ask the receiver question alone in one call; it has no inference path. Persist every answer with its source (asked or inferred) before moving on.
 
-**(d) Design system, then register.** Run the probes in `discovery.md` unless memory already points at a system that exists on disk. The probes read the project-wide system files (`system.md`, `.interface-design/system.md`, the token and copy sections of `CLAUDE.md`) and the brief written for this surface, both when present; only when neither exists do they fall back to tokens in code, component folders, Figma variables and libraries, and Claude Design projects, stopping at the first tier that answers. The whole pass loads at most fifteen hundred words. Every "always" or "must" sentence about a visual pattern is recorded as a mandated pattern, because a mandated pattern is never a slop finding later. If nothing is found, ask once how the system is implemented (the wording is in `discovery.md`) and persist the answer. Then confirm the register: read `register:` from the scoped `PRODUCT.md`, or infer from cues at eighty percent or better (case study, essay, magazine → editorial; landing, campaign, launch → brand; dashboard, settings, table, tool → product), and state the inference. Below that, `AskUserQuestion` with the three registers and their one-line definitions. Plan mode asks cold at Gate 0 only for a project with no brief; a stored register is never re-asked.
+**(d) Design system, then register.** Run the probes in `discovery.md` unless memory already points at a system that exists on disk. The probes read the project-wide system files (`system.md`, `.interface-design/system.md`, the design sections of `AGENTS.md` and `CLAUDE.md`) and the brief written for this surface, both when present; only when neither exists do they fall back to tokens in code, component folders, Figma variables and libraries, and connected design workspaces, stopping at the first tier that answers. The whole pass loads at most fifteen hundred words. Every "always" or "must" sentence about a visual pattern is recorded as a mandated pattern, because a mandated pattern is never a slop finding later. If nothing is found, ask once how the system is implemented (the wording is in `discovery.md`) and persist the answer when permitted. Then confirm the register: read `register:` from the scoped `PRODUCT.md`, or infer from cues at eighty percent or better (case study, essay, magazine → editorial; landing, campaign, launch → brand; dashboard, settings, table, tool → product), and state the inference. Below that, use the resolved structured-choice mechanism with the three registers and their one-line definitions. Plan mode asks cold at Gate 0 only for a project with no brief; a stored register is never re-asked.
 
-**(e) Size.** Map the scope of the request onto the five sizes in `craft.md` § Iteration as a category: one property is a touch-up; one component is polish; a section reconsidered is iteration; one whole screen is a surface redesign; the system, the brand, or several surfaces is a system redesign. The phrase is never the size; the scope is. "Make it better" on a button is polish, on a dashboard is iteration, on a portfolio is a redesign. When the middle three are ambiguous, `AskUserQuestion` with this wording, which is canonical (`craft.md` describes the same fork in prose): *Polish (it stays; sharpen it) · Iteration (it is on the table; reconsider it) · Redesign (replace it; rebuild the screen).* Plan is exempt from sizing. For review, size means the scope of what is reviewed rather than the size of a change: one component is light depth; one screen inside a larger flow is sub-surface depth; a primary flow, a new feature, a launch, or a system-level change is full depth, and full depth is what convenes the council.
+**(e) Size.** Map the scope of the request onto the five sizes in `craft.md` § Iteration as a category: one property is a touch-up; one component is polish; a section reconsidered is iteration; one whole screen is a surface redesign; the system, the brand, or several surfaces is a system redesign. The phrase is never the size; the scope is. "Make it better" on a button is polish, on a dashboard is iteration, on a portfolio is a redesign. When the middle three are ambiguous, use the resolved structured-choice mechanism with this wording, which is canonical (`craft.md` describes the same fork in prose): *Polish (it stays; sharpen it) · Iteration (it is on the table; reconsider it) · Redesign (replace it; rebuild the screen).* Plan is exempt from sizing. For review, size means the scope of what is reviewed rather than the size of a change: one component is light depth; one screen inside a larger flow is sub-surface depth; a primary flow, a new feature, a launch, or a system-level change is full depth, and full depth is what convenes the council.
 
 **(f) Intent to mode.** Read the request against the phrase table, with this precedence: a forced mode wins; a system-size request is a plan; copy words are write; net-new with nothing on the screen is build; change verbs are iterate; notes-only words are review.
 
@@ -67,27 +67,27 @@ When role and deploy target are inferred but the receiver is unknown, ask the re
 
 "Review this" with an artifact attached and no change verb is the one ambiguous case worth a question: *A written review, no changes · Proposals, then the change made.* Two guards apply after the mode is set. A build at system size, or a surface redesign in a project with no `PRODUCT.md`, runs plan first. Anything up to iteration size needs only the discovered design system and a one-sentence restatement of the brief, never a plan.
 
-**(g) Target.** Pick the concept surface, the build surface, and the handoff artifact from the matrix in `targets.md`, using role, whether the Figma MCP is present, mode, and size. Designers with Figma work in Figma for concepts and build; everyone else sees concepts on the Claude Design canvas and builds in code or briefs. Touch-ups and polish never open a surface. Every Figma write names its prerequisite skill in the trace.
+**(g) Target.** Pick the concept surface, the build surface, and the handoff artifact from the matrix in `targets.md`, using role, the visual tools present, mode, and size. Designers with Figma work in Figma for concepts and build; repository work uses a repository-native preview or code prototype; product work uses the best available visual workspace and briefs. Touch-ups and polish never open a new surface. Every Figma write names its prerequisite skill in the trace.
 
 **(h) Council tier.** Look up mode and size in the tier table in `council.md`: plan convenes the full council; a surface redesign build convenes it at Gate 8½; a full-depth review convenes it at Step 5½; everything smaller is a capsule consultation or none. Hand the mode the tier along with the brief.
 
-**(i) Load the mode.** Read `${CLAUDE_SKILL_DIR}/modes/<mode>.md` (iterate reads `build.md` and enters at its Iterate section), print the trace, and run the mode's gates. The trace is one line, always:
+**(i) Load the mode.** Resolve paths from the directory containing this `SKILL.md`, then read `modes/<mode>.md` (iterate reads `build.md` and enters at its Iterate section), print the trace, and run the mode's gates. The trace is one line, always:
 
 `Triage: role designer (profile) · handoff → developer · deploy figma-file · DS lais-notifications/system.md + CLAUDE.md § AI Suggestion · register product · size iteration · mode iterate · target figma (prereq figma-use) · tier capsule`
 
-First-run question load is capped at two `AskUserQuestion` calls: role, handoff, and deploy travel together; register and size travel together when both are needed. Free-form questions use the orange marker below. After the first run in a project, memory makes the count zero.
+First-run structured-question load is capped at two interactions: role, handoff, and deploy travel together; register and size travel together when both are needed. Free-form questions use the orange marker below. After the first run in a project, memory makes the count zero.
 
 ---
 
 ## Communication conventions
 
-The skill asks in two modes: structured questions through `AskUserQuestion` when the user is picking from two to four mutually exclusive options, and free-form questions inline when the answer is open (a sentence, a name, a link, a paragraph). Both follow one visual rule so a long response can be scanned for what it needs from the user.
+The skill asks in two modes: the harness's structured-choice mechanism when the user is picking from two to four mutually exclusive options, and free-form questions inline when the answer is open (a sentence, a name, a link, a paragraph). Both follow one visual rule so a long response can be scanned for what it needs from the user.
 
 **Free-form questions use the orange-question convention.** Every inline question is a blockquote, an orange disc, and a bold "Question" tag, in this exact form:
 
 > 🟠 **Question**: [the question, on one line if possible]
 
-Compound questions split into one blockquote each so each can be answered by itself. The disc renders as visible orange across platforms; the blockquote sets the question apart from prose; the tag makes the line scannable. A response that asks four questions in flowing prose loses three of the answers. Mark every question. Inside `AskUserQuestion` the convention does not apply; the tool has its own card.
+Compound questions split into one blockquote each so each can be answered by itself. The disc renders as visible orange across platforms; the blockquote sets the question apart from prose; the tag makes the line scannable. A response that asks four questions in flowing prose loses three of the answers. Mark every question. Inside a structured-choice tool the convention does not apply; the tool has its own card.
 
 **Everything else is prose.** Rationale, findings, and proposals are paragraphs with subjects and verbs. Headings carry their meaning without numerals. The skill does not decorate its own output with the tells it is trained to catch.
 
@@ -95,7 +95,7 @@ Compound questions split into one blockquote each so each can be answered by its
 
 ## Project memory
 
-The skill remembers who you are, who receives the work, where it lands, where the design system lives, and which register the surface is in. The personal part lives in `~/.claude/design-expert/profile.md`; the project part lives in `.design-expert/project.md` at the project root, safe to commit or ignore as the owner prefers. Schemas, write rules, and the ninety-day re-confirmation rule live in `memory.md`. The one rule that matters everywhere: a persisted answer is never re-asked.
+The skill remembers who you are, who receives the work, where it lands, where the design system lives, and which register the surface is in. The optional personal part lives under the state root resolved in `harnesses.md`; the project part lives in `.design-expert/project.md` at the project root, safe to commit or ignore as the owner prefers. Schemas, write rules, and the ninety-day re-confirmation rule live in `memory.md`. The one rule that matters everywhere: a persisted answer is never re-asked.
 
 ---
 
@@ -141,6 +141,7 @@ The skill is layered. This file and the index files (`design-gods.md`, `referenc
 | File | What it covers |
 |---|---|
 | `SKILL.md` | This file: the manifesto, triage, conventions, and index. |
+| `harnesses.md` | Claude Code and ChatGPT/Codex capability mapping: paths, questions, memory, concept surfaces, and council seats. |
 | `memory.md` | The profile and project records; ask-once rules. |
 | `discovery.md` | The design-system probes, the load cap, the mandated-pattern exemption. |
 | `targets.md` | The output-target matrix (Figma, canvas, code, briefs) and the size rule. |
@@ -190,9 +191,9 @@ These rules never bend. Each prevents a class of failure observed across thousan
 - **Validate on blur**, never on every keystroke, never only on submit; errors say WHAT, WHY, HOW. See `interaction.md` and `modes/write.md`.
 - **Never use humor for failures, errors, or destructive confirmations.** See `modes/write.md`.
 - **No silent overwrite of `PRODUCT.md`, `DESIGN.md`, or `DECISIONS.md`.** The loader check in `modes/plan.md` is mandatory. Briefs stay within their word budgets; decisions go to the decision log.
-- **The council on every plan; tiers elsewhere.** No sizing exception at plan time; capsule consultation on medium work; none on trivial work. Every seat is logged with its filename stem. See `council.md`.
+- **The council on every plan when parallel seats are available and allowed; tiers elsewhere.** If the harness cannot delegate, use the capsule fallback and continue. No sizing exception at plan time; capsule consultation on medium work; none on trivial work. Log seats when the resolved state location is writable. See `council.md` and `harnesses.md`.
 - **Pick the grid before placing the first element.** See `grids.md`.
-- **Free-form questions use the orange marker**, one question per blockquote, in the exact form above. Structured picks use `AskUserQuestion`.
+- **Free-form questions use the orange marker**, one question per blockquote, in the exact form above. Structured picks use the mechanism resolved in `harnesses.md`.
 - **The skill's own output carries none of the tells it catches.** No numbered eyebrows, no decorative side-stripes, no three-word fragments in a row, no dash-label headings. See `anti-slop.md` § Structural and rhetorical tells.
 
 ---

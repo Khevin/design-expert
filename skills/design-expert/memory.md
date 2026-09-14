@@ -12,7 +12,7 @@ Every invocation of this skill needs to know five things before a single design 
 
 ## Two records
 
-**The profile** is personal and crosses projects. It lives at `~/.claude/design-expert/profile.md`, beside the usage log, and holds the answer to "which describes you" once for all projects:
+**The profile** is personal and crosses projects. It lives at `<personal-state-root>/profile.md`, beside the usage log, and holds the answer to "which describes you" once for all projects. Resolve `<personal-state-root>` through `harnesses.md`: `$CODEX_HOME/design-expert` (or `~/.codex/design-expert`) in ChatGPT/Codex, and `~/.claude/design-expert` in Claude Code.
 
 ```yaml
 ---
@@ -30,11 +30,11 @@ asked_on: 2026-09-06
 schema: design-expert/project v1
 role_override: null             # set only when this project differs from the profile
 handoff_to: developer           # developer | designer | stakeholders | self
-deploy_target: figma-file       # repo-pr | figma-file | hosted-url | canvas-only
+deploy_target: figma-file       # repo-pr | figma-file | hosted-url | visual-only
 deploy_detail: github.com/khev-lastro/design-subagents
 figma_file: https://www.figma.com/design/<key>/<name>
 design_system:
-  source: repo                  # repo | figma | claude-design | none
+  source: repo                  # repo | figma | connected-design | none
   pointer: lais-notifications/system.md
   also: [CLAUDE.md § AI Suggestion / Lais Patterns]
   mandated_patterns: ["3px left accent border on AI suggestion cards (CLAUDE.md § AI Suggestion / Lais Patterns)"]
@@ -45,7 +45,7 @@ asked_on: 2026-09-06
 ---
 ```
 
-When there is no project directory (a conversation with no repository), keep the project record in `~/.claude/design-expert/projects/<name>.md`, named after the surface the user described.
+When there is no project directory, keep the project record in `<personal-state-root>/projects/<name>.md`, named after the surface the user described, only when that location is already writable within the active environment's permissions. Otherwise keep it in conversation memory and continue.
 
 ---
 
@@ -53,7 +53,7 @@ When there is no project directory (a conversation with no repository), keep the
 
 Read both records at triage step (a), at most sixty lines each. A field that is present is a fact; do not re-ask it, do not re-infer it, do not "confirm" it in passing. A field that is absent is asked or inferred at the step that needs it, then written back immediately, so a run that stops halfway still leaves the next run better informed.
 
-Write with the smallest edit that adds the field. Never rewrite a record wholesale, and never remove a field the user gave. When the design-system probes in `discovery.md` find a mandated pattern, append it to `mandated_patterns` with its section cite; the review mode reads that list before filing any anti-slop finding.
+Write with the smallest edit that adds the field. Never rewrite a record wholesale, and never remove a field the user gave. Do not request broader filesystem authority solely to create optional personal memory; keep the answer in the conversation when the personal state root is unavailable. When the design-system probes in `discovery.md` find a mandated pattern, append it to `mandated_patterns` with its section cite; the review mode reads that list before filing any anti-slop finding.
 
 Re-ask only when the user says so, or when `asked_on` is older than ninety days, and then as a one-line confirmation of the stored values rather than the full set of questions.
 

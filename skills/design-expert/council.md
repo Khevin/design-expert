@@ -16,7 +16,7 @@ The council is also sized. Convening eighteen designers to approve a hover color
 
 ## Tiers
 
-`none` means no consultation. `capsule` means the main context reads the capsules in `design-gods.md` and speaks for the seats itself. `council` means parallel subagents and a chair.
+`none` means no consultation. `capsule` means the main context reads the capsules in `design-gods.md` and speaks for the seats itself. `council` means parallel subagents and a chair when the active harness exposes delegation and its current instructions allow it. When parallel seats are unavailable or disallowed, downgrade `council` to `capsule` and continue; record the fallback in the trace.
 
 | mode \ size | touch-up | polish | iteration | surface redesign | system redesign |
 |---|---|---|---|---|---|
@@ -50,7 +50,9 @@ The decisions are fixed per mode. **Plan:** D1 the visual direction picked at Ga
 
 ## Convening
 
-Send every seat in one message, one `Agent` call per seat, `subagent_type: "design-expert:council-member"`, `run_in_background: false`. Resolve the designer file to an absolute path before sending; a seat cannot expand `${CLAUDE_SKILL_DIR}`. Seats spawned one message at a time are a serial read wearing a costume; the point of the room is that it finishes together.
+Use the parallel-seat mechanism resolved in `harnesses.md`. In Claude Code, send one `Agent` call per seat with `subagent_type: "design-expert:council-member"` and `run_in_background: false`. In ChatGPT/Codex, spawn one subagent per seat in one wave and give each the seat prompt below plus the verdict rules; use the active collaboration tool without forcing a model override. Resolve the designer file to an absolute path before sending. Seats spawned one at a time are a serial read wearing a costume; the point of the room is that it finishes together.
+
+Do not exceed the active environment's concurrency limit. If the full room cannot run in one wave, use the tag-filtered room or the capsule fallback instead of serially cycling through eighteen agents.
 
 The seat prompt, fields in this order:
 
@@ -102,7 +104,7 @@ dissent_ok: true
 
 ## The chair
 
-The chair is the main context. The verdict blocks land there as `Agent` results; a separate chair agent would need them sent again and would add a serial hop before the one thing that must happen in the main context anyway, which is asking the user. The protocol is arithmetic on at most eighteen ten-line records. Apply it per decision D, with A, R, and B the counts of approve, revise, and block verdicts that address D, and n their sum.
+The chair is the main context. The verdict blocks land there as subagent results; a separate chair agent would need them sent again and would add a serial hop before the one thing that must happen in the main context anyway, which is asking the user. The protocol is arithmetic on at most eighteen ten-line records. Apply it per decision D, with A, R, and B the counts of approve, revise, and block verdicts that address D, and n their sum.
 
 1. A result that does not contain exactly one nine-key block, or that carries `confidence: 0`, is excluded from every tally and listed under *Not counted*.
 2. If n is zero, D is *Unaddressed*. If n is one, the lone verdict rules only at confidence 75 or above; below that it is recorded as *Advisory*, neither adopted nor asked, and the mode decides D by its own gates.
@@ -111,7 +113,7 @@ The chair is the main context. The verdict blocks land there as `Agent` results;
 5. If R plus B is at least ⌈2n/3⌉ and every change can be applied together (two values for one property are never merged), the ruling is **revised** with the merged changes.
 6. Otherwise, ties included, D is **Contested**. Options are the distinct changes, clustered by the chair, plus "keep as stated", two to four in total. Each option's percentage is the sum of the confidence behind it divided by the total confidence on D, rounded to the nearest five, summing to about one hundred. More than four positions → the top three by backing, plus keep.
 7. Seats on the losing side of a ruling are **Dissents**. A seat with `dissent_ok: false` prints its key, confidence, and change; a seat with `dissent_ok: true` prints its key only.
-8. One `AskUserQuestion` call carries every Contested decision, at most four. Overflow defaults to "keep as stated" and is named in the output so the user can reopen it. A user who overrules a veto is logged as `overruled-by-user`.
+8. One structured-choice interaction, resolved through `harnesses.md`, carries every Contested decision, at most four. Overflow defaults to "keep as stated" and is named in the output so the user can reopen it. A user who overrules a veto is logged as `overruled-by-user`.
 
 Print the result before the question, as a table, in under two hundred and fifty words even at eighteen seats:
 
@@ -142,19 +144,19 @@ The light tier keeps the discipline without the room. Read the capsules in `desi
 
 ## Logging
 
-The log is honest only when the keys are canonical and the write is one call. The key is always the designer's filename stem. Write every line of a council or capsule consultation with one `printf`:
+Logging is optional operational memory, never a gate. Resolve the personal state root through `harnesses.md`; write only when that location is already writable within the active environment's permissions. The log is honest only when the keys are canonical and a consultation is appended atomically. The key is always the designer's filename stem. On a POSIX shell, the write can be one `printf`:
 
 ```bash
-mkdir -p ~/.claude/design-expert && printf '%s\n' \
+mkdir -p <personal-state-root> && printf '%s\n' \
 '{"ts":"2026-09-06T14:02:11Z","god":"dieter-rams","command":"plan","project":"skill-tracker","tier":"council","verdict":"revise"}' \
 '{"ts":"2026-09-06T14:02:11Z","god":"don-norman","command":"plan","project":"skill-tracker","tier":"council","verdict":"approve"}' \
->> ~/.claude/design-expert/usage-log.jsonl
+>> <personal-state-root>/usage-log.jsonl
 ```
 
 Line schema: `ts` ISO 8601 UTC; `god` stem; `command` one of plan, build, iterate, review, write, other; `project` the basename of the working directory; `tier` capsule or council; `verdict` approve, revise, block, none, or malformed. Inspect without jq:
 
 ```bash
-grep -o '"god":"[^"]*"' ~/.claude/design-expert/usage-log.jsonl | sort | uniq -c | sort -rn
+grep -o '"god":"[^"]*"' <personal-state-root>/usage-log.jsonl | sort | uniq -c | sort -rn
 ```
 
 The eighteen stems: `alan-cooper`, `bret-victor`, `charles-and-ray-eames`, `dieter-rams`, `don-norman`, `edward-tufte`, `jakob-nielsen`, `jan-tschichold`, `johannes-itten`, `jonathan-corum`, `jonathan-ive`, `massimo-vignelli`, `muller-brockmann`, `muriel-cooper`, `paul-rand`, `paula-scher`, `susan-kare`, `tobias-frere-jones`.
@@ -163,4 +165,4 @@ The eighteen stems: `alan-cooper`, `bret-victor`, `charles-and-ray-eames`, `diet
 
 ## Cost
 
-Plan mode under the old procedure cost about twenty-one thousand tokens of designer prose in the working context and thirty tool calls before the layout walk could begin. A council keeps the working-context cost near thirteen thousand tokens (writing the seat prompts, reading the verdict blocks, running the chair and the log) regardless of the seat count. The seats themselves are the expense: the first live test measured roughly ninety thousand tokens per seat when a seat ran as a general-purpose agent, most of it fixed per-agent overhead, in one wave of one to four minutes. The dedicated `council-member` agent carries a single tool and a short body and should cost a fraction of that; measure it, and if a eighteen-seat plan stays expensive, set `council: tagged` in the project record. The room moves the cost out of the working context, finishes in one wave, and produces disagreement, which the old procedure could not.
+Plan mode under the old procedure cost about twenty-one thousand tokens of designer prose in the working context and thirty tool calls before the layout walk could begin. A council keeps the working-context cost near thirteen thousand tokens (writing the seat prompts, reading the verdict blocks, running the chair and the log) regardless of the seat count. The seats themselves are the expense and the exact cost varies by harness. Claude Code can use the dedicated `council-member` agent; ChatGPT/Codex uses bounded general subagents with the same narrow prompt. Measure it, use `council: tagged` when a full plan room is too expensive, and use the capsule fallback when concurrency or active instructions do not permit the room. The useful property is independent disagreement, not the number eighteen by itself.

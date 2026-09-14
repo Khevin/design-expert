@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.3.0 (2026-09-14)
+
+### Added
+- First-class ChatGPT/Codex support through `skills/design-expert/harnesses.md`, which resolves the skill root, structured-choice tool, optional personal state, visual workspace, and parallel-seat mechanism per harness.
+- `skills/design-expert/agents/openai.yaml` with Codex display metadata, default `$design-expert` prompt, brand color, and implicit invocation enabled.
+- A one-prompt ChatGPT/Codex installation path through `$skill-installer` in the README.
+
+### Changed
+- Skill-relative files resolve from the directory containing `SKILL.md`; `${CLAUDE_SKILL_DIR}` is now an optional Claude Code optimization rather than a requirement.
+- Discovery reads design sections in both `AGENTS.md` and `CLAUDE.md`, and treats connected design workspaces generically.
+- Output targeting uses the visual capabilities actually available in the session: Figma, a conversation workspace, repository-native preview, code prototype, static image, or prose fallback.
+- Structured questions map to `request_user_input` in ChatGPT/Codex and `AskUserQuestion` in Claude Code, with the existing inline orange-question fallback.
+- Council seats use the active harness's parallel-agent mechanism when available and allowed; otherwise the skill downgrades to a capsule consultation without blocking the design task.
+- Personal memory and consultation logs are optional writes under the active agent's state directory. Project memory remains `.design-expert/project.md`.
+
+### Preserved
+- Claude Code marketplace installation and `/design-expert` behavior remain intact.
+
 ## 1.2.1 (2026-09-07)
 
 ### Changed

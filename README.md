@@ -2,13 +2,13 @@
 
 # design-expert
 
-A paragraph-first, evidence-grounded skill for interface design. One command that plans, builds, reviews, iterates, and writes UI with the discipline of NNg heuristics, the Universal Design seven principles, anti-AI-slop patterns, a 32-pattern layout catalog, register-aware style files, voice taxonomies, self-review, and a eighteen-designer pantheon that sits as a council when the work is large enough to deserve one.
+A paragraph-first, evidence-grounded skill for interface design in Claude Code and ChatGPT/Codex. One command that plans, builds, reviews, iterates, and writes UI with the discipline of NNg heuristics, the Universal Design seven principles, anti-AI-slop patterns, a 32-pattern layout catalog, register-aware style files, voice taxonomies, self-review, and an eighteen-designer pantheon that sits as a council when the work is large enough to deserve one.
 
 > Design is felt, not enforced. The principles in this skill exist not to constrain but to liberate: when the floor is solid, the ceiling lifts.
 
 [khevin.com/design-expert.html](https://khevin.com/design-expert.html)
 
-## Install
+## Install in Claude Code
 
 design-expert ships as a Claude Code plugin under the khev-tools marketplace. It needs a current Claude Code build; update if `/plugin` is not recognized.
 
@@ -17,18 +17,28 @@ design-expert ships as a Claude Code plugin under the khev-tools marketplace. It
 /plugin install design-expert@khev-tools
 ```
 
+## Install in ChatGPT / Codex
+
+Ask the built-in skill installer to install the skill folder from this repository:
+
+```text
+$skill-installer Install design-expert from https://github.com/Khevin/design-expert/tree/main/skills/design-expert
+```
+
+The installed skill appears as **Design Expert**, activates automatically for design work, and can be invoked explicitly with `$design-expert`.
+
 ## One command
 
 Describe the work. The skill reads who you are, where the work will land, how the project's design system is implemented, how big the change is, and what you asked for, then it runs the right mode.
 
-```bash
-/design-expert a billing-settings page for a subscription SaaS
-/design-expert make it better
-/design-expert critique src/billing/, notes only
-/design-expert the error when a payment fails to send
+```text
+/design-expert a billing-settings page for a subscription SaaS   # Claude Code
+$design-expert make it better                                    # ChatGPT / Codex
+$design-expert critique src/billing/, notes only
+$design-expert write the error when a payment fails to send
 ```
 
-Force a mode when you already know which one you want: `/design-expert plan …`, `/design-expert build …`, `/design-expert review …`, `/design-expert write …`, `/design-expert iterate …`.
+Force a mode when you already know which one you want: `/design-expert plan …` in Claude Code or `$design-expert plan …` in ChatGPT/Codex, with the same `build`, `review`, `write`, and `iterate` modes.
 
 ### How it decides
 
@@ -36,11 +46,11 @@ Every run prints one trace line before it works, so you can see each decision an
 
 `Triage: role designer (profile) · handoff → developer · deploy figma-file · DS system.md + CLAUDE.md § tokens · register product · size iteration · mode iterate · target figma (prereq figma-use) · tier capsule`
 
-- Who you are is asked once and remembered in `~/.claude/design-expert/profile.md`. The project's handoff direction, deploy target, Figma file, and design-system pointers live in `.design-expert/project.md`, safe to commit or ignore.
-- The design system comes before any judgment. The skill looks in briefs, `system.md`, `CLAUDE.md` token sections, tokens in code, component folders, Figma variables and libraries, and Claude Design projects, and asks how the system is implemented only when it finds nothing. A pattern your system mandates is never filed as slop.
+- Who you are is asked once and remembered under the active agent's state directory when permitted. The project's handoff direction, deploy target, Figma file, and design-system pointers live in `.design-expert/project.md`, safe to commit or ignore.
+- The design system comes before any judgment. The skill looks in briefs, `system.md`, the design sections of `AGENTS.md` and `CLAUDE.md`, tokens in code, component folders, Figma variables and libraries, and connected design workspaces. A pattern your system mandates is never filed as slop.
 - The size of the change is read from its scope, not its phrasing. Touch-up, polish, iteration, surface redesign, system redesign. "Make it better" on a button is polish; on a dashboard it is iteration.
-- The output target follows the role. Designers with Figma connected work in Figma for concepts and build. Everyone else sees concepts on the Claude Design canvas and builds in code or briefs. Small changes never open a surface.
-- The pantheon is a council. Plan convenes all eighteen designers as parallel seats, each reading only its own file; a chair turns their verdicts into rulings, contested points you are asked about, and recorded dissent. Redesigns and full reviews convene a room seated by the surface's tags. Medium work gets a capsule consultation. Trivial work gets none.
+- The output target follows the role and the tools actually available. Designers with Figma connected work in Figma. Repository work uses native code and previews. Product work gets briefs plus the best available visual workspace. Small changes never open a surface.
+- The pantheon is a council. When the harness permits parallel seats, plan convenes the designers independently and a chair turns their verdicts into rulings, contested points, and recorded dissent. When delegation is unavailable, the skill uses the bounded capsule consultation and keeps moving.
 
 ## Modes
 
@@ -53,6 +63,10 @@ Every run prints one trace line before it works, so you can see each decision an
 **Write** produces copy in three contexts, UX micro-copy, long-form, and marketing, each in its voice file, and sweeps the result for the tells that turn copy into wallpaper.
 
 ## Updates
+
+### v1.3.0, September 14, 2026
+
+ChatGPT/Codex becomes a first-class host. A harness adapter resolves skill-relative paths, structured questions, optional memory, concept surfaces, and parallel council seats without changing the design method. The skill ships Codex UI metadata, reads `AGENTS.md` alongside `CLAUDE.md`, uses the active visual workspace instead of assuming Claude Design, and documents a one-prompt install through `$skill-installer`. Claude Code keeps its marketplace install and `/design-expert` command.
 
 ### v1.2.1, September 7, 2026
 

@@ -12,24 +12,24 @@ The same brief produces different deliverables for different people. A designer 
 
 ## The matrix
 
-| Role | Figma MCP | Concept stage | Build stage | Handoff artifact |
+| Role | Connected Figma | Concept stage | Build stage | Handoff artifact |
 |---|---|---|---|---|
-| Designer | yes | Figma via MCP: direction probes and layout variations as frames on one page | Figma via MCP, bound to library variables and components | Figma spec page (see `handoff.md`) |
-| Designer | no | Claude Design canvas (the `design` skill) | HTML+CSS prototype on the discovered tokens, or canvas | Markdown spec plus canvas share |
-| Developer | yes | Claude Design canvas (Figma only if the user names a file) | HTML+CSS plus the repository's framework | Repo PR; optional `generate_figma_design` push |
-| Developer | no | Claude Design canvas | HTML+CSS plus framework | Repo PR |
-| Product | yes | Claude Design canvas; Figma only if the receiving designer asks | Briefs (PRODUCT, DESIGN, DECISIONS) | Brief bundle plus canvas share, or Figma spec |
-| Product | no | Claude Design canvas | Briefs | Brief bundle plus canvas share |
+| Designer | yes | Figma: direction probes and layout variations as frames on one page | Figma, bound to library variables and components | Figma spec page (see `handoff.md`) |
+| Designer | no | Best available visual workspace from `harnesses.md` | Token-faithful HTML+CSS prototype or the chosen visual workspace | Markdown spec plus preview or workspace share |
+| Developer | yes | Repository-native preview; Figma only when the user names a file | The repository's framework and components | Repo commit or PR; optional Figma handoff when requested |
+| Developer | no | Repository-native preview or code prototype | The repository's framework and components | Repo commit or PR |
+| Product | yes | Best available visual workspace; Figma when the receiving designer asks | Briefs (`PRODUCT.md`, `DESIGN.md`, `DECISIONS.md`) | Brief bundle plus preview, workspace share, or Figma spec |
+| Product | no | Best available visual workspace | Briefs | Brief bundle plus preview or workspace share |
 
-"Figma MCP" means the `mcp__figma__*` tools are present in the session. When they are absent the designer path falls back to the canvas for concepts and to a token-faithful prototype for the build, and the handoff says so.
+"Connected Figma" means the Figma tools are present in the session. "Best available visual workspace" is resolved through `harnesses.md`; it may be a Claude Design canvas, a ChatGPT/Codex conversation visualization, a repository-native preview, or a static image. When no visual workspace exists, describe the concepts in concise prose and keep moving.
 
 ---
 
-**The deploy target decides the handoff column.** When memory carries a `deploy_target`, the handoff artifact follows it regardless of role: `repo-pr` is the pull-request description from `handoff.md`; `figma-file` is the Figma spec page; `hosted-url` is the pull-request description plus the preview URL; `canvas-only` is the canvas share plus a Markdown spec. The concept and build columns still follow the role row, so a designer without Figma who ships to a repository sees concepts on the canvas, builds a token-faithful prototype, and hands off as a pull request.
+**The deploy target decides the handoff column.** When memory carries a `deploy_target`, the handoff artifact follows it regardless of role: `repo-pr` is the pull-request description from `handoff.md`; `figma-file` is the Figma spec page; `hosted-url` is the pull-request description plus the preview URL; `visual-only` is the visual-workspace share plus a Markdown spec. The concept and build columns still follow the role row, so a designer without Figma who ships to a repository sees concepts in the best available visual workspace, builds a token-faithful prototype, and hands off as a repository change.
 
 ## The size rule
 
-Touch-up and polish never open a concept surface: no `create_new_file`, no `design` skill. They edit in place, with `use_figma` on the linked file or in code. Iteration opens the concept surface only when the layout shifts or the user asks to see alternatives; its default is three to five inline proposals, then the pick. Surface redesign always shows concepts before the build. System redesign shows its concepts inside plan mode's Gate 3. Write and review never open a surface; review reads Figma through `get_screenshot`, `get_metadata`, and `get_variable_defs`.
+Touch-up and polish never open a new concept surface. They edit in place, with `use_figma` on the linked file or in code. Iteration opens the concept surface only when the layout shifts or the user asks to see alternatives; its default is three to five inline proposals, then the pick. Surface redesign always shows concepts before the build. System redesign shows its concepts inside plan mode's Gate 3. Write and review never create a surface; review reads the existing artifact through the tools available for it.
 
 A canvas is for the broad picture: first directions, layout variations, a flow seen whole. It is the wrong tool for a hover state, and opening one for small work teaches the user that the skill is slow.
 
@@ -47,6 +47,6 @@ Variables before frames: `get_variable_defs` runs before the first frame is crea
 
 ---
 
-## Canvas mechanics
+## Visual-workspace mechanics
 
-Invoke the `design` skill by name through the Skill tool. Pass the brief, the register, the two to four directions or three to five layout candidates, and the intended viewports. Label each artboard with the direction or pattern name it shows so the user's pick can be named back. The canvas exists for approval; once the user picks, the build proceeds on the build-stage target above. The canvas format is part of the app, not of this skill; never try to extend or reproduce it.
+Use the concept capability resolved in `harnesses.md`. Pass the brief, the register, the two to four directions or three to five layout candidates, and the intended viewports. Label each artboard, frame, or preview with the direction or pattern name it shows so the user's pick can be named back. The workspace exists for approval; once the user picks, the build proceeds on the build-stage target above. Its format belongs to the active app, not to this skill; do not invent unsupported app-specific calls.

@@ -105,7 +105,7 @@ For each candidate, present:
 - **One-line trade-off** (what this pattern costs, what it gains)
 - **Exemplar matching the project's voice** (preferred) or the canonical exemplar from the table
 
-Then ask the user to pick. State the inference if confidence on a single pattern is genuinely above 80% (rare on first build); ask via `AskUserQuestion` otherwise. Once the pattern is picked, the entire grid + composition + density discipline downstream is constrained by the choice, which is exactly the point. The cost of asking is one user-prompt; the cost of building inside the wrong layout is the cost of the rebuild.
+Then ask the user to pick. State the inference if confidence on a single pattern is genuinely above 80% (rare on first build); otherwise use the structured-choice mechanism resolved in `harnesses.md`. Once the pattern is picked, the entire grid + composition + density discipline downstream is constrained by the choice, which is exactly the point. The cost of asking is one user-prompt; the cost of building inside the wrong layout is the cost of the rebuild.
 
 **Redesigns count as early.** When the brief is "redesign this surface," do not preserve the existing layout by default. Walk the catalog cold, as if the project were brand new. The most common redesign failure mode is treating the original layout as the constraint when the original layout is precisely what the redesign needs to escape. If the user wants to keep the existing layout, they will say so explicitly; otherwise, the layout is on the table — and the LLM should make this explicit at the start of the redesign so the user can confirm or veto.
 

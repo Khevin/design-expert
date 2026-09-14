@@ -1,0 +1,8 @@
+interface:
+  display_name: "Design Expert"
+  short_description: "Plan, build, review, and refine interfaces"
+  brand_color: "#E17B54"
+  default_prompt: "Use $design-expert to improve this interface with evidence-grounded design judgment."
+
+policy:
+  allow_implicit_invocation: true

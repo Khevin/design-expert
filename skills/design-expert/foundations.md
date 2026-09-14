@@ -177,7 +177,7 @@ Ask how this connects to the broader roadmap. Surface the strategic theme; adjac
 
 ### Lens 9: Agent harmony
 
-Ask whether this contradicts any other skill, agent, or convention already in the user's environment. Look in `~/.claude/skills/` for installed skills; read their SKILL.md files. Look in `~/.claude/projects/<project>/memory/MEMORY.md` for accumulated preferences. If the recommendation contradicts an installed skill, defer to the installed skill unless there is a documented reason to override, and surface the conflict. Specific conflicts to watch for: fonts that conflict with the project's brand standards; visual treatments that violate the `interface-design` skill's surface-elevation rules; mixed icon families on the same product; emojis as UI; pie or donut charts; anything other than IBM Carbon for enterprise or dense-data surfaces.
+Ask whether this contradicts any other skill, agent, or convention already active for the project. Read the instruction and skill files the harness has already made available; do not crawl personal skill directories or unrelated memories. If the recommendation contradicts a project-specific rule or another applicable skill, the user's instructions and the more specific project rule win; surface the conflict. Specific conflicts to watch for: fonts that conflict with the project's brand standards; visual treatments that violate an active interface-design skill's surface-elevation rules; mixed icon families on the same product; emojis as UI; pie or donut charts; anything other than IBM Carbon for enterprise or dense-data surfaces.
 
 ### Lens 10: Objective justification per design decision — mandatory gate
 
