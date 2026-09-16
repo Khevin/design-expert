@@ -69,7 +69,7 @@ When role and deploy target are inferred but the receiver is unknown, ask the re
 
 **(g) Target.** Pick the concept surface, the build surface, and the handoff artifact from the matrix in `targets.md`, using role, the visual tools present, mode, and size. Designers with Figma work in Figma for concepts and build; repository work uses a repository-native preview or code prototype; product work uses the best available visual workspace and briefs. Touch-ups and polish never open a new surface. Every Figma write names its prerequisite skill in the trace.
 
-**(h) Council tier.** Look up mode and size in the tier table in `council.md`: plan convenes a council sized to its decisions; a surface redesign build convenes it at Gate 8½; a full-depth review convenes it at Step 5½; everything smaller is a capsule consultation or none. Hand the mode the tier along with the brief.
+**(h) Council tier.** Look up mode and size in the tier table in `council.md`: plan convenes a council sized to its decisions; a surface redesign build convenes it at Gate 8½; a full-depth review convenes it at Step 5½; everything smaller is a capsule consultation or none. A capsule consultation spawns its few seats as real agents when delegation is available and reads the capsules in context when it is not. Every seat inherits the session's model; only supporting seats in a large room step down, per `council.md`. Hand the mode the tier along with the brief.
 
 **(i) Load the mode.** Resolve paths from the directory containing this `SKILL.md`, then read `modes/<mode>.md` (iterate reads `build.md` and enters at its Iterate section), print the trace, and run the mode's gates. The trace is one line, always:
 

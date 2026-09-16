@@ -64,6 +64,10 @@ Every run prints one trace line before it works, so you can see each decision an
 
 ## Updates
 
+### v1.3.2, September 16, 2026
+
+Seats run on the session's model rather than a pinned lighter one. Large rooms keep their three to five lead seats on it and may step the supporting seats down; small rooms spawn real seats instead of capsules read in context. The chair never rules on a stepped-down block or dissent without re-running it.
+
 ### v1.3.1, September 15, 2026
 
 A few core files and canon libraries were reviewed against the outputs they produce and tightened where results drifted. Consultation scales with the decision: no five-capsule ceiling, no filler seats, and room for deeper verdicts around 400 words when needed. The nine-key verdict and evidence/dissent discipline remain stable. Capsules and tags are extensible, unresolved choices stay pending, and the reference index now links directly to 18 local resources, including eight new depth files.

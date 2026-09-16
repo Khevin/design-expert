@@ -16,7 +16,7 @@ The council is also sized. Convening eighteen designers to approve a hover color
 
 ## Tiers
 
-`none` means no consultation. `capsule` means the main context reads the capsules in `design-gods.md` and speaks for the seats itself. `council` means parallel subagents and a chair when the active harness exposes delegation and its current instructions allow it. When parallel seats are unavailable or disallowed, downgrade `council` to `capsule` and continue; record the fallback in the trace.
+`none` means no consultation. `capsule` means a small room: when the active harness exposes delegation and its instructions allow it, the one to five most relevant seats are spawned as real agents on the session's model, because a few seats cost little and their independence is real; when it does not, the main context reads the capsules in `design-gods.md` and speaks for the seats itself, and says so in the trace. `council` means a larger room of parallel seats and a chair under the same condition. When parallel seats are unavailable or disallowed, both tiers fall back to capsules read in context; record the fallback in the trace.
 
 | mode \ size | touch-up | polish | iteration | surface redesign | system redesign |
 |---|---|---|---|---|---|
@@ -27,7 +27,7 @@ The council is also sized. Convening eighteen designers to approve a hover color
 
 **Defaults, not quotas.** The counts in the table are starting points. Seat count, depth of reading, and response length are separate choices: a broad capsule pass can use more than five designers, while a narrow council can use fewer than seven. Expand when another seat covers an unresolved decision, a distinct user risk, or a meaningful opposing principle; stop when the next seat would repeat an existing contribution. Honor the user's time, output, and resource budget. State the scope and any consequential coverage gap in the trace.
 
-**Seat selection.** For `capsule`, begin with the most relevant designers, often one to five. Load full designer files wherever the capsules leave important uncertainty, a load-bearing decision, or disagreement; there is no two-file ceiling. Keep the reading targeted. Capsule consultation does not spawn subagents or claim independent review.
+**Seat selection.** For `capsule`, begin with the most relevant designers, often one to five. Load full designer files wherever the capsules leave important uncertainty, a load-bearing decision, or disagreement; there is no two-file ceiling. Keep the reading targeted. A capsule read in the main context does not claim independent review; a small room of real seats may.
 
 For `council`, map the decisions to relevant expertise before dispatch. Rams, Norman, and Nielsen are useful starting lenses for restraint, mental models, and usability, not mandatory votes on every topic. Add specialists and a credible counterpoint where the tradeoff warrants one; do not fill empty chairs by index order. Broad plans may warrant the entire current pantheon; a scoped plan need not. Use only designers with maintained files and evidence for the relevant principle, not invented experts to reach a count.
 
@@ -58,9 +58,15 @@ The initial decisions follow the mode. **Plan:** D1 the visual direction picked 
 
 ## Convening
 
-Use the parallel-seat mechanism resolved in `harnesses.md`. In Claude Code, send one `Agent` call per seat with `subagent_type: "design-expert:council-member"` and `run_in_background: false`. In ChatGPT/Codex, spawn one subagent per seat within the concurrency budget and give each the seat prompt below plus the verdict rules; use the active collaboration tool without forcing a model override. Resolve the designer file to an absolute path before sending. Dispatch independent seats concurrently where capacity allows; independence comes from isolated briefs and evidence, not from pretending that every environment can run the whole room at once.
+Use the parallel-seat mechanism resolved in `harnesses.md`. In Claude Code, send one `Agent` call per seat with `subagent_type: "design-expert:council-member"` and `run_in_background: false`. In ChatGPT/Codex, spawn one subagent per seat within the concurrency budget and give each the seat prompt below plus the verdict rules; where the tool offers a model choice, follow the seat-model rule below, otherwise let the seats run on the active model. Resolve the designer file to an absolute path before sending. Dispatch independent seats concurrently where capacity allows; independence comes from isolated briefs and evidence, not from pretending that every environment can run the whole room at once.
 
 Do not exceed the active environment's concurrency limit. Dispatch independent seats together where possible. When the relevant room is larger, use bounded waves if the user's resource budget permits; keep the brief unchanged and withhold earlier verdicts from later seats to preserve independence. Otherwise use a smaller coverage-based room or capsule fallback and disclose the coverage difference. Do not spawn agents simply to satisfy a count.
+
+## Seats and models
+
+The chair is the main context and runs on the session's model. Every seat inherits that model by default: the verdict is the product, and a lighter model is never its default. The lever for cost is which seats step down, not a lower floor for all of them.
+
+Rank the room by the decisions each seat carries, using the decision map made before dispatch. The three to five seats holding the load-bearing decisions, the credible counterpoint, and any specialist covering a distinct user risk are the **lead seats**; they always run on the session's model. When the room is larger than that, the remaining **supporting seats** may run on the harness's mid-tier model (in Claude Code, pass `model: "sonnet"` on that seat's `Agent` call; the agent file itself says `inherit`). Never use the smallest tier for a verdict, never step down a seat carrying a `focus_decision`, and never step down a room of five or fewer. A supporting seat that returns `block` or a dissent worth recording is re-run on the session's model before the chair rules on it, so no contested point rests on the lighter read. Name the stepped-down seats in the trace. An explicit user budget that asks for lighter seats is honored and disclosed; it does not change the lead seats.
 
 The seat prompt, fields in this order:
 
@@ -177,4 +183,4 @@ The eighteen stems: `alan-cooper`, `bret-victor`, `charles-and-ray-eames`, `diet
 
 ## Cost
 
-Cost grows with the number of seats, artifact size, verdict depth, and follow-up rounds; parallel execution reduces elapsed time, not token cost. Start with the coverage and depth the decision needs, honor explicit user budgets, and expand only to answer a remaining question. Claude Code can use the dedicated `council-member` agent; ChatGPT/Codex uses bounded general subagents with the same narrow prompt. When delegation is unavailable or disallowed, use capsules and state that the review was not independent. The useful property is grounded disagreement and decision coverage, not a particular seat count or word count.
+Cost grows with the number of seats, artifact size, verdict depth, and follow-up rounds; parallel execution reduces elapsed time, not token cost. Seats default to the session's model; the lead and supporting split above is the cost lever, and a small room is not made cheaper by a lighter model. Start with the coverage and depth the decision needs, honor explicit user budgets, and expand only to answer a remaining question. Claude Code can use the dedicated `council-member` agent; ChatGPT/Codex uses bounded general subagents with the same narrow prompt. When delegation is unavailable or disallowed, use capsules and state that the review was not independent. The useful property is grounded disagreement and decision coverage, not a particular seat count or word count.

@@ -14,6 +14,7 @@ Use the first matching row. Do not require a harness-specific tool when the acti
 | Structured choices | `request_user_input` when available | `AskUserQuestion` when available | Ask one concise inline question with the orange-question convention |
 | Personal state root | `$CODEX_HOME/design-expert`, or `~/.codex/design-expert` when `CODEX_HOME` is unset | `~/.claude/design-expert` | Session memory only |
 | Parallel seats | Codex collaboration/subagent tools such as `spawn_agent` | `Agent` with `subagent_type: "design-expert:council-member"` | Downgrade the council to a capsule consultation |
+| Seat model | The model option of the spawn tool when it offers one, otherwise the active model | `model` on the `Agent` call; the agent file says `inherit`, and only supporting seats in a large room pass `sonnet` | Whatever runs the seat; never a smaller tier than the session |
 | Concept surface | Figma when connected and appropriate; otherwise a conversation visualization, repository-native preview, or code prototype | Figma when connected and appropriate; otherwise Claude Design canvas or a code prototype | Repository-native preview, static image, or concise prose directions |
 
 Active environment instructions decide whether delegation and writes outside the project are allowed. This skill never grants itself extra authority. If parallel subagents are unavailable or disallowed, use the capsule tier and say so in the trace; do not block the design task.

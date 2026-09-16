@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.2 (2026-09-16)
+
+### Changed
+- Seats run on the session's model. The council-member agent inherits instead of pinning Sonnet; the verdict is the product and a lighter model is never its default.
+- Lead and supporting seats. In a large room the three to five seats carrying the load-bearing decisions, the counterpoint and any user-risk specialist stay on the session's model; the rest may step down to the mid-tier model, never the smallest, never a seat with a focus decision, and a stepped-down block or dissent is re-run before the chair rules.
+- Small rooms are real rooms. Capsule tier spawns its one to five seats as agents when delegation is available, on the session's model; capsules read in context remain the disclosed fallback.
+
 ## 1.3.1 (2026-09-15)
 
 ### Changed
