@@ -20,14 +20,20 @@ The council is also sized. Convening eighteen designers to approve a hover color
 
 | mode \ size | touch-up | polish | iteration | surface redesign | system redesign |
 |---|---|---|---|---|---|
-| plan | council (all 18) | council (all 18) | council (all 18) | council (all 18) | council (all 18) |
+| plan | council, scoped to decisions | council, scoped to decisions | council, scoped to decisions | council, broad coverage | council, broad coverage |
 | build | none | capsule 0–1 | capsule 3–5 | council | route to plan first; the build that follows runs capsule |
 | review | none (light) | capsule 1 (light) | capsule 3 (sub-surface) | council (full) | council (full) |
 | write / other | none | none | capsule 1–2 | capsule 3 | capsule 3 |
 
-**Seat selection.** For `capsule`, seat the designers whose `Tags:` line intersects the brief's `surface_tags`, up to five. Load a full designer file only when the decision is load-bearing (it sets a token, grid, layout, or type role that later work inherits) or when two capsules disagree, and never more than two full files. No subagents. For `council` in build and review, always seat `dieter-rams`, `don-norman`, and `jakob-nielsen`; add every designer whose tags intersect `surface_tags`; if the room is under seven, add seats in index order until it reaches seven; the cap is eighteen. For `council` in plan, seat all eighteen unless the project record says `council: tagged`, in which case plan uses the same tag-filtered room as build and review. Plan surfaces are broad, a tag filter would save several seats, and a filter is a place where the working context can talk itself down; the record setting exists so the owner makes that trade once, on purpose, rather than the room making it under pressure.
+**Defaults, not quotas.** The counts in the table are starting points. Seat count, depth of reading, and response length are separate choices: a broad capsule pass can use more than five designers, while a narrow council can use fewer than seven. Expand when another seat covers an unresolved decision, a distinct user risk, or a meaningful opposing principle; stop when the next seat would repeat an existing contribution. Honor the user's time, output, and resource budget. State the scope and any consequential coverage gap in the trace.
 
-**Surface tags.** Fix two to four in the brief from this map: chart or metric → `#data-viz #information-design`; type → `#typography #typeface-design`; grid or layout → `#grid #systems`; icon, status, or empty state → `#icons #cognition`; identity or brand hero → `#branding #typography`; form, flow, settings, or errors → `#cognition #usability #heuristics`; live control or motion → `#interaction #direct-manipulation`; long-form → `#editorial #typography #grid`; token system or library → `#minimalism #systems #principles`; color, palette, or contrast → `#color #cognition`.
+**Seat selection.** For `capsule`, begin with the most relevant designers, often one to five. Load full designer files wherever the capsules leave important uncertainty, a load-bearing decision, or disagreement; there is no two-file ceiling. Keep the reading targeted. Capsule consultation does not spawn subagents or claim independent review.
+
+For `council`, map the decisions to relevant expertise before dispatch. Rams, Norman, and Nielsen are useful starting lenses for restraint, mental models, and usability, not mandatory votes on every topic. Add specialists and a credible counterpoint where the tradeoff warrants one; do not fill empty chairs by index order. Broad plans may warrant the entire current pantheon; a scoped plan need not. Use only designers with maintained files and evidence for the relevant principle, not invented experts to reach a count.
+
+The project setting `council: auto` (also the default when absent) follows this coverage rule. `council: tagged` keeps selection focused on the relevant tags and their documented aliases. `council: full` requests the whole current pantheon. Preserve an existing explicit setting; a smaller room or capsule fallback required by the user's budget or environment must be disclosed, not passed off as a full council.
+
+**Surface tags.** Start with two to four discriminating tags, adding others when the brief crosses disciplines. These are retrieval aids, not an exhaustive vocabulary or proof of expertise. Use the vocabulary and routing aliases in `design-gods.md`; explain any semantic match not already documented there. Common routes: chart or metric → `#data-viz #information-design`; type → `#typography #typeface-design`; grid or layout → `#grid #systems`; icon, status, or empty state → `#icons #cognition`; identity or brand hero → `#branding #typography`; form, flow, settings, or errors → `#cognition #usability #heuristics`; live control or motion → `#interaction #direct-manipulation`; long-form → `#editorial #typography #grid`; token system or library → `#minimalism #systems #principles`; color, palette, or contrast → `#color #cognition`. A generic tag such as `#principles` alone does not establish domain authority for a veto.
 
 ---
 
@@ -36,23 +42,25 @@ The council is also sized. Convening eighteen designers to approve a hover color
 Before any seat is convened the main context assembles one brief. It is short on purpose: a seat that receives the whole project reads the project instead of the decision.
 
 - `mode`: plan, build, or review.
-- `size`: plan, iteration, surface-redesign, or system-redesign.
+- `size`: touch-up, polish, iteration, surface-redesign, system-redesign, or plan when a plan spans sizes.
 - `register`: brand, product, or editorial.
 - `surface`: one noun phrase.
-- `surface_tags`: two to four tags from the map above.
+- `surface_tags`: the relevant tags and any explicit alias mapping.
 - `scene`: the scene sentence.
-- `decisions`: three to six numbered items, each as stated and under thirty words.
-- `artifact`: `kind` (file, screenshot, or summary) and `ref` (an absolute path, or a summary of at most three hundred words). Never a directory.
+- `decisions`: stable numbered items, usually three to six per round. State each concisely, retaining the constraints needed to judge it; thirty words is a useful target, not a cutoff. A narrow brief can have one decision. Split a large brief by decision group without dropping unresolved issues.
+- `focus_decision` (optional per seat): a specific `Dn` to assess when coverage would otherwise cluster around the same issue.
+- `detail` (optional): compact, standard, or deep; a guide to useful explanation, not a word quota.
+- `artifact`: `kind` (file, screenshot, or summary) and `ref` (an absolute path, or a focused summary, usually around three hundred words). Add explicitly named companion artifacts when comparison requires them; never send a directory to explore. Do not shorten away evidence needed for a sound verdict.
 
-The decisions are fixed per mode. **Plan:** D1 the visual direction picked at Gate 3; D2 the layout candidates the main context drafted for Gate 4 (draft them before convening; the user's pick stays at Gate 4); D3 the type posture; D4 the density and elevation posture; D5 the proposed restrictions. **Build:** the Gate 8 directions, the layout pick, the signature element, the defaults to reject. **Review:** the HOW of each Blocker and Major, highest severity first, at most six.
+The initial decisions follow the mode. **Plan:** D1 the visual direction picked at Gate 3; D2 the layout candidates drafted for Gate 4 (the user's pick stays at Gate 4); D3 the type posture; D4 the density and elevation posture; D5 the proposed restrictions. **Build:** the Gate 8 directions, the layout pick, the signature element, the defaults to reject. **Review:** the HOW of each Blocker and Major, highest severity first. Add or omit decisions to match the actual brief and retain their IDs across rounds. When a consequential decision is unaddressed, assign it to an appropriate seat in a focused follow-up or explicitly mark it unreviewed; silence is not approval.
 
 ---
 
 ## Convening
 
-Use the parallel-seat mechanism resolved in `harnesses.md`. In Claude Code, send one `Agent` call per seat with `subagent_type: "design-expert:council-member"` and `run_in_background: false`. In ChatGPT/Codex, spawn one subagent per seat in one wave and give each the seat prompt below plus the verdict rules; use the active collaboration tool without forcing a model override. Resolve the designer file to an absolute path before sending. Seats spawned one at a time are a serial read wearing a costume; the point of the room is that it finishes together.
+Use the parallel-seat mechanism resolved in `harnesses.md`. In Claude Code, send one `Agent` call per seat with `subagent_type: "design-expert:council-member"` and `run_in_background: false`. In ChatGPT/Codex, spawn one subagent per seat within the concurrency budget and give each the seat prompt below plus the verdict rules; use the active collaboration tool without forcing a model override. Resolve the designer file to an absolute path before sending. Dispatch independent seats concurrently where capacity allows; independence comes from isolated briefs and evidence, not from pretending that every environment can run the whole room at once.
 
-Do not exceed the active environment's concurrency limit. If the full room cannot run in one wave, use the tag-filtered room or the capsule fallback instead of serially cycling through eighteen agents.
+Do not exceed the active environment's concurrency limit. Dispatch independent seats together where possible. When the relevant room is larger, use bounded waves if the user's resource budget permits; keep the brief unchanged and withhold earlier verdicts from later seats to preserve independence. Otherwise use a smaller coverage-based room or capsule fallback and disclose the coverage difference. Do not spawn agents simply to satisfy a count.
 
 The seat prompt, fields in this order:
 
@@ -64,18 +72,22 @@ god_tags: #minimalism #principles #manifesto #materiality
 
 BRIEF
 mode: plan | build | review
-size: plan | iteration | surface-redesign | system-redesign
+size: touch-up | polish | iteration | surface-redesign | system-redesign | plan
 register: brand | product | editorial
 surface: <one noun phrase>
-surface_tags: <2–4 tags>
+surface_tags: <relevant tags; aliases if needed>
 scene: <scene sentence>
 decisions:
-  D1: <as stated, <=30 words>
+  D1: <concise statement with material constraints>
   D2: ...
 
 ARTIFACT
 kind: file | screenshot | summary
-ref: <absolute path> | <<=300-word summary>
+ref: <absolute path> | <focused summary>
+
+DEPTH
+focus_decision: <Dn, or omit to let the seat choose>
+detail: compact | standard | deep
 
 RETURN exactly one verdict block. No prose outside it.
 ```
@@ -84,7 +96,7 @@ RETURN exactly one verdict block. No prose outside it.
 
 ## The verdict
 
-Each seat returns exactly one fenced block, nine keys in this order, under one hundred and twenty words:
+Each seat returns exactly one fenced block per round, with the same nine keys in this order. Keep a simple verdict compact; a nuanced tradeoff can use roughly 150–250 words, and a deep verdict around 400 words when needed. These are depth guides, not minimums or rejection thresholds. Expand further only to preserve decision-critical reasoning or evidence, never to fill a quota. Put the additional reasoning in `principle_applied`, `change`, and `evidence`, using indented continuation lines as needed; do not add decorative sections or change the schema.
 
 ```verdict
 god: dieter-rams
@@ -98,24 +110,24 @@ confidence: 80
 dissent_ok: true
 ```
 
-`god` is the filename stem. `decision_addressed` is one `Dn`, or `none`, in which case `verdict` is `approve` and `change` is `none`. `verdict` is one of `approve`, `revise`, `block`. `domain_match` is true when any tag in `god_tags` appears in `surface_tags`; the seat computes it. `change` is imperative, at most forty words, and names a value rather than a mood. `evidence` is one citation drawn from the designer file's Quotes or Sources. `confidence` is an integer from 0 to 100. `dissent_ok: false` means "if I am outvoted, print my dissent in full". A seat whose `god_file` cannot be read returns `verdict: approve`, `confidence: 0`, `evidence: file-missing`.
+`god` is the filename stem. `decision_addressed` is one `Dn`, or `none`, in which case `verdict` is `approve` and `change` is `none`; this is an abstention, not approval of the whole brief. Address `focus_decision` when assigned. `verdict` is one of `approve`, `revise`, `block`. `domain_match` requires a relevant specific tag or documented alias match supported by the designer's actual principles; explain that match in `principle_applied`. A broad tag alone is insufficient. `change` leads with an implementable action and a concrete value, behavior, or acceptance criterion; add necessary rationale and tradeoffs without a forty-word cap. `evidence` names the source in the designer file's Quotes or Sources and connects it to the decision; add citations when one cannot support the whole claim. Distinguish the documented principle from this seat's application of it. `confidence` is an integer from 0 to 100, a judgment rather than a measured probability. `dissent_ok: false` means "if I am outvoted, preserve my substantive dissent". A seat whose `god_file` cannot be read returns `verdict: approve`, `confidence: 0`, `evidence: file-missing`.
 
 ---
 
 ## The chair
 
-The chair is the main context. The verdict blocks land there as subagent results; a separate chair agent would need them sent again and would add a serial hop before the one thing that must happen in the main context anyway, which is asking the user. The protocol is arithmetic on at most eighteen ten-line records. Apply it per decision D, with A, R, and B the counts of approve, revise, and block verdicts that address D, and n their sum.
+The chair is the main context. Apply the protocol per decision D, with A, R, and B the counts of approve, revise, and block verdicts that address D, and n their sum. Count at most one current verdict per designer per decision; a follow-up replaces that designer's earlier verdict on the same decision, rather than creating another vote. Different decisions can receive separate blocks in separate focused rounds. The nine required fields are stable even when their text spans multiple lines.
 
-1. A result that does not contain exactly one nine-key block, or that carries `confidence: 0`, is excluded from every tally and listed under *Not counted*.
+1. A result that does not contain exactly one valid nine-key block, names an unknown decision, or carries `confidence: 0`, is excluded from every tally and listed under *Not counted*. Check the field types and allowed values; length alone does not invalidate a verdict. `decision_addressed: none` is an abstention and contributes to no decision's tally.
 2. If n is zero, D is *Unaddressed*. If n is one, the lone verdict rules only at confidence 75 or above; below that it is recorded as *Advisory*, neither adopted nor asked, and the mode decides D by its own gates.
 3. A domain veto is a `block` whose `domain_match` is true. If a veto is present, no domain-matched seat approved D, and no other change is incompatible with the veto's change, the ruling is **veto adopted**, marked as such. If a veto is present under any other condition, D is **Contested**.
 4. If A is at least ⌈2n/3⌉, the ruling is **stands**.
 5. If R plus B is at least ⌈2n/3⌉ and every change can be applied together (two values for one property are never merged), the ruling is **revised** with the merged changes.
-6. Otherwise, ties included, D is **Contested**. Options are the distinct changes, clustered by the chair, plus "keep as stated", two to four in total. Each option's percentage is the sum of the confidence behind it divided by the total confidence on D, rounded to the nearest five, summing to about one hundred. More than four positions → the top three by backing, plus keep.
+6. Otherwise, ties included, D is **Contested**. Present a small set of meaningfully distinct options, usually two to four including "keep as stated". Group equivalent proposals, not incompatible ones. If confidence-weighted percentages help, label them as shares of council backing, not probabilities of correctness. Keep materially different minority options discoverable in the dissent or details instead of deleting them to fit the shortlist.
 7. Seats on the losing side of a ruling are **Dissents**. A seat with `dissent_ok: false` prints its key, confidence, and change; a seat with `dissent_ok: true` prints its key only.
-8. One structured-choice interaction, resolved through `harnesses.md`, carries every Contested decision, at most four. Overflow defaults to "keep as stated" and is named in the output so the user can reopen it. A user who overrules a veto is logged as `overruled-by-user`.
+8. Ask about Contested decisions in manageable batches using the active question tool's limits, highest-impact first. Keep remaining decisions explicitly pending; never silently approve an option because the question UI ran out of space. Unaffected work may proceed within the user's scope, but a dependent change waits for the required choice. A user who overrules a veto is logged as `overruled-by-user`.
 
-Print the result before the question, as a table, in under two hundred and fifty words even at eighteen seats:
+Print the result before the question, usually as a compact table. Around 250 words often suffices for a simple round, but expand to preserve material rulings, uncertainty, and dissent. Put extended seat reasoning in a detail section or the permitted decision log, rather than forcing the reader through every verdict. A longer council does not require a longer headline summary.
 
 ```
 ## Council: plan, product register, 18 seated, 2026-09-06
@@ -126,10 +138,10 @@ Print the result before the question, as a table, in under two hundred and fifty
 | D4 elevation | revised: drop surface-300 | 9 revise, compatible |
 | D3 share-of-wallet pie | veto adopted (edward-tufte): ranked bars | 1 block, domain |
 
-Contested (your call): D2 layout: rail-and-body 55% (6 seats), bento 30% (3), keep 15% (2).
+Contested (your call; share of council backing): D2 layout: rail-and-body 55% (6 seats), bento 30% (3), keep 15% (2).
 Dissents: D1 massimo-vignelli (70): one display face, not two. D4 jonathan-ive.
 Advisory: D5 tobias-frere-jones (68): Red Hat Text in cells, Display for the headline only.
-Unaddressed: D5. Not counted: paula-scher (file-missing).
+Unaddressed: D6. Not counted: paula-scher (file-missing).
 ```
 
 Rulings are adopted into the work without a question. Contested items become the question. Dissents are recorded in the output and, in plan mode, in `DECISIONS.md`, so a later reader knows the room was not unanimous.
@@ -138,7 +150,7 @@ Rulings are adopted into the work without a question. Contested items become the
 
 ## Capsule consultation
 
-The light tier keeps the discipline without the room. Read the capsules in `design-gods.md`, seat by tag intersection, and for each seat write one sentence of the form "Per Kare's warmth at low resolution, the status pill keeps a two-pixel inset so it reads at 11px", naming the principle and the decision it shapes. A sentence that names a designer without naming a decision is not a consultation. Load a full designer file only under the two conditions above. Log each seat with `tier: capsule` and `verdict: none`.
+The light tier keeps the discipline without the room. Read the relevant capsules in `design-gods.md` and name the principle and decision each shapes: "Per Kare's warmth at low resolution, the status pill keeps a two-pixel inset so it reads at 11px." A sentence is often enough; use a short paragraph when the evidence, tradeoff, or exception needs it. Combine overlapping contributions without claiming they were independent verdicts. A designer's name without a concrete decision is not a consultation. Read deeper whenever the capsule cannot support the decision. Log consulted seats with `tier: capsule` and `verdict: none` when logging is permitted.
 
 ---
 
@@ -165,4 +177,4 @@ The eighteen stems: `alan-cooper`, `bret-victor`, `charles-and-ray-eames`, `diet
 
 ## Cost
 
-Plan mode under the old procedure cost about twenty-one thousand tokens of designer prose in the working context and thirty tool calls before the layout walk could begin. A council keeps the working-context cost near thirteen thousand tokens (writing the seat prompts, reading the verdict blocks, running the chair and the log) regardless of the seat count. The seats themselves are the expense and the exact cost varies by harness. Claude Code can use the dedicated `council-member` agent; ChatGPT/Codex uses bounded general subagents with the same narrow prompt. Measure it, use `council: tagged` when a full plan room is too expensive, and use the capsule fallback when concurrency or active instructions do not permit the room. The useful property is independent disagreement, not the number eighteen by itself.
+Cost grows with the number of seats, artifact size, verdict depth, and follow-up rounds; parallel execution reduces elapsed time, not token cost. Start with the coverage and depth the decision needs, honor explicit user budgets, and expand only to answer a remaining question. Claude Code can use the dedicated `council-member` agent; ChatGPT/Codex uses bounded general subagents with the same narrow prompt. When delegation is unavailable or disallowed, use capsules and state that the review was not independent. The useful property is grounded disagreement and decision coverage, not a particular seat count or word count.

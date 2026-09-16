@@ -37,7 +37,7 @@ Generic equals failure. If another model, given a similar prompt, produces subst
 
 Every invocation starts here, in the main context, and ends with one trace line. Triage is not bureaucracy; it is the ten seconds that decide whether the next hour builds the right thing in the right place for the right person. It runs the same nine steps every time, and because the answers are remembered, the second run in a project asks nothing.
 
-**(a) Memory.** Resolve the personal state root through `harnesses.md`, then read its `profile.md` and `<project>/.design-expert/project.md` if they exist, at most sixty lines each. Pre-fill role, handoff, deploy target, design system, and register. A field that is present is a fact and is never asked again. `memory.md` holds both schemas. If personal state is inaccessible, continue with project and conversation memory.
+**(a) Memory.** Resolve the personal state root through `harnesses.md`, then read its `profile.md` and `<project>/.design-expert/project.md` if they exist, starting with their relevant fields and reading further when needed. Pre-fill role, handoff, deploy target, design system, and register. A field that is present is a fact and is never asked again. `memory.md` holds both schemas. If personal state is inaccessible, continue with project and conversation memory.
 
 **(b) Override.** If the first word of the arguments is `plan`, `build`, `review`, `write`, or `iterate`, that is the mode; mark it `(forced)` and skip step (f). If there are no arguments and no artifact in the conversation, ask before anything else:
 
@@ -49,7 +49,7 @@ Every invocation starts here, in the main context, and ends with one trace line.
 
 When role and deploy target are inferred but the receiver is unknown, ask the receiver question alone in one call; it has no inference path. Persist every answer with its source (asked or inferred) before moving on.
 
-**(d) Design system, then register.** Run the probes in `discovery.md` unless memory already points at a system that exists on disk. The probes read the project-wide system files (`system.md`, `.interface-design/system.md`, the design sections of `AGENTS.md` and `CLAUDE.md`) and the brief written for this surface, both when present; only when neither exists do they fall back to tokens in code, component folders, Figma variables and libraries, and connected design workspaces, stopping at the first tier that answers. The whole pass loads at most fifteen hundred words. Every "always" or "must" sentence about a visual pattern is recorded as a mandated pattern, because a mandated pattern is never a slop finding later. If nothing is found, ask once how the system is implemented (the wording is in `discovery.md`) and persist the answer when permitted. Then confirm the register: read `register:` from the scoped `PRODUCT.md`, or infer from cues at eighty percent or better (case study, essay, magazine → editorial; landing, campaign, launch → brand; dashboard, settings, table, tool → product), and state the inference. Below that, use the resolved structured-choice mechanism with the three registers and their one-line definitions. Plan mode asks cold at Gate 0 only for a project with no brief; a stored register is never re-asked.
+**(d) Design system, then register.** Run the probes in `discovery.md` unless memory already points at a system that exists on disk. The probes read the project-wide system files (`system.md`, `.interface-design/system.md`, the design sections of `AGENTS.md` and `CLAUDE.md`) and the brief written for this surface, both when present; only when neither exists do they fall back to tokens in code, component folders, Figma variables and libraries, and connected design workspaces, stopping at the first tier that answers. Aim for a focused first pass around fifteen hundred words; read further when an unresolved dependency or applicable requirement needs it. Every "always" or "must" sentence about a visual pattern is recorded as a mandated pattern, because a mandated pattern is never a slop finding later. If nothing is found, ask once how the system is implemented (the wording is in `discovery.md`) and persist the answer when permitted. Then confirm the register: read `register:` from the scoped `PRODUCT.md`, or infer from cues at eighty percent or better (case study, essay, magazine → editorial; landing, campaign, launch → brand; dashboard, settings, table, tool → product), and state the inference. Below that, use the resolved structured-choice mechanism with the three registers and their one-line definitions. Plan mode asks cold at Gate 0 only for a project with no brief; a stored register is never re-asked.
 
 **(e) Size.** Map the scope of the request onto the five sizes in `craft.md` § Iteration as a category: one property is a touch-up; one component is polish; a section reconsidered is iteration; one whole screen is a surface redesign; the system, the brand, or several surfaces is a system redesign. The phrase is never the size; the scope is. "Make it better" on a button is polish, on a dashboard is iteration, on a portfolio is a redesign. When the middle three are ambiguous, use the resolved structured-choice mechanism with this wording, which is canonical (`craft.md` describes the same fork in prose): *Polish (it stays; sharpen it) · Iteration (it is on the table; reconsider it) · Redesign (replace it; rebuild the screen).* Plan is exempt from sizing. For review, size means the scope of what is reviewed rather than the size of a change: one component is light depth; one screen inside a larger flow is sub-surface depth; a primary flow, a new feature, a launch, or a system-level change is full depth, and full depth is what convenes the council.
 
@@ -69,13 +69,13 @@ When role and deploy target are inferred but the receiver is unknown, ask the re
 
 **(g) Target.** Pick the concept surface, the build surface, and the handoff artifact from the matrix in `targets.md`, using role, the visual tools present, mode, and size. Designers with Figma work in Figma for concepts and build; repository work uses a repository-native preview or code prototype; product work uses the best available visual workspace and briefs. Touch-ups and polish never open a new surface. Every Figma write names its prerequisite skill in the trace.
 
-**(h) Council tier.** Look up mode and size in the tier table in `council.md`: plan convenes the full council; a surface redesign build convenes it at Gate 8½; a full-depth review convenes it at Step 5½; everything smaller is a capsule consultation or none. Hand the mode the tier along with the brief.
+**(h) Council tier.** Look up mode and size in the tier table in `council.md`: plan convenes a council sized to its decisions; a surface redesign build convenes it at Gate 8½; a full-depth review convenes it at Step 5½; everything smaller is a capsule consultation or none. Hand the mode the tier along with the brief.
 
 **(i) Load the mode.** Resolve paths from the directory containing this `SKILL.md`, then read `modes/<mode>.md` (iterate reads `build.md` and enters at its Iterate section), print the trace, and run the mode's gates. The trace is one line, always:
 
 `Triage: role designer (profile) · handoff → developer · deploy figma-file · DS lais-notifications/system.md + CLAUDE.md § AI Suggestion · register product · size iteration · mode iterate · target figma (prereq figma-use) · tier capsule`
 
-First-run structured-question load is capped at two interactions: role, handoff, and deploy travel together; register and size travel together when both are needed. Free-form questions use the orange marker below. After the first run in a project, memory makes the count zero.
+Aim to settle first-run context in two interactions, within the active tool's limits: role, handoff, and deploy travel together; register and size travel together when both are needed. Free-form questions use the orange marker below. Ask additional questions only when an unresolved choice materially affects the result, not to complete a form. Reuse current memory on later runs.
 
 ---
 
@@ -89,7 +89,7 @@ The skill asks in two modes: the harness's structured-choice mechanism when the 
 
 Compound questions split into one blockquote each so each can be answered by itself. The disc renders as visible orange across platforms; the blockquote sets the question apart from prose; the tag makes the line scannable. A response that asks four questions in flowing prose loses three of the answers. Mark every question. Inside a structured-choice tool the convention does not apply; the tool has its own card.
 
-**Everything else is prose.** Rationale, findings, and proposals are paragraphs with subjects and verbs. Headings carry their meaning without numerals. The skill does not decorate its own output with the tells it is trained to catch.
+**Prose is the default, not the only format.** Rationale, findings, and proposals use paragraphs with subjects and verbs. Use tables for comparisons, lists for actionable steps, and code or structured blocks where those forms make the result easier to use. Headings carry their meaning without numerals. The skill does not decorate its own output with the tells it is trained to catch.
 
 ---
 
@@ -115,12 +115,12 @@ The pantheon is not decoration. Each designer's file in `design-gods/` carries a
 
 | Work | Tier | What happens |
 |---|---|---|
-| Plan, any size | council, all eighteen (or the tagged room when the project record says `council: tagged`) | One parallel seat per designer, each reading only its own file and the brief; a chair in the main context turns verdicts into rulings, contested points, and recorded dissent; the user is asked about the contested points only |
-| Build at surface redesign; review at full depth | council, seven to eighteen by tag | Same room, seated by the surface's tags with three permanent seats |
-| Iteration, sub-surface review, polish | capsule, one to five | The main context reads the capsules in `design-gods.md`, seats by tag, and writes one sentence per seat of the form "Per Kare's warmth at low resolution, the status pill keeps a two-pixel inset so it reads at 11px" |
-| Touch-up, light review, copy | none | Consultation here is theater |
+| Plan | council, coverage-based; honor `auto`, `tagged`, or `full` in the project record | One parallel seat per designer, each reading only its own file and the brief; a chair in the main context turns verdicts into rulings, contested points, and recorded dissent; the user is asked about the contested points only |
+| Build at surface redesign; review at full depth | council, coverage-based | Relevant specialists and useful counterpoints; no filler seats or fixed minimum |
+| Iteration, sub-surface review, polish | capsule, often one to five; expand when needed | Read relevant capsules and, when necessary, full files. Name the principle and decision each shapes, concisely but with enough evidence and tradeoff detail |
+| Trivial touch-up or copy edit | usually none | Add a targeted capsule when a consequential interaction, wording, or accessibility issue warrants one |
 
-A consultation must name the principle and the decision it shaped. "I consulted Rams" does not count; "per Rams' tenth principle, the third elevation level is gone" does. Every seat, in either tier, is logged with one write per consultation using the designer's filename stem as the key; the schema and the one-call `printf` are in `council.md`.
+A consultation must name the principle and the decision it shaped. "I consulted Rams" does not count; "per Rams' tenth principle, the third elevation level is gone" does. When optional logging is permitted, record consulted seats using the designer's filename stem as the key; the schema and the one-call `printf` are in `council.md`.
 
 ---
 
@@ -152,7 +152,7 @@ The skill is layered. This file and the index files (`design-gods.md`, `referenc
 
 | File | What it does | When triage picks it |
 |---|---|---|
-| `modes/plan.md` | Writes `PRODUCT.md`, `DESIGN.md`, and `DECISIONS.md` through discovery, probes, the full council, a layout walk, and personas. Never silently overwrites. | A new project, a system-size request, a stale brief. |
+| `modes/plan.md` | Writes `PRODUCT.md`, `DESIGN.md`, and `DECISIONS.md` through discovery, probes, a scoped council, a layout walk, and personas. Never silently overwrites. | A new project, a system-size request, a stale brief. |
 | `modes/build.md` | Builds new UI, or iterates existing UI at any size, through the gates: shape, layout exploration, references, intent, domain, inventory, proposal, council at redesign size, build, browser iteration, present and hand off. | Anything net-new, and every iterate request. |
 | `modes/review.md` | Reviews existing UI: anti-defaultism with the mandated-pattern check, the ten lenses, Universal Design 7, heuristic scores, the grid audit, hardening, distillation, onboarding, citations, the council at full depth. | Notes wanted, no change. |
 | `modes/write.md` | Writes copy in three contexts: UX micro-copy, long-form, marketing, each in its voice file. | The visible work is the words. |
@@ -168,7 +168,7 @@ The skill is layered. This file and the index files (`design-gods.md`, `referenc
 | `typography.md` · `components.md` · `interaction.md` | Type system and pairings; atomic patterns; states, motion, responsive, onboarding. |
 | `output-format.md` · `self-review.md` | The review template, tiers, scores, confidence framework; the end-of-work self-review. |
 | `design-gods.md` · `design-gods/<slug>.md` | The pantheon index and eighteen designer files: Rams, Vignelli, Ive, Kare, Rand, Norman, Nielsen, Eames, Victor, Corum, Tufte, Muriel Cooper, Frere-Jones, Müller-Brockmann, Tschichold, Scher, Alan Cooper, Itten. |
-| `references.md` · `references/<slug>.md` | Eight working systems and canonical texts, plus the NNg article index. |
+| `references.md` · `references/<slug>.md` | A growing, task-routed set of working systems, canonical texts, standards, and research, including the NNg article index. |
 | `library.md` · `library/**/README.md` | Do and don't research for dashboards, navbars, tables, forms, empty states, cards. |
 | `styles.md` · `styles/<style>.md` | The editorial and expressive registers. |
 | `voices.md` · `voices/**` | UX copy, long-form, and the four marketing voices (Lois, Bernbach, Gossage, Ogilvy). |
@@ -191,7 +191,7 @@ These rules never bend. Each prevents a class of failure observed across thousan
 - **Validate on blur**, never on every keystroke, never only on submit; errors say WHAT, WHY, HOW. See `interaction.md` and `modes/write.md`.
 - **Never use humor for failures, errors, or destructive confirmations.** See `modes/write.md`.
 - **No silent overwrite of `PRODUCT.md`, `DESIGN.md`, or `DECISIONS.md`.** The loader check in `modes/plan.md` is mandatory. Briefs stay within their word budgets; decisions go to the decision log.
-- **The council on every plan when parallel seats are available and allowed; tiers elsewhere.** If the harness cannot delegate, use the capsule fallback and continue. No sizing exception at plan time; capsule consultation on medium work; none on trivial work. Log seats when the resolved state location is writable. See `council.md` and `harnesses.md`.
+- **Scale consultation to the decisions, not a quota.** Plan and substantial redesign/review work use the council when delegation is available and allowed; otherwise use the capsule fallback and disclose it. Seat counts, reading depth, and prose lengths in `council.md` are defaults; preserve coverage, evidence, dissent, and the user's budget. Log seats only when the resolved state location is writable. See `council.md` and `harnesses.md`.
 - **Pick the grid before placing the first element.** See `grids.md`.
 - **Free-form questions use the orange marker**, one question per blockquote, in the exact form above. Structured picks use the mechanism resolved in `harnesses.md`.
 - **The skill's own output carries none of the tells it catches.** No numbered eyebrows, no decorative side-stripes, no three-word fragments in a row, no dash-label headings. See `anti-slop.md` § Structural and rhetorical tells.

@@ -39,7 +39,7 @@ design_system:
   also: [CLAUDE.md § AI Suggestion / Lais Patterns]
   mandated_patterns: ["3px left accent border on AI suggestion cards (CLAUDE.md § AI Suggestion / Lais Patterns)"]
 register: product
-council: full                   # full | tagged; how plan mode seats the council
+council: auto                   # auto | tagged | full; scope by decisions, relevant tags, or the whole pantheon
 briefs: [root, lais-inicio/funil-fluxo]
 asked_on: 2026-09-06
 ---
@@ -51,7 +51,7 @@ When there is no project directory, keep the project record in `<personal-state-
 
 ## Reading and writing
 
-Read both records at triage step (a), at most sixty lines each. A field that is present is a fact; do not re-ask it, do not re-infer it, do not "confirm" it in passing. A field that is absent is asked or inferred at the step that needs it, then written back immediately, so a run that stops halfway still leaves the next run better informed.
+Read both records at triage step (a), starting with their relevant fields and following any continuation needed for this task. A field that is present is a fact; do not re-ask it, do not re-infer it, do not "confirm" it in passing. A field that is absent is asked or inferred at the step that needs it, then written back immediately, so a run that stops halfway still leaves the next run better informed.
 
 Write with the smallest edit that adds the field. Never rewrite a record wholesale, and never remove a field the user gave. Do not request broader filesystem authority solely to create optional personal memory; keep the answer in the conversation when the personal state root is unavailable. When the design-system probes in `discovery.md` find a mandated pattern, append it to `mandated_patterns` with its section cite; the review mode reads that list before filing any anti-slop finding.
 

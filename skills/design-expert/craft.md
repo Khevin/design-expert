@@ -40,7 +40,7 @@ The five sizes:
 
 **Surface redesign.** A full screen or surface rebuilt. Multiple components affected. Layout pattern can change. Same content, different shape. *Examples:* *"redesign this case study," "rebuild the settings page," "the homepage needs a fresh start."* Four to seven alternatives surfaced; the layout-exploration gate runs in full (`modes/build.md` Gate 3 + `layouts.md`); the council convened at build Gate 8½ (see `council.md`); proposal phase before build.
 
-**System redesign.** Multiple surfaces, the design system itself, brand voice, the whole thing. Rare. *Examples:* *"rebuild our design system," "rethink the brand," "we're starting over."* a plan-mode then build-mode cycle. Catalogs run (library, layouts, styles, voices); reference systems consulted; the full council convened in plan mode (see `council.md`); long horizon.
+**System redesign.** Multiple surfaces, the design system itself, brand voice, the whole thing. Rare. *Examples:* *"rebuild our design system," "rethink the brand," "we're starting over."* a plan-mode then build-mode cycle. Catalogs run (library, layouts, styles, voices); reference systems consulted; a broad, coverage-based council convened in plan mode (see `council.md`); long horizon.
 
 The discipline at request time is to read the user's words against this taxonomy. *"Make it better"* on a button is polish. *"Make it better"* on a dashboard is iteration. *"Make it better"* on a portfolio is redesign. The phrase is the same; the size is set by the **scope**, not by the words. Read the scope first; then size; then explore.
 
@@ -49,10 +49,10 @@ The middle three sizes — polish, iteration, redesign — are where the model a
 | Size | Alternatives to propose | Council tier | Reference loading | Output format |
 |---|---|---|---|---|
 | Touch-up | 0 | none | None | Direct change |
-| Polish | 1–2 | capsule, 0–1 seats | The relevant `library/<category>/README.md` | Direct change after quick confirm |
-| Iteration | 3–5 | capsule, 3–5 seats for build; 3 for a sub-surface review (see `council.md`) | `library/<category>` + relevant style/voice/grid section | Proposal, user picks, execution |
+| Polish | 1–2 | capsule, usually 0–1 seats | The relevant `library/<category>/README.md` | Direct change after quick confirm |
+| Iteration | 3–5 | capsule, often 3–5 seats; expand for distinct concerns (see `council.md`) | `library/<category>` + relevant style/voice/grid section | Proposal, user picks, execution |
 | Surface redesign | 4–7 | council at build Gate 8½ | Full layout catalog + relevant style file | Concepts, council, then build |
-| System redesign | Catalogs + cross-domain | council, all eighteen, in plan mode | All relevant indexes | Plan mode, then build mode |
+| System redesign | Catalogs + cross-domain | council, broad coverage in plan mode; honor explicit full-room settings | All relevant indexes | Plan mode, then build mode |
 
 A second axis crosses this taxonomy: **what kind of output is wanted.** Pure text feedback (the user wants notes, not a change) is review-shaped. Implementation (the user wants the change made) is build-shaped. Most iteration requests want both — the proposal explains the change AND lands the change. Read both axes — *what size, what output* — and route accordingly. *"Review this card"* + an existing file usually wants iteration-shaped output (3–5 proposed alternatives, then implementation of the pick), not text-only review.
 

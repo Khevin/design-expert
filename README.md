@@ -50,11 +50,11 @@ Every run prints one trace line before it works, so you can see each decision an
 - The design system comes before any judgment. The skill looks in briefs, `system.md`, the design sections of `AGENTS.md` and `CLAUDE.md`, tokens in code, component folders, Figma variables and libraries, and connected design workspaces. A pattern your system mandates is never filed as slop.
 - The size of the change is read from its scope, not its phrasing. Touch-up, polish, iteration, surface redesign, system redesign. "Make it better" on a button is polish; on a dashboard it is iteration.
 - The output target follows the role and the tools actually available. Designers with Figma connected work in Figma. Repository work uses native code and previews. Product work gets briefs plus the best available visual workspace. Small changes never open a surface.
-- The pantheon is a council. When the harness permits parallel seats, plan convenes the designers independently and a chair turns their verdicts into rulings, contested points, and recorded dissent. When delegation is unavailable, the skill uses the bounded capsule consultation and keeps moving.
+- The pantheon is a council. When the harness permits parallel seats, plan convenes the designers independently and a chair turns their verdicts into rulings, contested points, and recorded dissent. When delegation is unavailable, the skill uses a proportional capsule consultation and keeps moving.
 
 ## Modes
 
-**Plan** writes `PRODUCT.md`, `DESIGN.md`, and `DECISIONS.md` through a discovery interview, direction probes on your concept surface, the full council, a layout walk, and personas. Briefs stay within word budgets; dated decisions go to the decision log. It never overwrites a brief silently.
+**Plan** writes `PRODUCT.md`, `DESIGN.md`, and `DECISIONS.md` through a discovery interview, direction probes on your concept surface, a coverage-based council, a layout walk, and personas. Briefs stay within word budgets; dated decisions go to the decision log. It never overwrites a brief silently.
 
 **Build** takes a brief to real screens through gates: shape, layout exploration, references, intent, domain, inventory, proposal, the council at redesign size, build on your target, iteration on the rendered result, then presentation and handoff. Every iterate request enters here at its size.
 
@@ -63,6 +63,10 @@ Every run prints one trace line before it works, so you can see each decision an
 **Write** produces copy in three contexts, UX micro-copy, long-form, and marketing, each in its voice file, and sweeps the result for the tells that turn copy into wallpaper.
 
 ## Updates
+
+### v1.3.1, September 15, 2026
+
+A few core files and canon libraries were reviewed against the outputs they produce and tightened where results drifted. Consultation scales with the decision: no five-capsule ceiling, no filler seats, and room for deeper verdicts around 400 words when needed. The nine-key verdict and evidence/dissent discipline remain stable. Capsules and tags are extensible, unresolved choices stay pending, and the reference index now links directly to 18 local resources, including eight new depth files.
 
 ### v1.3.0, September 14, 2026
 
@@ -96,7 +100,7 @@ design-expert is a standalone evolution of three predecessor skills:
 - `interface-design` by [Damola Akinleye](https://github.com/Dammyjay93): manifesto voice, Intent-First, the swap, squint, signature, and token tests, subtle layering.
 - `impeccable` by [Patrick Bakaus](https://github.com/pbakaus): brand vs. product register, 0–4 heuristic scoring, the shape, teach, and document workflow, ux-writing patterns.
 
-Plus original research on the eighteen-designer pantheon (Rams, Vignelli, Ive, Kare, Rand, Norman, Nielsen, Eames, Victor, Corum, Tufte, Muriel Cooper, Frere-Jones, Tschichold, Müller-Brockmann, Scher, Alan Cooper, Itten), eight reference systems (Pentagram, IBM Carbon, Apple HIG, Linear, Stripe, Refactoring UI, the Vignelli Canon, Material Design 3), the layout catalog, the style taxonomy, the marketing voices, and the council protocol.
+Plus original research on the eighteen-designer pantheon (Rams, Vignelli, Ive, Kare, Rand, Norman, Nielsen, Eames, Victor, Corum, Tufte, Muriel Cooper, Frere-Jones, Tschichold, Müller-Brockmann, Scher, Alan Cooper, Itten), an expandable [reference index](skills/design-expert/references.md) spanning design systems, canonical texts, accessibility, service design, visualization, internationalization, and web implementation, the layout catalog, the style taxonomy, the marketing voices, and the council protocol.
 
 ## License
 

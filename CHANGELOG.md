@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.3.1 (2026-09-15)
+
+### Changed
+- Reviewed a few core files and canon libraries for better outputs: the entrypoint, council, craft, discovery and pantheon files were reread against the outputs they produce, and their instructions tightened where the results drifted.
+- Council size, capsule count, source reading, and verdict length now scale with decision coverage rather than hard quotas. Simple work stays concise; deeper verdicts can use around 400 words or more when needed.
+- Preserved the nine-key verdict schema, grounded evidence, chair rulings, and dissent. Follow-up rounds do not duplicate votes; pending decisions never default to approval because a question UI is full.
+- Added `council: auto`; existing `tagged` and `full` settings remain supported. Concurrency and user resource budgets remain binding.
+- Expanded pantheon capsules and documented extensible tags and routing aliases without inventing specialist authority.
+- Updated the entrypoint, council-member agent, mode callers, and memory/discovery guidance to avoid contradictory caps.
+- Rebuilt “The list at a glance” as direct links to each reference file rather than downstream chapters.
+
+### Added
+- Eight focused references: WAI accessibility, GOV.UK, USWDS, Adobe Spectrum, Microsoft Fluent 2, Observable Plot, W3C Internationalization, and web.dev.
+- Indexed the existing Grid Systems and NNg research files, bringing the navigable index to 18 resources without making that a ceiling.
+
 ## 1.3.0 (2026-09-14)
 
 ### Added
