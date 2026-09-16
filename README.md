@@ -64,9 +64,9 @@ Every run prints one trace line before it works, so you can see each decision an
 
 ## Updates
 
-### v1.3.2, September 16, 2026
+### v1.3.3, September 16, 2026
 
-Seats run on the session's model rather than a pinned lighter one. Large rooms keep their three to five lead seats on it and may step the supporting seats down; small rooms spawn real seats instead of capsules read in context. The chair never rules on a stepped-down block or dissent without re-running it.
+Seats run on the session's model rather than a pinned lighter one. Large rooms keep their three to five lead seats on it and may step the supporting seats down one model, to Opus, at high effort throughout; small rooms spawn real seats instead of capsules read in context. The chair never rules on a stepped-down block or dissent without re-running it.
 
 ### v1.3.1, September 15, 2026
 
