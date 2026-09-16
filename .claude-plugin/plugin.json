@@ -9,5 +9,7 @@
   "homepage": "https://github.com/Khevin/design-expert",
   "repository": "https://github.com/Khevin/design-expert",
   "skills": "./skills",
-  "agents": "./agents"
+  "agents": [
+    "./agents/council-member.md"
+  ]
 }
