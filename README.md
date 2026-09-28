@@ -56,13 +56,17 @@ Every run prints one trace line before it works, so you can see each decision an
 
 **Plan** writes `PRODUCT.md`, `DESIGN.md`, and `DECISIONS.md` through a discovery interview, direction probes on your concept surface, a coverage-based council, a layout walk, and personas. Briefs stay within word budgets; dated decisions go to the decision log. It never overwrites a brief silently.
 
-**Build** takes a brief to real screens through gates: shape, layout exploration, references, intent, domain, inventory, proposal, the council at redesign size, build on your target, iteration on the rendered result, then presentation and handoff. Every iterate request enters here at its size.
+**Build** takes a brief to real screens through gates: shape, layout exploration, references, intent, domain, inventory and ranks, proposal, the council at redesign size, build on your target from a written grid spec, a measured pass over the rendered result, then presentation and handoff. Every iterate request enters here at its size, and every size ends by auditing what it changed.
 
 **Review** walks anti-defaultism with the mandated-pattern check first, the ten-lens checklist, Universal Design 7, Nielsen scoring, the five-dimension audit, the grid audit, hardening, distillation, and onboarding, and produces the eight-section document with citations. The council rules on the fixes at full depth.
 
 **Write** produces copy in three contexts, UX micro-copy, long-form, and marketing, each in its voice file, and sweeps the result for the tells that turn copy into wallpaper.
 
 ## Updates
+
+### v1.3.4, September 28, 2026
+
+Council seats run on Sonnet 5.5 at high effort, pinned by full model ID, because the `sonnet` alias had been resolving to an older Sonnet; every seat is equal again. Builds now hold together before they stand out: a new `composition.md` turns the Gestalt principles into build rules (one spacing scale and a ladder of relationships, ranks before styling, a written grid spec), and `scripts/layout-audit.js` measures the rendered page for spacing off the scale, edges that drift, groups that read merged, and near-miss type. Contradicting numbers across the craft files now agree.
 
 ### v1.3.3, September 16, 2026
 

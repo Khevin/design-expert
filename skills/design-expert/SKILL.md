@@ -29,6 +29,8 @@ Generic equals failure. If another model, given a similar prompt, produces subst
 | Inline validation on blur, with WHAT / WHY / HOW errors | Validation on submit, "Invalid input." |
 | Icons at one stroke weight | Emojis, mixed icon families, sparkle for AI |
 | Tokens from the project's own system | Hex values beside the token that already exists |
+| Gaps that tighten inside a group and open around it | Every gap 24px, or 18px beside 16px |
+| Edges measured onto the column lines | "Looks aligned" at screenshot size |
 | A heading that carries its meaning | `01` eyebrows, side-stripes, three-word fragments in a row |
 
 ---
@@ -69,7 +71,7 @@ When role and deploy target are inferred but the receiver is unknown, ask the re
 
 **(g) Target.** Pick the concept surface, the build surface, and the handoff artifact from the matrix in `targets.md`, using role, the visual tools present, mode, and size. Designers with Figma work in Figma for concepts and build; repository work uses a repository-native preview or code prototype; product work uses the best available visual workspace and briefs. Touch-ups and polish never open a new surface. Every Figma write names its prerequisite skill in the trace.
 
-**(h) Council tier.** Look up mode and size in the tier table in `council.md`: plan convenes a council sized to its decisions; a surface redesign build convenes it at Gate 8½; a full-depth review convenes it at Step 5½; everything smaller is a capsule consultation or none. A capsule consultation spawns its few seats as real agents when delegation is available and reads the capsules in context when it is not. Every seat inherits the session's model; only supporting seats in a large room step down, per `council.md`. Hand the mode the tier along with the brief.
+**(h) Council tier.** Look up mode and size in the tier table in `council.md`: plan convenes a council sized to its decisions; a surface redesign build convenes it at Gate 8½; a full-depth review convenes it at Step 5½; everything smaller is a capsule consultation or none. A capsule consultation spawns its few seats as real agents when delegation is available and reads the capsules in context when it is not. Every seat runs on Sonnet 5.5 at high effort, pinned in the agent file; the call passes no `model`, per `council.md` § Seats and models. Hand the mode the tier along with the brief.
 
 **(i) Load the mode.** Resolve paths from the directory containing this `SKILL.md`, then read `modes/<mode>.md` (iterate reads `build.md` and enters at its Iterate section), print the trace, and run the mode's gates. The trace is one line, always:
 
@@ -107,6 +109,8 @@ Pick the grid before placing the first element. Not "we'll use a grid": pick it.
 
 The grid behaves differently across registers. Brand surfaces take fluid grids, column widths and gutters that scale with the viewport, asymmetric layouts where one element clearly leads. Product surfaces take fixed grids in pixels, because the user lives in this layout for hours and spatial predictability is what makes the work navigable. Editorial surfaces take the rail-and-body split. Mixing them is the most common error. The depth lives in `grids.md`; the pantheon voices for grids are `design-gods/muller-brockmann.md` and `design-gods/jan-tschichold.md`; the review mode's grid audit is in `modes/review.md`.
 
+A grid that is declared and never measured drifts anyway, and the grid is only half of structure; grouping and hierarchy are the other half. `composition.md` turns the Gestalt principles into build rules: one spacing scale with a ladder of five relationships, ranks decided before styling, the grid spec with its region map, and an audit, `scripts/layout-audit.js`, that measures the rendered page for spacing off the scale, edges that drift, groups that read merged, and near-miss type. Structure is checked before identity, because a distinctive screen that groups wrongly is still wrong.
+
 ---
 
 ## Consulting the design-gods
@@ -134,7 +138,7 @@ Wrong register equals wrong everything downstream. Triage step (d) confirms it b
 
 ## File index
 
-The skill is layered. This file and the index files (`design-gods.md`, `references.md`, `library.md`, `styles.md`, `voices.md`) are the fast scan; the depth files are loaded when a decision touches their territory; the modes orchestrate which depth files load in which order. Load the minimum for the work: `craft.md` plus `anti-slop.md` for a visual pass, `components.md` for atomic patterns, `output-format.md` for a review, `grids.md` for any layout decision, the relevant `library/<category>/README.md` when the surface has one, the register's style file when it has one. Carrying every file dilutes attention.
+The skill is layered. This file and the index files (`design-gods.md`, `references.md`, `library.md`, `styles.md`, `voices.md`) are the fast scan; the depth files are loaded when a decision touches their territory; the modes orchestrate which depth files load in which order. Load the minimum for the work: `composition.md` for any build or iterate, `craft.md` plus `anti-slop.md` for a visual pass, `components.md` for atomic patterns, `output-format.md` for a review, `grids.md` for any layout decision, the relevant `library/<category>/README.md` when the surface has one, the register's style file when it has one. Carrying every file dilutes attention.
 
 ### Router and triage
 
@@ -153,7 +157,7 @@ The skill is layered. This file and the index files (`design-gods.md`, `referenc
 | File | What it does | When triage picks it |
 |---|---|---|
 | `modes/plan.md` | Writes `PRODUCT.md`, `DESIGN.md`, and `DECISIONS.md` through discovery, probes, a scoped council, a layout walk, and personas. Never silently overwrites. | A new project, a system-size request, a stale brief. |
-| `modes/build.md` | Builds new UI, or iterates existing UI at any size, through the gates: shape, layout exploration, references, intent, domain, inventory, proposal, council at redesign size, build, browser iteration, present and hand off. | Anything net-new, and every iterate request. |
+| `modes/build.md` | Builds new UI, or iterates existing UI at any size, through the gates: shape, layout exploration, references, intent, domain, inventory and ranks, proposal, council at redesign size, build from the composition spec, measured browser iteration, present and hand off. | Anything net-new, and every iterate request. |
 | `modes/review.md` | Reviews existing UI: anti-defaultism with the mandated-pattern check, the ten lenses, Universal Design 7, heuristic scores, the grid audit, hardening, distillation, onboarding, citations, the council at full depth. | Notes wanted, no change. |
 | `modes/write.md` | Writes copy in three contexts: UX micro-copy, long-form, marketing, each in its voice file. | The visible work is the words. |
 
@@ -163,6 +167,7 @@ The skill is layered. This file and the index files (`design-gods.md`, `referenc
 |---|---|
 | `foundations.md` | The ten NNg heuristics, Universal Design 7, the ten-lens decision framework. |
 | `craft.md` | Intent-first, the five sizes, the four craft tests, layering, density, color, distillation, polish. |
+| `composition.md` · `scripts/layout-audit.js` | The Gestalt principles as build rules, the spacing scale and ladder, hierarchy ranks, the grid spec, and the in-page audit that measures them. |
 | `grids.md` · `layouts.md` | Grid discipline by register; the 32-pattern layout catalog. |
 | `anti-slop.md` | Nine categories of AI-default tells, named replacements, the design-system exemption, grep recipes. |
 | `typography.md` · `components.md` · `interaction.md` | Type system and pairings; atomic patterns; states, motion, responsive, onboarding. |
@@ -192,7 +197,7 @@ These rules never bend. Each prevents a class of failure observed across thousan
 - **Never use humor for failures, errors, or destructive confirmations.** See `modes/write.md`.
 - **No silent overwrite of `PRODUCT.md`, `DESIGN.md`, or `DECISIONS.md`.** The loader check in `modes/plan.md` is mandatory. Briefs stay within their word budgets; decisions go to the decision log.
 - **Scale consultation to the decisions, not a quota.** Plan and substantial redesign/review work use the council when delegation is available and allowed; otherwise use the capsule fallback and disclose it. Seat counts, reading depth, and prose lengths in `council.md` are defaults; preserve coverage, evidence, dissent, and the user's budget. Log seats only when the resolved state location is writable. See `council.md` and `harnesses.md`.
-- **Pick the grid before placing the first element.** See `grids.md`.
+- **Pick the grid before placing the first element, and measure the render against it.** The grid spec and the ranks come before the first element, and every build and iterate ends with the composition audit on what changed. See `composition.md` and `grids.md`.
 - **Free-form questions use the orange marker**, one question per blockquote, in the exact form above. Structured picks use the mechanism resolved in `harnesses.md`.
 - **The skill's own output carries none of the tells it catches.** No numbered eyebrows, no decorative side-stripes, no three-word fragments in a row, no dash-label headings. See `anti-slop.md` § Structural and rhetorical tells.
 

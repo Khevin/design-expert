@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.3.4 (2026-09-28)
+
+### Changed
+- Seats run on Sonnet 5.5 at high effort. The council-member agent pins `model: claude-sonnet-5-5` by full ID, because the `sonnet` alias names a family, not a version: every seat logged under 1.3.1's `model: sonnet` ran on Sonnet 5. The chair passes no `model` on the call, since a per-call alias overrides the pin. The lead and supporting split and the Opus step-down are gone; every seat is equal. The agent's description now covers the capsule tier's small rooms.
+- Builds measure composition. Gate 7 ranks every item from 1 to 4 per view; Gate 9 starts from the grid spec, its region map, and the spacing ladder, and builds structure in grayscale before color and signature; Gate 10 runs the layout audit and a real squint before judging screenshots; every iterate size audits what it changed.
+- One set of numbers. Grid at page level and Flexbox inside cells (`craft.md` said Flexbox first); `auto-fit` only inside a region; `minmax(0, 1fr)` columns; density by a token swap instead of a multiplier; line-heights on the 4px base (`typography.md` asked for multiples of 24); one spacing scale whose neighboring steps sit a third to a half apart; the padding minimum excepts dense cells.
+- The Signature test counts repetitions, not inventions: a few moves, each repeated the same way, ranked like everything else.
+- DESIGN.md gains a Layout section; discovery reads layout tokens; review's grid audit measures and checks grouping; self-review runs structure before the craft tests; conventions that carry structure are not defaults to reject.
+- Plan mode's hard rules no longer ask for eighteen seats in one message; the Gate 3½ council is sized to the decisions, as `council.md` has said since 1.3.1.
+
+### Added
+- `composition.md`: the Gestalt principles as build rules, the spacing ladder, hierarchy ranks, the grid spec, the measured audit, and what each size checks.
+- `scripts/layout-audit.js`: a dependency-free in-page audit for spacing off the scale, edge drift and column misses, merged and loose groups, heading attachment, near-miss type and grays, nested cards, and overflow. The harness table names how each host runs it.
+
 ## 1.3.3 (2026-09-16)
 
 ### Changed

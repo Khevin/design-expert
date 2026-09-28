@@ -54,9 +54,9 @@ Five families cover almost everything you will ship.
 
 A spacing system is the vertical arm of the grid. Choose a base unit and let every spacing value in the system derive from it. The two defensible choices are 4 pixels and 8 pixels. Eight is the more common — Material Design, Carbon, Polaris, and most contemporary product systems use it because eight is divisible by two, four, and eight, and it produces a comfortable rhythm at typical body sizes. Four is the right answer for dense data UI where eight feels too generous; Carbon's smaller cells are 4-based.
 
-The mistake is to pick a base and then drift. Half a year into a project you discover that one team has been using 10-pixel padding on their tooltips, another has been using 12-pixel padding on their pills, and the system has quietly stopped being a system. The remedy is tokens — `--space-1` through `--space-12` exposed as the only legitimate spacing values, mapped to multiples of the base (8, 16, 24, 32, 40, 48, 64, 80, 96, 128, 160, 192). When a designer asks for a non-token spacing value, the answer is "no, pick from the scale." When the scale does not cover a need, you add a token, never an arbitrary value.
+The mistake is to pick a base and then drift. Half a year into a project you discover that one team has been using 10-pixel padding on their tooltips, another has been using 12-pixel padding on their pills, and the system has quietly stopped being a system. The remedy is tokens — `--space-1` through `--space-N` exposed as the only legitimate spacing values, mapped to steps of the base (on a 4px base: 4, 8, 12, 16, 24, 32, 48, 64, 96, 128, 160; an 8px base drops 4 and 12). When a designer asks for a non-token spacing value, the answer is "no, pick from the scale." When the scale does not cover a need, you add a token, never an arbitrary value.
 
-The scale should also have an internal logic — typically a Fibonacci-like progression where each step is meaningfully larger than the last. An 8/12/16/20/24 scale has too many steps too close together; the eye cannot tell the difference between 16 and 20, so the difference fails to encode hierarchy. An 8/16/24/40/64 scale has visible jumps; you can read which spacing is "section break" versus "card padding" versus "button gap" without measuring. Fewer values, used precisely, beat more values used loosely — the same Vignelli argument from typography, applied to space.
+The scale should also have an internal logic — typically a Fibonacci-like progression where each step is meaningfully larger than the last, neighboring steps a third to a half apart. An 8/12/16/20/24 scale crowds its upper steps: 8 to 12 is half again and reads as a step, but 16 to 20 is a quarter, and the eye cannot tell the difference, so the difference fails to encode hierarchy. A 4/8/12/16/24/32/48/64 scale has visible jumps; you can read which spacing is "section break" versus "card padding" versus "button gap" without measuring, and `composition.md` § Spacing maps those roles to steps. Fewer values, used precisely, beat more values used loosely — the same Vignelli argument from typography, applied to space.
 
 ---
 
@@ -66,13 +66,13 @@ Use the same vocabulary across the team and across the system documentation, and
 
 **Container** is the maximum width the content respects on wide viewports — the reason a marketing page does not stretch to 4K. Common values: 1200, 1280, 1440, sometimes a fluid `min(100% - 2rem, 1280px)` to handle gutters. The container should be picked by reading width — a 1280px container at typical 14-16px body type produces 80–95 character lines if the text uses the full width, which is too wide; the type's `max-width: 65ch` lives inside the container. Container is the page's outer boundary, not the type's.
 
-**Columns** are the equal divisions of the container width, after subtracting gutters. In CSS Grid: `grid-template-columns: repeat(12, 1fr)`. The column width is calculated, not declared.
+**Columns** are the equal divisions of the container width, after subtracting gutters. In CSS Grid: `grid-template-columns: repeat(12, minmax(0, 1fr))`. The column width is calculated, not declared.
 
 **Gutters** are the gaps between columns. Pick one value per breakpoint and stick to it. Common values: 16, 24, 32 pixels. The gutter should be a token (`--gutter`), not an inline value, because changing it later means changing it everywhere.
 
 **Margins** are the canvas-to-container space, the visible breathing room at the page edges. Margins typically scale with viewport — narrower on phones (16-24px), wider on desktops (48-80px). Margins are not gutters; they are the page's relationship to the screen edge.
 
-**Baseline** is the vertical heartbeat. Every vertical measure on the page is a multiple of it. The baseline is implicit in the spacing scale — if your scale is 8-based, your baseline is 8 pixels. Type sets on the baseline; section gaps are baseline multiples; padding inside cards is a baseline multiple. Spell it out so the team knows the rule.
+**Baseline** is the vertical heartbeat. Every vertical measure on the page is a multiple of it. The baseline is the spacing scale's base unit, 4 pixels in most product systems. Type sets on the baseline, with line-heights that are multiples of it (14/20, 16/24, 20/28); section gaps are baseline multiples; padding inside cards is a baseline multiple. Spell it out so the team knows the rule.
 
 **Breakpoints** are where the grid changes. The defensible choices are content-driven, not device-driven. Pick breakpoints by where the layout breaks (the columns become uncomfortably narrow, the gutters too tight, the line-length too long), not by the iPhone screen width that month. Most product systems land on three to four breakpoints — phone, tablet, laptop, desktop — but the values that matter are the widths at which your content reflows, not the values some marketing slide called canonical.
 
@@ -132,7 +132,7 @@ When you do break, do it in one place per surface, and document it. "The hero il
 
 The implementation layer matters because the grid only exists if the code enforces it.
 
-**CSS Grid** is the right tool for the column grid and the modular grid. `display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gutter);` is the canonical product-grid declaration. Use named lines and named areas for editorial layouts that need readable code; use `repeat(12, 1fr)` for product layouts where the columns are uniform.
+**CSS Grid** is the right tool for the column grid and the modular grid. `display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gutter);` is the canonical product-grid declaration. Write `minmax(0, 1fr)`, not `1fr`: a bare `1fr` never shrinks below its content, so one long word or wide table widens its column and the grid drifts. Use named lines and named areas for editorial layouts that need readable code; use the repeated uniform columns for product layouts, and `subgrid` where a nested module must keep to the page's lines.
 
 **Flexbox** is the right tool for one-dimensional layouts inside a grid cell — a row of buttons in a toolbar, a list of pills in a status row, a header with a logo on the left and nav items on the right. Flexbox is not a substitute for Grid at the page level; using Flex for the page layout is a tell that the developer never learned Grid, and the result is alignment that holds in the happy case and breaks in every edge case.
 
@@ -152,7 +152,7 @@ Six failures cover most of what reviewers find on a grid audit:
 
 **The wrong grid for the content.** Twelve columns chosen for a layout that only ever uses halves and quarters. The grid is wearing a costume of flexibility it does not use. Fix: simplify to the column count the content actually wants. If the content uses thirds, use 6 or 12. If the content uses only halves, use 4 or 8.
 
-**Off-grid alignment by 4–7 pixels.** Hero images that don't align to a column edge. Cards that are 1px off. Buttons that are not vertically centered against their input. Tells: visual imbalance the designer can sense but cannot name, "almost right" alignment everywhere. Fix: snap every value to the spacing scale; turn on grid overlays during review.
+**Off-grid alignment by 4–7 pixels.** Hero images that don't align to a column edge. Cards that are 1px off. Buttons that are not vertically centered against their input. Tells: visual imbalance the designer can sense but cannot name, "almost right" alignment everywhere. Fix: snap every value to the spacing scale, then measure the render: the layout audit in `composition.md` finds edges two to seven pixels off an established line, which an overlay at screenshot scale misses.
 
 **Centered hero locked at 1200px.** A symmetric centered layout used for every surface, regardless of whether the content is brand or product, regardless of whether the surface is a hero or a dense table. The default of every starter template. Tells: every page looks the same; the marketing page and the dashboard have the same outer frame. Fix: pick the grid per register; let brand surfaces breathe asymmetrically and product surfaces commit to a workspace grid.
 
@@ -174,7 +174,7 @@ The grid lives in code as tokens, never as inline values. The minimum useful set
 
 When a designer wants a value that is not in the system, the answer is one of three things: the token already exists and the designer should use it, the token should be added and is now part of the system, or the token should not be added and the design should change to fit. Adding a one-off value is the wrong answer; once added, it becomes the precedent for the next one-off, and the system has stopped being a system.
 
-The grid in code is also the place where the grid becomes review-able. A reviewer can grep for inline values (`grep -E '(margin|padding|gap):\s*[0-9]+px' src/`) and find every place the grid is being broken implicitly. The grep is honest; the design intent is not. The grep is what catches drift before it becomes a habit.
+The grid in code is also the place where the grid becomes review-able. A reviewer can grep for inline values (`grep -E '(margin|padding|gap):\s*[0-9]+px' src/`) and find every place the grid is being broken implicitly. The grep is honest; the design intent is not. The grep is what catches drift before it becomes a habit. It catches only literal values: drift that comes from computed layout, such as a browser default margin, a column that grew, or a library's padding, shows only in the rendered page, where the audit in `composition.md` measures it.
 
 ---
 

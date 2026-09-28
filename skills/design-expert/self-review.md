@@ -20,7 +20,7 @@ Skip self-review for:
 - **Touch-up** (single property change)
 - **Polish** (one component refined) — the polish IS itself the review
 
-For polish-sized work, the four craft tests (swap, squint, signature, token) from `craft.md` are sufficient. Self-review adds layers above those tests for when the work touches more than a single component. See `craft.md` § Iteration as a category for the sizing taxonomy.
+For polish-sized work, the composition audit on the changed region and the four craft tests (swap, squint, signature, token) from `craft.md` are sufficient. Self-review adds layers above those tests for when the work touches more than a single component. See `craft.md` § Iteration as a category for the sizing taxonomy.
 
 ---
 
@@ -31,12 +31,12 @@ Walk through these in order. Each step is a separate question; each question des
 **1. The anti-slop self-scan.**
 Run the grep recipes from `anti-slop.md` § Self-audit grep recipes against the output you just produced. Pure black backgrounds, purple-violet 135-degree gradients, glassmorphism on non-fixed surfaces, three-equal-cards layouts, *"Lorem ipsum,"* *"John Doe,"* round numbers like 99.99%, marketing verbs like *"Streamline / Elevate / Unleash,"* em-dash overuse, Title Case On Every Header. Each match deserves either a justification or a cut. If you can't justify against user goal, brand register, or data semantics, it's a default; cut it.
 
-**2. The four craft tests.**
-Apply the tests from `craft.md` § The four craft tests:
+**2. Structure, then the four craft tests.**
+First the composition checks from `composition.md`: the audit's findings fixed or recorded as exceptions at every checked viewport, and the real squint naming rank 1, then rank 2. A screen that groups wrongly fails here, however distinctive it is. Then apply the tests from `craft.md` § The four craft tests:
 
 - *Swap test:* replace the typography with your usual default (Inter, San Francisco, etc.). Does anything change? If no, the type is a placeholder, not a decision.
-- *Squint test:* blur the screen. Does hierarchy still read? If no, hierarchy is incidental, not visual.
-- *Signature test:* name five elements that could only exist on this product. If you can't name five, the design is interchangeable.
+- *Squint test:* gray and blur the capture. Are the first three regions found rank 1, then rank 2? If no, hierarchy is incidental, not visual.
+- *Signature test:* name the signature and the places it repeats, the same way each time. If there is none, the design is interchangeable; if nothing repeats, it is ornament.
 - *Token test:* read your variable names. Do they sound like this product's world or like any product? Generic names mean intent didn't reach the implementation layer.
 
 Each test is fast (under 60 seconds). Each is also unforgiving — these are the same tests a senior designer would apply during code review. Failing any one is recoverable; failing two is the signal that the work needs another pass before shipping.
@@ -61,11 +61,13 @@ Walk the work and ask: *what would a senior designer cut?* List the candidates e
 - A color that's there because the brand has the color, not because the content needed it
 - A paragraph that opens with *"So,"* or *"Look,"* or *"Here's the thing"*
 - A buzzword the brief didn't ask for (*"seamless," "elevate," "transform"*)
+- A container whose content proximity already groups
+- A size, weight, or gray that nearly matches another on the same screen
 
 Cut three things. If you can't cut three things, the work is either truly tight or you're not looking honestly. Try again.
 
 **7. Final polish — the micro-improvements.**
-With everything above passed, walk the work one more time looking for the small things only the third reading would catch: a misaligned element by 1–2 pixels, a hover state that doesn't quite match the active state, a focus ring that's the wrong color, a gap that should be 16px and is 14px, a typo, a hyphenation issue, a color that prints OK on white but fails on the darker section. Polish is what separates *"done"* from *"shipped."* Most failed work fails not because of structural mistakes but because of an accumulation of micro-failures the third reading would catch and the first reading missed.
+With everything above passed, re-run the audit after the last change, because a late fix is where a 14px gap replaces a 16px one and an element slips two pixels off its line. Then walk the work one more time looking for the small things only the third reading would catch: a hover state that doesn't quite match the active state, a focus ring that's the wrong color, a typo, a hyphenation issue, a color that prints OK on white but fails on the darker section. Polish is what separates *"done"* from *"shipped."* Most failed work fails not because of structural mistakes but because of an accumulation of micro-failures the third reading would catch and the first reading missed.
 
 ---
 

@@ -109,7 +109,7 @@ Then ask the user to pick. State the inference if confidence on a single pattern
 
 **Redesigns count as early.** When the brief is "redesign this surface," do not preserve the existing layout by default. Walk the catalog cold, as if the project were brand new. The most common redesign failure mode is treating the original layout as the constraint when the original layout is precisely what the redesign needs to escape. If the user wants to keep the existing layout, they will say so explicitly; otherwise, the layout is on the table — and the LLM should make this explicit at the start of the redesign so the user can confirm or veto.
 
-The catalog is also the source for the grid lens in `modes/review.md`. When reviewing existing work, identify which catalog pattern the surface is closest to, then ask: is this the right pattern for the register and the verb? Layout audits root in pattern fit, not in pixel-level alignment — the alignment is correct or wrong relative to the pattern, and the pattern is correct or wrong relative to the brief.
+The catalog is also the source for the grid lens in `modes/review.md`. When reviewing existing work, identify which catalog pattern the surface is closest to, then ask: is this the right pattern for the register and the verb? Layout audits start with pattern fit and end with measurement: the pattern is correct or wrong relative to the brief, and the alignment is correct or wrong relative to the pattern's grid, which `composition.md` § Measure checks in the rendered page.
 
 ---
 
