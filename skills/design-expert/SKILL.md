@@ -150,7 +150,7 @@ The skill is layered. This file and the index files (`design-gods.md`, `referenc
 | `discovery.md` | The design-system probes, the load cap, the mandated-pattern exemption. |
 | `targets.md` | The output-target matrix (Figma, canvas, code, briefs) and the size rule. |
 | `handoff.md` | Handoff artifacts by direction: designer → developer, developer → designer, product → either. |
-| `council.md` | The pantheon protocol: tiers, seat prompt, verdict block, chair rules, log schema. |
+| `council.md` | The pantheon protocol: tiers, the brief file, seat prompt, seat report and verdict block, chair rules, record, log schema. |
 
 ### Modes
 

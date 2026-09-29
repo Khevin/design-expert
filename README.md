@@ -64,6 +64,10 @@ Every run prints one trace line before it works, so you can see each decision an
 
 ## Updates
 
+### v1.3.5, September 29, 2026
+
+Council seats now write a report instead of a bare block: a one-sentence headline, what the designer sees in the design, the principle and its source, numbered changes with values, and the tradeoffs, closed by the verdict block the chair tallies. The chair prints each seat's headline in its own words under the table and saves every full report to a council record in the project. The brief is written once to a file the seats read, each seat is pointed at only the screenshots its decision needs, and a report that loses its block is repaired instead of thrown away.
+
 ### v1.3.4, September 28, 2026
 
 Council seats run on Sonnet 5.5 at high effort, pinned by full model ID, because the `sonnet` alias had been resolving to an older Sonnet; every seat is equal again. Builds now hold together before they stand out: a new `composition.md` turns the Gestalt principles into build rules (one spacing scale and a ladder of relationships, ranks before styling, a written grid spec), and `scripts/layout-audit.js` measures the rendered page for spacing off the scale, edges that drift, groups that read merged, and near-miss type. Contradicting numbers across the craft files now agree.

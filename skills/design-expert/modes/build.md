@@ -64,7 +64,7 @@ Where the alternatives are shown follows `targets.md`. At redesign size, or when
 
 ### Gate 8½: Council
 
-Surface redesign and system redesign only, per `council.md`. Assemble the brief: mode build, size, register, the surface, the relevant surface tags and aliases, the scene sentence, the artifact (the Gate 8 alternatives as a screenshot or summary, never a directory), and the decisions: the Gate 8 directions, the layout pick, the signature element, the defaults to reject. When parallel seats are available and allowed, select relevant seats for decision coverage, add useful counterpoints, and dispatch within the concurrency limit using `council.md`. Run the chair, print the table, ask about Contested decisions in manageable batches, keeping unanswered choices pending, and write the log when permitted. Otherwise use the capsule fallback. Rulings are adopted before Gate 9 begins.
+Surface redesign and system redesign only, per `council.md`. Assemble the brief: mode build, size, register, the surface, the relevant surface tags and aliases, the scene sentence, the artifact (the Gate 8 alternatives as a screenshot or summary, never a directory), and the decisions: the Gate 8 directions, the layout pick, the signature element, the defaults to reject. When parallel seats are available and allowed, select relevant seats for decision coverage, add useful counterpoints, and dispatch within the concurrency limit using `council.md`. Run the chair, print the table with each seat's headline, save the record, ask about Contested decisions in manageable batches, keeping unanswered choices pending, and write the log when permitted. Otherwise use the capsule fallback. Rulings are adopted before Gate 9 begins.
 
 ### Gate 9: Build
 

@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.3.5 (2026-09-29)
+
+### Changed
+- Seats write a report, not a bare block. Every seat returns a plain-language report in seven parts, a one-sentence headline, what it examined, what it sees in the design, the principle with its source, numbered changes with values, tradeoffs and doubts, and a line on each other decision it has a view on, and ends with the nine-key verdict block. The block is the vote the chair tallies; the report is the argument the user reads. In six test seats on one brief the reports ran 830 to 1,370 words, about 5% to 7% of what a seat spends; `detail` (compact, standard, deep) nudges the length rather than fixing it. The seat prompt no longer ends "RETURN exactly one verdict block. No prose outside it."
+- The chair shows every voice. The summary prints each seat's headline in its own words under the table, and every full report is saved verbatim, block included, to a council record at `.design-expert/reviews/<date>-<slug>-council.md`. A design council used to reach the user as one sentence.
+- A report that loses its block is repaired, not discarded. The chair asks the seat for the block once before counting it out. The block's keys are shown one per line in the seat's instructions; the old inline list led two of sixty seats in one September batch to join them with `·`, and two more returned prose only.
+- The brief is written once. The chair writes it to `.design-expert/reviews/<date>-<slug>-brief.md` and each seat prompt carries the path, the seat's focus decision, its depth, and its evidence, instead of the chair retyping the brief into every prompt (87 seconds for seven seats in a September run, against about 25 for the seats). Each seat is pointed only at the evidence its focus decision needs, because a screenshot costs a seat about 5,000 tokens. Where the directory cannot be written, the brief stays inline.
+- `council.md` Cost names what a seat spends: about 8,000 tokens of harness floor, 2,000 for its designer file, 5,000 per screenshot, and its report.
+
+### Added
+- The validator's checks cover the seat instructions: the nine keys in `agents/council-member.md` must match `council.md`, and neither may tell a seat to return the block alone.
+
 ## 1.3.4 (2026-09-28)
 
 ### Changed
